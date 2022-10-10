@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkosc_website=self.webpackChunkosc_website||[]).push([[639],{2671:e=>{e.exports=JSON.parse('[{"label":"gaia-x","permalink":"/osc/blog/tags/gaia-x","count":1},{"label":"introduction","permalink":"/osc/blog/tags/introduction","count":1}]')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkosc_website=self.webpackChunkosc_website||[]).push([[729],{1808:s=>{s.exports=JSON.parse('{"label":"introduction","permalink":"/osc/blog/tags/introduction","allTagsPath":"/osc/blog/tags","count":1}')}}]);
