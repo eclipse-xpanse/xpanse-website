@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Open Services Cloud Blog</title>
-        <link>https://huaweicloud.github.io/osc/osc/blog</link>
+        <link>https://huaweicloud.github.io/osc/blog</link>
         <description>Open Services Cloud Blog</description>
         <lastBuildDate>Wed, 20 Jul 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[Open Services Cloud and GAIA-X, digital sovereignty]]></title>
-            <link>https://huaweicloud.github.io/osc/osc/blog/2022/07/20/gaiax</link>
+            <link>https://huaweicloud.github.io/osc/blog/2022/07/20/gaiax</link>
             <guid>/2022/07/20/gaiax</guid>
             <pubDate>Wed, 20 Jul 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[As GAIA-X shapes data sovereignty, and Open Services Cloud frames technology sovereignty, both combined provides digital sovereignty.]]></description>
@@ -19,7 +19,7 @@
         </item>
         <item>
             <title><![CDATA[Introduction to Open Services Cloud]]></title>
-            <link>https://huaweicloud.github.io/osc/osc/blog/2022/07/14/introduction</link>
+            <link>https://huaweicloud.github.io/osc/blog/2022/07/14/introduction</link>
             <guid>/2022/07/14/introduction</guid>
             <pubDate>Thu, 14 Jul 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Welcome to Eclipse Open Services Cloud.]]></description>
