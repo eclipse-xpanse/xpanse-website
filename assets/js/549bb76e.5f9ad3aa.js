@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkosc_website=self.webpackChunkosc_website||[]).push([[313],{2780:s=>{s.exports=JSON.parse('{"label":"introduction","permalink":"/xpanse/blog/tags/introduction","allTagsPath":"/xpanse/blog/tags","count":1}')}}]);
