@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Open Services Cloud',
   tagline: 'Open Services Cloud is an Open Source project allowing to easily implement native managed service on any cloud provider.',
-  url: 'https://huaweicloud.github.io/',
-  baseUrl: '/xpanse/',
+  url: 'https://eclipse-xpanse.github.io',
+  baseUrl: '/xpanse-website/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -65,7 +65,7 @@ const config = {
           {to: '/blog', label: 'Blog', position: 'right'},
           {to: '/demo', label: 'Demo', position: 'right'},
           {
-            href: 'https://github.com/huaweicloud/osc',
+            href: 'https://github.com/eclipse-xpanse/xpanse',
             label: 'GitHub',
             position: 'right',
           },
@@ -120,16 +120,12 @@ const config = {
 							},
               {
                 label: 'Mailing Lists',
-                href: 'https://accounts.eclipse.org/mailing-list/osc-wg',
+                href: 'https://accounts.eclipse.org/mailing-list/xpanse-dev',
               },
               {
                 label: 'Slack',
                 href: 'https://app.slack.com/client/T02U1MCB4HW/C02U1MCDB9N?cdn_fallback=2',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/openservicescloud',
-              },
+              }
             ],
           },
           {
@@ -137,11 +133,11 @@ const config = {
             items: [
               {
                 label: 'Eclipse',
-                href: 'https://www.eclipse.org',
+                href: 'https://projects.eclipse.org/projects/technology.xpanse',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/huaweicloud/osc',
+                href: 'https://github.com/eclipse-xpanse/xpanse',
               },
               {
                 label: 'Blog',

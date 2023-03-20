@@ -4,95 +4,259 @@ sidebar_position: 5
 
 # REST API
 
-OSC Runtime includes a REST API allowing you to interact with the orchestrator.
+# OpenAPI definition
+## Version: v0
 
-By default, the REST API is using `/osc` as context path (it can be changed in the `rest.path` runtime configuration).
+### /xpanse/register/{id}
 
-## `/osc/health`
+#### GET
+##### Description:
 
-The `/osc/health` endpoint is a very simple endpoint checking if the runtime is operating correctly.
+Get registered service using id.
 
-It's a `GET` operation, just returning `ready` (raw text) if all is OK:
+##### Parameters
 
-```shell
-curl -XGET http://host/osc/health
-ready
-```
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | id of registered service | Yes | string |
 
-## `/osc/register`
+##### Responses
 
-The `/osc/register` endpoint allows you to register a service by providing a OCL json descriptor.
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
-It's a `POST` operation expecting `application/json` as content type:
+#### PUT
+##### Description:
 
-```shell
-curl -XPOST -H "Content-Type: application/json" -d @my-osl.json http://host/osc/register
-```
+Update registered service using id and ocl model.
 
-## `/osc/register/fetch`
+##### Parameters
 
-The `/osc/register/fetch` endpoint allows you to provide the location of a OCL json descriptor (on HTTP URL for
-instance) as header.
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | id of registered service | Yes | string |
 
-The orchestrator will fetch the OCL json descriptor from the location and deploy the corresponding service.
+##### Responses
 
-It's a `POST` operation, the OCL location is passed with the `ocl` header:
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
-```shell
-curl -XPOST -H "ocl: http://foo.bar/ocl.json" http://host/osc/register/fetch
-```
+#### DELETE
+##### Description:
 
-## `/osc/services`
+Unregister registered service using id.
 
-The `/osc/services` endpoint lists all registered services.
+##### Parameters
 
-It's a `GET` operation:
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | id of registered service | Yes | string |
 
-```shell
-curl -XGET http://host/osc/services
-my-service-1
-my-service-2
-...
-```
+##### Responses
 
-## `/osc/start`
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
-The `/osc/start` endpoint starts a registered service (you can list all services using `/osc/services` endpoint).
+### /xpanse/register/file/{id}
 
-It's a `POST` operation, the service is passed with the `managedServiceName` header:
+#### PUT
+##### Description:
 
-```shell
-curl -XPOST -H "managedServiceName: my-service" http://host/osc/start
-```
+Update registered service using id and ocl file url.
 
-## `/osc/stop`
+##### Parameters
 
-The `/osc/stop` endpoint stops a registered service.
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | id of registered service | Yes | string |
+| oclLocation | query | URL of Ocl file | Yes | string |
 
-It's a `POST` operation, the service is passed with the `managedServiceName` header:
+##### Responses
 
-```shell
-curl -XPOST -H "managedServiceName: my-service" http://host/osc/stop
-```
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
-## `/osc/update`
+### /xpanse/service
 
-The `/osc/update` endpoint updates a registered service with a new OCL json descriptor.
+#### POST
+##### Responses
 
-The `managedServiceName` header identifies the service to update, the "new" OCL json is passed directly on the stream:
+| Code | Description |
+| ---- | ----------- |
+| 202 | Accepted |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
-```shell
-curl -XPOST -H "managedServiceName: my-service" -H "Content-Type: application/json" -d @my-new-ocl.json http://host/osc/update
-```
+### /xpanse/register
 
-## `/osc/update/fetch`
+#### GET
+##### Description:
 
-The `/osc/update/fetch` endpoint updates a registered service with by fetching a new OCL json descriptor from a
-location.
+List registered service with query params.
 
-The `managedServiceName` header identified the service to update, the `ocl` header defines the new OCL json descriptor
-location:
+##### Parameters
 
-```shell
-curl -XPOST -H "managedServiceName: my-service" -H "ocl: http://host/my-new-ocl.json" http://host/osc/update/fetch
-```
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| categoryName | query | category of the service | No | string |
+| cspName | query | name of the service provider | No | string |
+| serviceName | query | name of the service | No | string |
+| serviceVersion | query | version of the service | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+#### POST
+##### Description:
+
+Register new service using ocl model.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+### /xpanse/register/file
+
+#### POST
+##### Description:
+
+Register new service with URL of Ocl file.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| oclLocation | query | URL of Ocl file | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+### /xpanse/services
+
+#### GET
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+### /xpanse/service/{id}
+
+#### GET
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path |  | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+#### DELETE
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path |  | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 202 | Accepted |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+### /xpanse/register/category/{categoryName}
+
+#### GET
+##### Description:
+
+List registered service group by serviceName, serviceVersion, cspName with category.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| categoryName | path | category of the service | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+### /xpanse/register/categories
+
+#### GET
+##### Description:
+
+Get category list.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+
+### /xpanse/health
+
+#### GET
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad Request |
+| 404 | Not Found |
+| 500 | Internal Server Error |

@@ -10,12 +10,12 @@ There are many ways you can contribute on Open Services Cloud:
 
 * Browse the [documentation](intro): if something is confusing, missing, or not clear, let us know.
 * [Clone and build the project, try it out](runtime)
-* [Browse the source code](https://github.com/huaweicloud/osc)
+* [Browse the source code](https://github.com/eclipse-xpanse/xpanse)
 
 ## Report bugs and feature requests
 
 You find a bug or want something implemented ? Please report an issue in
-our [issue tracker](https://github.com/huaweicloud/osc/issues).
+our [issue tracker](https://github.com/eclipse-xpanse/xpanse/issues).
 
 When creating a bug make sure you document the steps to reproduce the issue and provide all necessary information like
 OS, versions your use, logs. When creating a feature request document your requirements first. Try to not directly
@@ -34,7 +34,7 @@ easy to apply your changes please use the following conventions :
 * Create a branch using:
 
 ```shell
-$ git clone https://github.com/huaweicloud/osc
+$ git clone https://github.com/eclipse-xpanse/xpanse
 git fetch --all
 git checkout -b my-branch origin/main
 ```

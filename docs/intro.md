@@ -10,7 +10,7 @@ Let's discover **Open Services Cloud in less than 5 minutes**.
 
 **Open Services Cloud** is composed by:
 
-* an orchestrator responsible of the managed services (deployment, start, stop, ...) and loading
+* an orchestrator responsible for the managed services (deployment, start, stop, ...) and loading
   plugins specific for each supported cloud provider
 * a language describing managed services, called OCL (Open Services Cloud Configuration Language)
 * a REST API to interact with the orchestrator
@@ -19,7 +19,7 @@ Let's discover **Open Services Cloud in less than 5 minutes**.
 
 Let's get started by **launching OSC runtime** and **deploying a simple managed service**.
 
-You will create a simple service descriptor and you will deploy to Open Services Cloud using the
+You will create a simple service descriptor, and you will deploy to Open Services Cloud using the
 orchestrator REST API.
 
 ### What you'll need
@@ -27,7 +27,7 @@ orchestrator REST API.
 You need a OSC runtime:
 
 * use the runtime provided by a cloud provider supporting Open Services Cloud (the cloud provider
-  already have the runtime and you can directly use the APIs)
+  already have the runtime, and you can directly use the APIs)
 * launch the runtime of your cloud infrastructure (on a VM or Kubernetes cluster for instance)
 * launch the runtime on your machine or cloud infrastructure.
 
@@ -38,7 +38,7 @@ You can [download](/download) the OSC runtime or [build your own runtime](runtim
 In "exploded mode", you have a `runtime` folder, where you can easily launch with:
 
 ```shell
-$ java -jar osc-runtime-1.0-SNAPSHOT.jar
+$ java -jar xpanse-runtime-1.0-SNAPSHOT.jar
 ```
 
 You can copy the whole `runtime` folder on another VM or machine and launch the same way.
