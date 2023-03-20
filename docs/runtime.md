@@ -20,7 +20,7 @@ As requirement, you need:
 You can clone the project locally on your machine with:
 
 ```shell
-$ git clone https://github.com/huaweicloud/xpanse
+$ git clone https://github.com/eclipse-xpanse/xpanse
 $ cd xpanse
 ```
 
@@ -62,7 +62,7 @@ We can start xpanse runtime with a specific plugin by passing the plugin name in
 huaweicloud
 
 ```shell
-$ docker run -e "SPRING_PROFILES_ACTIVE=huaweicloud" --name my-osc-runtime osc
+$ docker run -e "SPRING_PROFILES_ACTIVE=huaweicloud" --name my-xpanse-runtime osc
 ```
 
 ```
@@ -70,19 +70,18 @@ $ docker run -e "SPRING_PROFILES_ACTIVE=huaweicloud" --name my-osc-runtime osc
 You can see the log messages:
 
 ```shell
-  ___                     ____                  _                  ____ _                 _
- / _ \ _ __   ___ _ __   / ___|  ___ _ ____   _(_) ___ ___  ___   / ___| | ___  _   _  __| |
-| | | | '_ \ / _ \ '_ \  \___ \ / _ \ '__\ \ / / |/ __/ _ \/ __| | |   | |/ _ \| | | |/ _` |
-| |_| | |_) |  __/ | | |  ___) |  __/ |   \ V /| | (_|  __/\__ \ | |___| | (_) | |_| | (_| |
- \___/| .__/ \___|_| |_| |____/ \___|_|    \_/ |_|\___\___||___/  \____|_|\___/ \__,_|\__,_|
-      |_|
+   _  __   ____    ____ _   ____    _____  ___
+  | |/_/  / __ \  / __ `/  / __ \  / ___/ / _ \
+ _>  <   / /_/ / / /_/ /  / / / / (__  ) /  __/
+/_/|_|  / .___/  \__,_/  /_/ /_/ /____/  \___/
+       /_/
 
-        Open Services Cloud 1.0.0-SNAPSHOT (2023)
-11:14:08.843 [main] INFO  o.eclipse.osc.runtime.OscApplication - Starting OscApplication using Java 17.0.5 with PID 20664
-11:14:08.849 [main] INFO  o.eclipse.osc.runtime.OscApplication - No active profile set, falling back to 1 default profile: "default"
-11:14:10.600 [main] INFO  o.e.o.o.FileOrchestratorStorage - No other storage beans found. Using default file storage.
-11:14:11.641 [main] WARN  o.e.o.o.OrchestratorService - No OSC plugins are available
-11:14:11.644 [main] INFO  o.eclipse.osc.runtime.OscApplication - Started OscApplication in 3.252 seconds (process running for 3.818)
+        xpanse 1.0.0-SNAPSHOT (2023)
+13:44:19.633 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Starting XpanseApplication using Java 17.0.5 with PID 7344
+13:44:19.645 [main] INFO  o.e.xpanse.runtime.XpanseApplication - No active profile set, falling back to 1 default profile: "default"
+13:44:22.211 [main] INFO  o.e.x.o.FileOrchestratorStorage - No other storage beans found. Using default file storage.
+13:44:23.878 [main] WARN  o.e.x.o.OrchestratorService - No xpanse plugins loaded by the runtime.
+13:44:23.886 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Started XpanseApplication in 5.029 seconds (process running for 5.992)
 
 ```
 

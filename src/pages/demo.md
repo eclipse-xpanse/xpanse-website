@@ -6,6 +6,4 @@ The **Open Services Cloud demo** shows you:
 - the low level integration of the service
 - how to leverage the catalog
 
-The demo is available as [video stream](https://youtube.com).
-
-You can also try the demo interactively [here](http://...).
+The demo is available as [video stream](https://www.youtube.com/watch?v=E2bU1uRC29Y).
