@@ -1,0 +1,22 @@
+.features {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.featureCard {
+    padding: 8px;
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid #a8b3cf33;
+    margin-bottom: 20px;
+}
+
+.featureIcon {
+    width: 28px;
+    height: 28px;
+    border-radius: 0 !important;
+    margin: 12px 0 4px 16px;
+}

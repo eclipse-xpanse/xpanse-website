@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Runtime
 
-Open Services Cloud runtime is the running module. It packages and executes all together: OCL loader, orchestrator,
+Xpanse runtime is the running module built on SpringBoot. It packages and executes all together: orchestrator,
 plugins, REST API, ...
 
 ## Build
@@ -13,9 +13,9 @@ You can easily build Xpanse yourself.
 
 As requirement, you need:
 
-* a Java Developer Kit (JDK) installed, version 17 or newer. You can use [openjdk](https://openjdk.org/)
-  or [temurin](https://adoptium.net/)
-* [Apache Maven 3.8.x or newer](https://maven.apache.org/)
+-   a Java Developer Kit (JDK) installed, version 17 or newer. You can use [openjdk](https://openjdk.org/)
+    or [temurin](https://adoptium.net/)
+-   [Apache Maven 3.8.x or newer](https://maven.apache.org/)
 
 You can clone the project locally on your machine with:
 
@@ -24,7 +24,7 @@ $ git clone https://github.com/eclipse-xpanse/xpanse
 $ cd xpanse
 ```
 
-First, you can build the whole xpanse project, including all modules (orchestrator, OCL, runtime, plugins, etc), simply
+First, you can build the whole xpanse project, including all modules (orchestrator, runtime, plugins, etc), simply
 with:
 
 ```shell
@@ -36,14 +36,14 @@ $ mvn clean install
 By default, the application will not activate any plugins. They must be activated via spring profiles. Also ensure that
 only one plugin is active at a time.
 
-* for Huawei Cloud:
+-   for Huawei Cloud:
 
 ```shell
 $ cd runtime/target
 $ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar -Dspring.profiles.active=huaweicloud
 ```
 
-* for Openstack:
+-   for Openstack:
 
 ```shell
 $ cd runtime/target
@@ -62,10 +62,10 @@ We can start xpanse runtime with a specific plugin by passing the plugin name in
 huaweicloud
 
 ```shell
-$ docker run -e "SPRING_PROFILES_ACTIVE=huaweicloud" --name my-xpanse-runtime osc
+$ docker run -e "SPRING_PROFILES_ACTIVE=huaweicloud" --name my-xpanse-runtime xpanse-runtime
 ```
 
-```
+````
 
 You can see the log messages:
 
@@ -83,7 +83,7 @@ You can see the log messages:
 13:44:23.878 [main] WARN  o.e.x.o.OrchestratorService - No xpanse plugins loaded by the runtime.
 13:44:23.886 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Started XpanseApplication in 5.029 seconds (process running for 5.992)
 
-```
+````
 
 The Xpanse REST API is now available. You can check the status of the runtime by calling the health endpoint on the REST
 API:
@@ -125,89 +125,10 @@ $ docker logs my-xpanse
 13:44:23.886 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Started XpanseApplication in 5.029 seconds (process running for 5.992)
 ```
 
-The OSC REST API is now available. You can check the status of the runtime by calling the health endpoint on the REST
+The Xpanse REST API is now available. You can check the status of the runtime by calling the health endpoint on the REST
 API:
 
 ```shell
 $ curl -XGET http://localhost:8080/xpanse/health
 ready
 ```
-
-### Kubernetes
-
-OSC provides all Kubernetes manifest files in the `runtime/src/main/kubernetes` folder, allowing you to deploy all
-resources on your Kubernetes cluster.
-
-As example, you can deploy on local `minikube` instance. First, start your `minikube` instance:
-
-```shell
-$ minikube start
-$ eval $(minikube -p minikube docker-env)
-```
-
-First, you create the `osc` namespace in Kubernetes:
-
-```shell
-$ kubectl apply -f runtime/src/main/kubernetes/org.eclipse.osc.namespace.yaml
-namespace/osc created
-```
-
-You can now create the OSC runtime deployment in Kubernetes:
-
-```shell
-$ kubectl apply -f runtime/src/main/kubernetes/org.eclipse.osc.deployment.k8s.yaml 
-deployment.apps/osc created
-```
-
-You can check the status of the deployment:
-
-```shell
-$ kubectl get deployments -n xpanse
-NAME   READY   UP-TO-DATE   AVAILABLE   AGE
-xpanse    1/1     1            1           20s
-```
-
-and the associated pod running:
-
-```shell
-$ kubectl get pods -n xpanse
-NAME                   READY   STATUS    RESTARTS   AGE
-osc-8699fd7547-vj44p   1/1     Running   0          42s
-```
-
-```
-
-We can now deploy the service exposing the port 8080 of the OSC runtime:
-
-```shell
-$ kubectl apply -f runtime/src/main/kubernetes/org.eclipse.osc.service.yaml 
-service/xpanse created
-```
-
-and check that the port is currently bound on the NodePort:
-
-```shell
-$ kubectl get services -n xpanse
-NAME   TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
-osc    NodePort   10.97.81.86   <none>        8080:32228/TCP   13s
-```
-
-We can now access the health endpoint of the OSC REST API:
-
-```shell
-$ minikube service list -n xpanse
-|-----------|------|-------------|---------------------------|
-| NAMESPACE | NAME | TARGET PORT |            URL            |
-|-----------|------|-------------|---------------------------|
-| osc       | osc  |        8080 | http://192.168.49.2:32228 |
-|-----------|------|-------------|---------------------------|
-```
-
-You can now point test the health endpoint:
-
-```shell
-$ curl -XGET http://192.168.49.2:32228/xpanse/health
-ready
-```
-
-Xpanse is now ready on your Kubernetes cluster.

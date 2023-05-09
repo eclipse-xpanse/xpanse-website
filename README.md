@@ -1,6 +1,6 @@
-# Open Services Cloud Website
+# Xpanse Website
 
-Open Services Cloud website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Xpanse website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ### Installation
 
