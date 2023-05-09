@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eclipse-xpanse.github.io/xpanse-website/blog</id>
-    <title>Open Services Cloud Blog</title>
+    <title>xpanse Blog</title>
     <updated>2022-07-20T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eclipse-xpanse.github.io/xpanse-website/blog"/>
-    <subtitle>Open Services Cloud Blog</subtitle>
+    <subtitle>xpanse Blog</subtitle>
     <icon>https://eclipse-xpanse.github.io/xpanse-website/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Open Services Cloud and GAIA-X, digital sovereignty]]></title>
@@ -17,7 +17,7 @@
 sovereignty.</p><p>In details, it means:</p><ul><li>GAIA-X focuses on portability of <strong>cloud data</strong></li><li>Open Services Cloud focuses on portability of <strong>cloud data processing services</strong> and also fulfills the Data Act's
 requirements for cloud services portability</li><li>You need to have both portability of data and its associated data processing service to achieve digital sovereignty.
 One without the other has limited value.</li><li>We implement GAIA-X data portability as services on top of Open Services Cloud to bring together these two
-features, **data portability and data processing portability££.</li></ul>]]></content>
+features, <!-- -->*<!-- -->*<!-- -->data portability and data processing portability££.</li></ul>]]></content>
         <author>
             <name>JB Onofré</name>
             <uri>https://github.com/jbonofre</uri>

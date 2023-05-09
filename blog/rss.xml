@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>Open Services Cloud Blog</title>
+        <title>xpanse Blog</title>
         <link>https://eclipse-xpanse.github.io/xpanse-website/blog</link>
-        <description>Open Services Cloud Blog</description>
+        <description>xpanse Blog</description>
         <lastBuildDate>Wed, 20 Jul 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
@@ -18,7 +18,7 @@
 sovereignty.</p><p>In details, it means:</p><ul><li>GAIA-X focuses on portability of <strong>cloud data</strong></li><li>Open Services Cloud focuses on portability of <strong>cloud data processing services</strong> and also fulfills the Data Act's
 requirements for cloud services portability</li><li>You need to have both portability of data and its associated data processing service to achieve digital sovereignty.
 One without the other has limited value.</li><li>We implement GAIA-X data portability as services on top of Open Services Cloud to bring together these two
-features, **data portability and data processing portability££.</li></ul>]]></content:encoded>
+features, <!-- -->*<!-- -->*<!-- -->data portability and data processing portability££.</li></ul>]]></content:encoded>
             <category>gaia-x</category>
         </item>
         <item>
