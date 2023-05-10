@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Plugin
+# Plugins
 
 This section described how to develop an orchestrator plugin (and associated storage).
 
@@ -81,9 +81,9 @@ public class MyPlugin implements OrchestratorPlugin {
 }
 ```
 
-## Adding in OSC runtime
+## Adding in Xpanse runtime
 
 To ensure the plugin and storage implementations are correctly scanned and loaded, both the classes
-must also be additionally annotated wit  `@Profile` and with value with the plugin name.
+must also be additionally annotated wit `@Profile` and with value with the plugin name.
 
-```@Profile(value = "${pluginName})```
+`@Profile(value = "${pluginName})`
