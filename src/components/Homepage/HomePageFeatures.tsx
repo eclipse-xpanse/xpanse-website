@@ -1,7 +1,7 @@
 import '../../css/features.css';
 import React from 'react';
-import { FeatureList } from '@site/src/components/HomepageFeatures/features';
-import Feature from '@site/src/components/HomepageFeatures/Feature';
+import { FeatureList } from '@site/src/components/Homepage/features';
+import Feature from '@site/src/components/Homepage/Feature';
 
 export default function HomepageFeatures(): JSX.Element {
     return (

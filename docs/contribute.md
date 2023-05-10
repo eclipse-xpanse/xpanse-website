@@ -9,8 +9,14 @@ Xpanse is an open source project. We love contributions !
 There are many ways you can contribute to the Xpanse project:
 
 -   Browse the [documentation](intro): if something is confusing, missing, or not clear, let us know.
--   [Clone and build the project, try it out](runtime)
--   [Browse the source code](https://github.com/eclipse-xpanse/xpanse)
+-   Clone and build the project, [try it out](runtime)
+-   Browse the [source code](https://github.com/eclipse-xpanse/xpanse)
+
+## Eclipse Foundation Account
+
+1. Developers must create an [Eclipse Foundation account](https://accounts.eclipse.org/user/register).
+2. [Eclipse Contributor Agreement(ECA)](https://www.eclipse.org/projects/handbook/#contributing-eca) must be signed. This can be done as part of the account creation.
+3. Developer's GitHub user ID must be configured in Eclipse Foundation Account. Steps are documented [here](https://www.eclipse.org/projects/handbook/#resources-github).
 
 ## Report bugs and feature requests
 
