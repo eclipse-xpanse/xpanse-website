@@ -5,7 +5,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'xpanse',
-    tagline: 'Xpanse is an open source project for offering native managed services on cloud.',
     url: 'https://eclipse-xpanse.github.io',
     baseUrl: '/xpanse-website/',
     onBrokenLinks: 'throw',
@@ -52,18 +51,15 @@ const config = {
     ],
 
     themeConfig: {
+        docs: {
+            sidebar: {
+                hideable: true,
+            },
+        },
         colorMode: {
             defaultMode: 'light',
             disableSwitch: true,
             respectPrefersColorScheme: false,
-        },
-        announcementBar: {
-            id: 'survey-report',
-            content:
-                '<b>Report of <i>Impact of Open Services Cloud initiative study</i> is <a target="_blank" rel="noopener noreferrer" href="https://events.eclipse.org/2023/unlockthecloud/documents/unlock-the-cloud-interoperability-to-foster-the-eu-digital-market-report.pdf"> now available.</a></b>',
-            backgroundColor: '#303846',
-            textColor: '#fafbfc',
-            isCloseable: false,
         },
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         navbar: {
@@ -75,7 +71,7 @@ const config = {
                 {
                     label: 'API',
                     position: 'right',
-                    href: '/docs/api'
+                    href: '/docs/api',
                 },
                 {
                     type: 'doc',
@@ -143,7 +139,7 @@ const config = {
                     title: 'Project',
                     items: [
                         {
-                            label: 'Eclipse',
+                            label: 'Eclipse Foundation',
                             href: 'https://projects.eclipse.org/projects/technology.xpanse',
                         },
                         {
@@ -156,16 +152,20 @@ const config = {
                     title: 'Further Reading',
                     items: [
                         {
-                            label: 'Blog',
+                            label: 'Blogs',
                             href: '/blog',
                         },
                         {
-                            label: 'Demo',
-                            to: '/docs/FurtherReading/demo',
+                            label: 'Demos',
+                            to: '/docs/FurtherReading/demos',
                         },
                         {
                             label: 'Resources',
                             to: '/docs/FurtherReading/resources',
+                        },
+                        {
+                            label: 'Impact of Open Services Cloud',
+                            href: 'https://events.eclipse.org/2023/unlockthecloud/documents/unlock-the-cloud-interoperability-to-foster-the-eu-digital-market-report.pdf',
                         },
                     ],
                 },
