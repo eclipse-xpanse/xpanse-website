@@ -109,6 +109,10 @@ const config = {
                             to: '/docs/api',
                         },
                         {
+                            label: 'UI',
+                            to: '/docs/ui',
+                        },
+                        {
                             label: 'Supported Clouds',
                             to: '/docs/supported-clouds',
                         },

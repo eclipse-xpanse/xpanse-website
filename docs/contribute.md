@@ -33,10 +33,10 @@ you plan to do. If unsure is the design is good or will be accepted discuss it o
 
 ## Create Pull Request
 
-The best way to provide changes is to fork `xpanse` repo on GitHub and provide a pull request with your changes. To make it
+The best way to provide changes is to fork `xpanse` repo or the `xpanse-ui` on GitHub and provide a pull request with your changes. To make it
 easy to apply your changes please use the following conventions :
 
--   Every pull request should be "attached" to an issue.
+-   Every pull request should be "linked" to an issue.
 -   Create a branch using:
 
 ```shell
@@ -56,7 +56,7 @@ $ git push GitHubUser my-branch --force
     branch using `git rebase -i origin/main`
 -   Test that your change works by adapting or adding tests.
 -   Follow the boy scout rule to "Always leave the campground cleaner than you found it."
--   Make sure you do a build before doing a PR. The build has to be successfull :
+-   Make sure you do a build before doing a PR. The build has to be successful :
 
 ```shell
 $ mvn clean verify
