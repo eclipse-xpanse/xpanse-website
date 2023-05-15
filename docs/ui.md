@@ -17,19 +17,13 @@ We also have a Xpanse UI which is a reference UI implementation to show how the 
 
 ### Development
 
-DE65501201000000397175
-
-Code for UI implementation is available in [GitHub](https://github.com/eclipse-xpanse/xpanse-ui).
+Code for UI implementation is available in [here](https://github.com/eclipse-xpanse/xpanse-ui).
 
 #### Requirements
 
 1. Node.js and npm/yarn must be installed on the developer system.
 2. Steps to start the application is described [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/README.md)
 3. Xpanse runtime to be available. Without which, the UI will start up but no functions are usable.
-
-#### Contribute
-
-Contribution to this UI project follows the same rules defined in [contribute](contribute) page.
 
 ### Access to UI
 

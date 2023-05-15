@@ -126,16 +126,28 @@ const config = {
                     title: 'Community',
                     items: [
                         {
-                            label: 'Contribute',
-                            to: '/docs/contribute',
+                            label: 'New Developers',
+                            to: '/docs/Contribute/new-developers',
                         },
                         {
-                            label: 'Mailing Lists',
-                            href: 'https://accounts.eclipse.org/mailing-list/xpanse-dev',
+                            label: 'Code of Conduct',
+                            to: '/docs/Contribute/code-of-conduct',
                         },
                         {
-                            label: 'Slack',
-                            href: 'https://app.slack.com/client/T02U1MCB4HW/C02U1MCDB9N?cdn_fallback=2',
+                            label: 'Planning',
+                            to: '/docs/Contribute/planning',
+                        },
+                        {
+                            label: 'Continuous Integration',
+                            to: '/docs/Contribute/continuous-integration',
+                        },
+                        {
+                            label: 'Issues Tracker',
+                            to: '/docs/Contribute/issues-tracker',
+                        },
+                        {
+                            label: 'Pull Requests',
+                            to: '/docs/Contribute/pull-requests',
                         },
                     ],
                 },
@@ -149,6 +161,10 @@ const config = {
                         {
                             label: 'GitHub',
                             href: 'https://github.com/eclipse-xpanse/xpanse',
+                        },
+                        {
+                            label: 'Mailing Lists',
+                            href: 'https://accounts.eclipse.org/mailing-list/xpanse-dev',
                         },
                     ],
                 },
