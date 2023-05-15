@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import '../../css/index.css';
 import Link from '@docusaurus/Link';
 import React from 'react';
+import XpanseLogo from '@site/static/img/full-logo.png';
 
 function HeroBanner(): JSX.Element {
     const tagLine = () => {
@@ -25,11 +26,7 @@ function HeroBanner(): JSX.Element {
     return (
         <header className={clsx('hero hero--primary', 'heroBanner')}>
             <div className={'container heroBannerElements'}>
-                <img
-                    className={'heroBannerLogo'}
-                    src={require('@site/static/img/full-logo.png').default}
-                    alt={'logo'}
-                />
+                <img className={'heroBannerLogo'} src={XpanseLogo as string} alt={'logo'} />
                 <div className={'buttons'} style={{ display: 'flex', flexDirection: 'column' }}>
                     <p className='hero__subtitle'>{tagLine()}</p>
                     <Link className='button button--secondary button--lg' to='/docs/intro'>

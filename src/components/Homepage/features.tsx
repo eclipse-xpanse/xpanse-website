@@ -1,16 +1,17 @@
 import React from 'react';
+import { Braces, Code, LucideIcon, Rocket, ShoppingCart, Unlock, Unplug } from 'lucide-react';
 
-export const FeatureList = [
+export const FeatureList: { title: string; Icon: LucideIcon; description: JSX.Element }[] = [
     {
         title: 'Portable Services',
-        img: require('@site/static/img/unplug.png').default,
+        Icon: Unplug,
         description: (
             <>An Xpanse Cloud service is portable. It can be deployed on any cloud provider hosting Xpanse runtime.</>
         ),
     },
     {
-        title: 'Managed Services',
-        img: require('@site/static/img/code.png').default,
+        title: 'Managed Services as Code',
+        Icon: Code,
         description: (
             <>
                 Creating a service with Xpanse is very easy. You describe a service and its deployment details using the
@@ -20,7 +21,7 @@ export const FeatureList = [
     },
     {
         title: 'Services Catalog',
-        img: require('@site/static/img/shopping-cart.png').default,
+        Icon: ShoppingCart,
         description: (
             <>
                 As a service is described using Xpanse service descriptor, it's pretty easy to provide a catalog of
@@ -30,7 +31,7 @@ export const FeatureList = [
     },
     {
         title: 'API First',
-        img: require('@site/static/img/braces.png').default,
+        Icon: Braces,
         description: (
             <>
                 Xpanse provides REST API for registering new services to the catalog and also for ordering services from
@@ -40,7 +41,7 @@ export const FeatureList = [
     },
     {
         title: 'Deployment Tools',
-        img: require('@site/static/img/rocket.png').default,
+        Icon: Rocket,
         description: (
             <>
                 Xpanse uses standard deployment tools such as Terraform for deploying services. Scripts are provided as
@@ -50,7 +51,7 @@ export const FeatureList = [
     },
     {
         title: 'No Lock-In',
-        img: require('@site/static/img/unlock.png').default,
+        Icon: Unlock,
         description: (
             <>
                 Xpanse allows services and data interoperability within cloud providers and service portability across

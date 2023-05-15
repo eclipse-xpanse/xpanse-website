@@ -45,4 +45,4 @@ the `gh-pages` branch.
 
 ### Icons
 
-Free icons on this website are taken from [Luicde.](https://lucide.dev/)
+Free icons on this website are taken from [Luicde](https://lucide.dev/).
