@@ -80,7 +80,7 @@ const config = {
                     label: 'Documentation',
                 },
                 {
-                    href: 'https://github.com/eclipse-xpanse/xpanse',
+                    href: 'https://github.com/eclipse-xpanse',
                     label: 'GitHub',
                     position: 'right',
                 },
