@@ -10,7 +10,7 @@ The latest version of Xpanse is supported.
 
 ## Reporting a Vulnerability
 
-If you think you found a vulnerability, and even if you are not sure about it, please report it right away by sending an email to: [xpanse-dev](mailto:https://accounts.eclipse.org/mailing-list/xpanse-dev). Please try to be as explicit as possible, describing all the steps and example code to reproduce the security issue.
+If you think you found a vulnerability, and even if you are not sure about it, please report it right away by sending an email to: [xpanse-dev](mailto:xpanse-dev@eclipse.org). Please try to be as explicit as possible, describing all the steps and example code to reproduce the security issue.
 
 We will review it thoroughly and get back to you as fast as possible.
 
