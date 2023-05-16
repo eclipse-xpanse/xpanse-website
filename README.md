@@ -1,5 +1,7 @@
 # Xpanse Website
 
+[![xpanse-website-ci](https://github.com/eclipse-xpanse/xpanse-website/actions/workflows/xpanse-website-ci.yml/badge.svg)](https://github.com/eclipse-xpanse/xpanse-website/actions/workflows/xpanse-website-ci.yml) [![xpanse-website-deployment](https://github.com/eclipse-xpanse/xpanse-website/actions/workflows/xpanse-website-cd.yml/badge.svg)](https://github.com/eclipse-xpanse/xpanse-website/actions/workflows/xpanse-website-cd.yml)
+
 Xpanse website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ### Installation
