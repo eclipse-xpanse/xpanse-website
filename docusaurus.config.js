@@ -149,6 +149,10 @@ const config = {
                             label: 'Pull Requests',
                             to: '/docs/Contribute/pull-requests',
                         },
+                        {
+                            label: 'Security',
+                            to: '/docs/Contribute/security',
+                        },
                     ],
                 },
                 {
