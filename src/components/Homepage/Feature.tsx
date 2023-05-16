@@ -6,10 +6,10 @@ function Feature({ Icon, title, description }: { Icon: LucideIcon; title: string
     return (
         <article className={clsx('col col--4')}>
             <div className={'featureCard'}>
-              <div className={'featureTitle'}>
-                <Icon className={'featureIcon'} strokeWidth={2} />
-                <h2 className={'featureName'}>{title}</h2>
-              </div>
+                <div className={'featureTitle'}>
+                    <Icon className={'featureIcon'} strokeWidth={2} />
+                    <h2 className={'featureName'}>{title}</h2>
+                </div>
                 <div className={'listContainer'}>
                     <p className={'featureDescription'}>{description}</p>
                 </div>
