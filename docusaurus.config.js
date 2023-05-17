@@ -142,6 +142,10 @@ const config = {
                             to: '/docs/Contribute/continuous-integration',
                         },
                         {
+                            label: 'Releases',
+                            to: '/docs/Contribute/releases',
+                        },
+                        {
                             label: 'Issues Tracker',
                             to: '/docs/Contribute/issues-tracker',
                         },
