@@ -18,6 +18,10 @@ const config = {
         locales: ['en'],
     },
 
+    markdown: {
+        mermaid: true,
+    },
+    themes: ['@docusaurus/theme-mermaid'],
     presets: [
         [
             'classic',
@@ -119,6 +123,10 @@ const config = {
                         {
                             label: 'Plugins',
                             to: '/docs/plugins',
+                        },
+                        {
+                            label: 'Credentials Concept',
+                            to: '/docs/credentials-concept',
                         },
                     ],
                 },
