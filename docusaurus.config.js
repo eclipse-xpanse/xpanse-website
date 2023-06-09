@@ -78,6 +78,11 @@ const config = {
                     href: '/docs/api',
                 },
                 {
+                    label: 'Calendar',
+                    to: '/docs/Contribute/calendar',
+                    position: 'right',
+                },
+                {
                     type: 'doc',
                     docId: 'intro',
                     position: 'right',
