@@ -159,8 +159,8 @@ const config = {
                             to: '/docs/Contribute/releases',
                         },
                         {
-                            label: 'Issues Tracker',
-                            to: '/docs/Contribute/issues-tracker',
+                            label: 'Bug Handling Process',
+                            to: '/docs/Contribute/bug-handling-process',
                         },
                         {
                             label: 'Pull Requests',
