@@ -106,32 +106,36 @@ const config = {
                             to: '/docs/intro',
                         },
                         {
-                            label: 'Architecture',
-                            to: '/docs/architecture',
-                        },
-                        {
-                            label: 'Runtime',
-                            to: '/docs/runtime',
-                        },
-                        {
                             label: 'API',
                             to: '/docs/api',
                         },
                         {
-                            label: 'UI',
-                            to: '/docs/ui',
+                            label: 'Architecture',
+                            to: '/docs/architecture',
                         },
                         {
-                            label: 'Supported Clouds',
-                            to: '/docs/supported-clouds',
+                            label: 'Credentials Concept',
+                            to: '/docs/credentials-concept',
+                        },
+                        {
+                            label: 'Database',
+                            to: '/docs/database',
                         },
                         {
                             label: 'Plugins',
                             to: '/docs/plugins',
                         },
                         {
-                            label: 'Credentials Concept',
-                            to: '/docs/credentials-concept',
+                            label: 'Runtime',
+                            to: '/docs/runtime',
+                        },
+                        {
+                            label: 'Supported Clouds',
+                            to: '/docs/supported-clouds',
+                        },
+                        {
+                            label: 'UI',
+                            to: '/docs/ui',
                         },
                     ],
                 },
