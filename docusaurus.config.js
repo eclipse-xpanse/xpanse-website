@@ -114,6 +114,10 @@ const config = {
                             to: '/docs/architecture',
                         },
                         {
+                            label: 'Authentication & Authorization',
+                            to: '/docs/authentication-authorization',
+                        },
+                        {
                             label: 'Credentials Concept',
                             to: '/docs/credentials-concept',
                         },
