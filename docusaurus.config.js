@@ -118,8 +118,8 @@ const config = {
                             to: '/docs/authentication-authorization',
                         },
                         {
-                            label: 'Credentials Concept',
-                            to: '/docs/credentials-concept',
+                            label: 'Cloud Provider Credentials',
+                            to: '/docs/cloud-provider-credentials',
                         },
                         {
                             label: 'Database',
