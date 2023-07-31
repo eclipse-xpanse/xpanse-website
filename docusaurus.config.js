@@ -134,6 +134,10 @@ const config = {
                             to: '/docs/runtime',
                         },
                         {
+                            label: 'Service Deployment',
+                            to: '/docs/service-deployment',
+                        },
+                        {
                             label: 'Supported Clouds',
                             to: '/docs/supported-clouds',
                         },
