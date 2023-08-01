@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkxpanse_website=self.webpackChunkxpanse_website||[]).push([[6729],{3070:e=>{e.exports=JSON.parse('{"permalink":"/xpanse/blog/tags/introduction","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

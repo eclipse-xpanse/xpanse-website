@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>xpanse Blog</title>
-        <link>https://eclipse-xpanse.github.io/xpanse-website/blog</link>
+        <link>https://eclipse-xpanse.github.io/xpanse/blog</link>
         <description>xpanse Blog</description>
         <lastBuildDate>Wed, 20 Jul 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,8 +10,8 @@
         <language>en</language>
         <item>
             <title><![CDATA[Open Services Cloud and GAIA-X, digital sovereignty]]></title>
-            <link>https://eclipse-xpanse.github.io/xpanse-website/blog/2022/07/20/gaiax</link>
-            <guid>https://eclipse-xpanse.github.io/xpanse-website/blog/2022/07/20/gaiax</guid>
+            <link>https://eclipse-xpanse.github.io/xpanse/blog/2022/07/20/gaiax</link>
+            <guid>https://eclipse-xpanse.github.io/xpanse/blog/2022/07/20/gaiax</guid>
             <pubDate>Wed, 20 Jul 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[As GAIA-X shapes data sovereignty, and Open Services Cloud frames technology sovereignty, both combined provides digital]]></description>
             <content:encoded><![CDATA[<p>As GAIA-X shapes data sovereignty, and Open Services Cloud frames technology sovereignty, both combined provides digital
@@ -23,8 +23,8 @@ features, <!-- -->*<!-- -->*<!-- -->data portability and data processing portabi
         </item>
         <item>
             <title><![CDATA[Introduction to Open Services Cloud]]></title>
-            <link>https://eclipse-xpanse.github.io/xpanse-website/blog/2022/07/14/introduction</link>
-            <guid>https://eclipse-xpanse.github.io/xpanse-website/blog/2022/07/14/introduction</guid>
+            <link>https://eclipse-xpanse.github.io/xpanse/blog/2022/07/14/introduction</link>
+            <guid>https://eclipse-xpanse.github.io/xpanse/blog/2022/07/14/introduction</guid>
             <pubDate>Thu, 14 Jul 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Welcome to Eclipse Open Services Cloud.]]></description>
             <content:encoded><![CDATA[<p>Welcome to Eclipse Open Services Cloud.</p><p>Today, the ecosystem is being locked out of public clouds. Only the cloud providers can create native managed services.
