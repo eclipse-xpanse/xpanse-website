@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkxpanse_website=self.webpackChunkxpanse_website||[]).push([[1753],{2967:a=>{a.exports=JSON.parse('{"label":"gaia-x","permalink":"/xpanse/blog/tags/gaia-x","allTagsPath":"/xpanse/blog/tags","count":1}')}}]);
