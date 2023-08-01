@@ -11,7 +11,7 @@ plugins, REST API, ...
 
 You can easily build Xpanse yourself.
 
-As requirement, you need:
+As a requirement, you need:
 
 -   a Java Developer Kit (JDK) installed, version 17 or newer. You can use [openjdk](https://openjdk.org/)
     or [temurin](https://adoptium.net/)
