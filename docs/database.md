@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 ---
+
 # Database
 
 ## Development Environments
@@ -112,10 +113,10 @@ docker run --name ${container-name} \
             -e MARIADB_PASSWORD${database-password} \
             -p 3306:${database-port} -d
 ```
-> **Note:** To avoid passing database related properties in command line, we can use the ` --env-file` option of the  `
-> docker run` command to store all sensitive data.
-> Again here the property names must be in UPPERCASE.
 
+> **Note:** To avoid passing database related properties in command line, we can use the ` --env-file` option of the `
+docker run` command to store all sensitive data.
+> Again here the property names must be in UPPERCASE.
 
 #### Database Objects Creation
 

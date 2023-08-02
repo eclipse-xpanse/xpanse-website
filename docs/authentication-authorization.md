@@ -44,13 +44,16 @@ All generated configuration details can be obtained as
 documented [here](https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md#get-consumer-details).
 
 #### Runtime
+
 Runtime application needs the following properties to be set for the authentication and authorization to work.
-   - authorization-server-endpoint
-   - authorization-api-client-id
-   - authorization-api-client-secret
-   - authorization-swagger-ui-client-id
+
+-   authorization-server-endpoint
+-   authorization-api-client-id
+-   authorization-api-client-secret
+-   authorization-swagger-ui-client-id
 
 #### UI
+
 UI can be then started using the consumer details as
 documented [here](ui.md#starting-local-development-server).
 

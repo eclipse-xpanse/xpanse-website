@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 ---
+
 # UI
 
 This is the frontend for the Xpanse project which allows cloud service providers to register managed services to the

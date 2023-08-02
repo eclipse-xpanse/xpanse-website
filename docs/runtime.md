@@ -12,7 +12,8 @@ Xpanse runtime is the running module built on SpringBoot.
 2. Fully configured Zitadel instance.
 
 ## Properties and Environment Variables
-Xpanse has integration to multiple systems, and the aim is also to keep the system as flexible as possible and to cover 
+
+Xpanse has integration to multiple systems, and the aim is also to keep the system as flexible as possible and to cover
 all use-cases possible. Therefore, there are some configuration properties that the developer and the production administrators must take care of, before starting/deploying xpanse.
 
 1. Configuration properties of authentication layer. Documented [here](authentication-authorization.md#runtime).
@@ -133,7 +134,6 @@ $ docker logs xpanse
 > directly in the command line.
 > In case of this, the same property name must be set in UPPERCASE for all 4 variables.
 >
-> For running, using docker image, we can use the ` --env-file` option of the  `
-> docker run` command to store all sensitive data.
+> For running, using docker image, we can use the ` --env-file` option of the `
+docker run` command to store all sensitive data.
 > Again here the property names must be in UPPERCASE.
-

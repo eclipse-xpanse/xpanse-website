@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 ---
+
 # Configuration Language
 
 A managed service is described using Open Services Cloud Configuration Language
@@ -37,5 +38,5 @@ The variables can then be used in the deployment scripts.
 
 Xpanse provides different options to generate and provision OCL:
 
-* REST API on the xpanse runtime
-* Xpanse UI
+-   REST API on the xpanse runtime
+-   Xpanse UI
