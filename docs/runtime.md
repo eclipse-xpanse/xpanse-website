@@ -1,73 +1,89 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 ---
 
 # Runtime
 
-Xpanse runtime is the running module built on SpringBoot. It packages and executes all together: orchestrator,
-plugins, REST API, ...
+Xpanse runtime is the running module built on SpringBoot.
 
-## Build
+## Pre-Requisites
 
-You can easily build Xpanse yourself.
+1. If running the runtime jar directly, then the host must have `Terraform CLI` installed.
+2. Fully configured Zitadel instance.
 
-As a requirement, you need:
+## Properties and Environment Variables
+Xpanse has integration to multiple systems, and the aim is also to keep the system as flexible as possible and to cover 
+all use-cases possible. Therefore, there are some configuration properties that the developer and the production administrators must take care of, before starting/deploying xpanse.
 
--   a Java Developer Kit (JDK) installed, version 17 or newer. You can use [openjdk](https://openjdk.org/)
-    or [temurin](https://adoptium.net/)
--   [Apache Maven 3.8.x or newer](https://maven.apache.org/)
+1. Configuration properties of authentication layer. Documented [here](authentication-authorization.md#runtime).
+2. Configuration properties of database layer. Documented [here](database.md#maria-db).
+3. Plugin activation variables. Documented [here](plugins.md#plugin-activation).
 
-You can clone the project locally on your machine with:
+### Terraform CLI Installation
+
+Terraform CLI can be installed using the steps from
+the [official guide](https://developer.hashicorp.com/terraform/downloads).
+
+### Local Development
+
+#### Build
+
+As a requirement, we need Java Developer Kit (JDK) version 17 installed. You can use [openjdk](https://openjdk.org/)
+or [temurin](https://adoptium.net/)
+
+Clone the project using the command below
 
 ```shell
 $ git clone https://github.com/eclipse-xpanse/xpanse
 $ cd xpanse
 ```
 
-First, you can build the whole xpanse project, including all modules (orchestrator, runtime, plugins, etc), simply
-with:
+Then compile the entire project using the below command
 
 ```shell
-$ mvn clean install
+$ ./mvnw clean install -DskipTests
 ```
 
-### Run
+#### Run
 
-By default, the application will not activate any plugins. They must be activated via spring profiles. Also ensure that
-only one plugin is active at a time.
+Ensure all properties mentioned in the [above section](#properties-and-environment-variables) are correctly set.
 
--   for Huawei Cloud:
+##### From Command Line
+
+If you have a fully configured Zitadel instance running on your local system, then you can use the below command to
+start the application by passing all variables.
+
+> **Note:** When using a local instance of Zitadel, it will use port 8080 and this cannot be changed.
+> Hence, the port of the runtime application must be changed from default 8080 to any other port using the `server.port`
+> property.
+
+To start the application from the command line, run the below application from the root of the project.
 
 ```shell
 $ cd runtime/target
-$ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar -Dspring.profiles.active=huaweicloud
+$ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar --spring.profiles.active=zitadel --server.port=8081 \
+--authorization-server-endpoint=${zitadel-endpoint} \
+--authorization-api-client-id=${client-id} \
+--authorization-api-client-secret=${client-secret} \
+--authorization-swagger-ui-client-id=${swagger-ui-cleint-id}
 ```
 
--   for Openstack:
+If you would like to use our `zitadel-testbed`, then start the server using the below command.
+This will automatically set properties required for connecting to our Zitadel test bed.
 
 ```shell
 $ cd runtime/target
-$ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar -Dspring.profiles.active=openstack
+$ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar --spring.profiles.active=zitadel,zitadel-testbed
 ```
 
-By default, the runtime is built in "exploded mode". Additionally, you can also build a Docker image
-adding `-Ddocker.skip=false` as build argument:
+##### From IDE
 
-```shell
-$ cd runtime
-$ mvn clean install -Ddocker.skip=false
-```
+Or the application can be started using the IDE by executing the main application directly.
+Below is the example from IntellijIdea
 
-We can start xpanse runtime with a specific plugin by passing the plugin name in the profile name. For example to start
-huaweicloud
+![img.png](images/ide-run.png)
 
-```shell
-$ docker run -e "SPRING_PROFILES_ACTIVE=huaweicloud" --name my-xpanse-runtime xpanse-runtime
-```
-
-````
-
-You can see the log messages:
+You must see the below messages in the console.
 
 ```shell
    _  __   ____    ____ _   ____    _____  ___
@@ -82,53 +98,42 @@ You can see the log messages:
 13:44:22.211 [main] INFO  o.e.x.o.FileOrchestratorStorage - No other storage beans found. Using default file storage.
 13:44:23.878 [main] WARN  o.e.x.o.OrchestratorService - No xpanse plugins loaded by the runtime.
 13:44:23.886 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Started XpanseApplication in 5.029 seconds (process running for 5.992)
-
-````
-
-The Xpanse REST API is now available. You can check the status of the runtime by calling the health endpoint on the REST
-API:
-
-```shell
-$ curl -XGET http://localhost:8080/xpanse/health
-ready
 ```
 
-### Docker
+You can check the status of the runtime by opening the swagger UI from any
+browser:
 
-If you use `-Ddocker.skip=false` as option on the build command line, you have docker image ready for the runtime.
-
-You can see the docker images created:
-
-```shell
-$ docker images|grep xpanse
-xpanse                   1.0.0-SNAPSHOT   4b716096304b   15 seconds ago   293MB
-xpanse                   latest           4b716096304b   15 seconds ago   293MB
+```
+http://localhost:8080/swagger-ui/index.html
 ```
 
-You can run a docker container with:
+### Production
+
+Ensure all properties mentioned in the [above section](#properties-and-environment-variables) are correctly set.
+
+#### Run using jar
+
+Download the released runtime jar from maven central repository.
+You can list all available released versions [here](https://oss.sonatype.org/#nexus-search;quick~xpanse-runtime).
+
+After downloading, follow the same steps mentioned in [this](#from-command-line) section.
+
+#### Run using Docker image
+
+You can start the runtime using our released docker image, and this is the preferred way.
+This image contains all necessary tools preinstalled.
 
 ```shell
-$ docker run -d --name my-xpanse -p 8080:8080 xpanse
-$ docker logs my-xpanse
-...
-   _  __   ____    ____ _   ____    _____  ___
-  | |/_/  / __ \  / __ `/  / __ \  / ___/ / _ \
- _>  <   / /_/ / / /_/ /  / / / / (__  ) /  __/
-/_/|_|  / .___/  \__,_/  /_/ /_/ /____/  \___/
-       /_/
-
-        xpanse 1.0.0-SNAPSHOT (2023)
-13:44:19.633 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Starting XpanseApplication using Java 17.0.5 with PID 7344
-13:44:19.645 [main] INFO  o.e.xpanse.runtime.XpanseApplication - No active profile set, falling back to 1 default profile: "default"
-13:44:22.211 [main] INFO  o.e.x.o.FileOrchestratorStorage - No other storage beans found. Using default file storage.
-13:44:23.878 [main] WARN  o.e.x.o.OrchestratorService - No xpanse plugins loaded by the runtime.
-13:44:23.886 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Started XpanseApplication in 5.029 seconds (process running for 5.992)
+$ docker pull ghcr.io/eclipse-xpanse/xpanse:${release-version}
+$ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=zitadel,mariadb" ghcr.io/eclipse-xpanse/xpanse:${release-version}
+$ docker logs xpanse
 ```
 
-The Xpanse REST API is now available. You can check the status of the runtime by calling the health endpoint on the REST
-API:
+> **Note:** It is safe to provide all properties as environment variables rather than passing them
+> directly in the command line.
+> In case of this, the same property name must be set in UPPERCASE for all 4 variables.
+>
+> For running, using docker image, we can use the ` --env-file` option of the  `
+> docker run` command to store all sensitive data.
+> Again here the property names must be in UPPERCASE.
 
-```shell
-$ curl -XGET http://localhost:8080/xpanse/health
-ready
-```

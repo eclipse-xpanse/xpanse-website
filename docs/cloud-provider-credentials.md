@@ -1,3 +1,6 @@
+---
+sidebar_position: 5
+---
 # Cloud Provider Credentials
 
 Since Xpanse runtime integrates with multiple cloud APIs, there is a need to define how and which credentials are used

@@ -1,8 +1,11 @@
+---
+sidebar_position: 6
+---
 # Database
 
 ## Development Environments
 
-For all development purposes, we use a file based H2 database which is automatically created during the server startup.
+For all development purposes, we use a file-based H2 database which is automatically created during the server startup.
 
 ### Admin UI
 
@@ -12,7 +15,7 @@ found [here](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main
 
 ### Cleanup
 
-Since it is a file based database, the entries are not lost with reboot of the server.
+Since it is a file-based database, the entries are not lost with reboot of the server.
 
 To clean up the database, the database files must be simply deleted and the server must be restarted for new fresh DB
 files to be recreated. Execute the below command on the root of the folder xpanse project.
@@ -32,9 +35,9 @@ functionalities tested.
 
 ### Maria DB
 
-At the moment, this is the only DB which is fully supported. To use `MariaDB` as the database for Xpanse, it must be
-activated by starting the application with profile `mariadb` and by replacing the placeholders for database`username`
-and `password` as below.
+At the moment, this is the only DB that is fully supported.
+To use `MariaDB` as the database for Xpanse, it must be activated by starting the application with profile `mariadb` and
+by replacing the placeholders for database`username` and `password` as below.
 
 ```shell
 java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
@@ -55,7 +58,7 @@ The above command will start the Xpanse runtime with the following default confi
 2. Database is listening on port `3306`.
 3. Name of the database is `xpanse`. This must be created on the DB server. It will **not** be automatically created.
 
-Default configuration file can be
+The Default configuration file can be
 found [here](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-mariadb.properties#L6).
 
 #### Overriding Default Configuration
@@ -72,13 +75,19 @@ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
 
 ```
 
-> Note: Using this startup command, the database can run on any machine which is reachable from the Xpanse runtime
+> **Note:** It is safe to provide the database-related properties as environment variables rather than passing them
+> directly in the command line.
+> In case of this,
+> the same property name must be set in UPPERCASE and underscore separated instead of dot for all variables.
+
+> **Note:** Using this startup command, the database can run on any machine that is reachable from the Xpanse runtime
 > application.
 
 #### MariaDB as a Docker Container
 
-MariaDB offers official Docker images for running database as a container. More details can be found here on the
-official page of MariaDB website [here](https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/) and on
+MariaDB offers official Docker images for running a database as a container.
+More details can be found here on the official page of MariaDB
+website [here](https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/) and on
 DockerHub [here](https://hub.docker.com/_/mariadb/).
 
 ##### Starting new container
@@ -103,8 +112,12 @@ docker run --name ${container-name} \
             -e MARIADB_PASSWORD${database-password} \
             -p 3306:${database-port} -d
 ```
+> **Note:** To avoid passing database related properties in command line, we can use the ` --env-file` option of the  `
+> docker run` command to store all sensitive data.
+> Again here the property names must be in UPPERCASE.
+
 
 #### Database Objects Creation
 
-All database objects such as tables needed by the application is automatically created by the application when it boots
+All database objects such as tables needed by the application are automatically created by the application when it boots
 up and uses a database for the first time.
