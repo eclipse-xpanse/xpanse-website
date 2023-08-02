@@ -64,7 +64,7 @@ We use the openapi generator to generate data models and rest client from the op
 The following steps must be followed to generate a new client and data models whenever there is a new version if the
 swagger json.
 
-1. Copy the openapi file to [OpenApi JSON File](src/xpanse-api/api.json)
+1. Copy the openapi file to [OpenApi JSON File](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json)
 2. Run the code generator as below
     ```shell
         cd src/xpanse-api
