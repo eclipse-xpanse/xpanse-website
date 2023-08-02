@@ -122,6 +122,10 @@ const config = {
                             to: '/docs/cloud-provider-credentials',
                         },
                         {
+                            label: 'Configuration Language',
+                            to: '/docs/configuration-language',
+                        },
+                        {
                             label: 'Database',
                             to: '/docs/database',
                         },
