@@ -14,7 +14,8 @@ Xpanse runtime is the running module built on SpringBoot.
 ## Properties and Environment Variables
 
 Xpanse has integration to multiple systems, and the aim is also to keep the system as flexible as possible and to cover
-all use-cases possible. Therefore, there are some configuration properties that the developer and the production administrators must take care of, before starting/deploying xpanse.
+all use-cases possible. Therefore, there are some configuration properties that the developer and the production
+administrators must take care of before starting/deploying xpanse.
 
 1. Configuration properties of authentication layer. Documented [here](authentication-authorization.md#runtime).
 2. Configuration properties of database layer. Documented [here](database.md#maria-db).
@@ -137,3 +138,18 @@ $ docker logs xpanse
 > For running, using docker image, we can use the ` --env-file` option of the `
 docker run` command to store all sensitive data.
 > Again here the property names must be in UPPERCASE.
+
+#### Running API behind a proxy
+
+For running the runtime application behind a proxy, we must ensure that the proxy forwards the correct `X-Forwarded-*`
+headers to the API.
+This is necessary as the API has some features where the links to html pages are returned
+and this link will have the correct protocol and host only when these headers are set.
+
+In the case of Nginx, the configuration will look like this
+
+```nginx configuration
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto https;
+proxy_set_header Host $host;
+```
