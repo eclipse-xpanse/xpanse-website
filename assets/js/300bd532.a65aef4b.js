@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkxpanse_website=self.webpackChunkxpanse_website||[]).push([[1913],{48959:e=>{e.exports=JSON.parse('{"permalink":"/xpanse/blog/tags/gaia-x","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

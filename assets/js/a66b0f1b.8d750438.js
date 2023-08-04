@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkxpanse_website=self.webpackChunkxpanse_website||[]).push([[6626],{7779:e=>{e.exports=JSON.parse('{"permalink":"/xpanse/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
