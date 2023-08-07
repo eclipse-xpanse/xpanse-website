@@ -14,15 +14,25 @@ defined.
 
 GUI components are built using `antd` library.
 
-Authentication and authorization are built using `Zitadel`.
+Authentication and authorization are built using `Zitadel` which is an oauth2 provider.
 
-### Configuration Properties
+## Zitadel Configuration
+
+Before we can start using the UI, we must ensure `Zitadel` instance that we consider using,
+has all the required configuration. Details can be found [here](https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md).
+
+## Configuration Properties
 
 All required configuration parameters must be added to .env
-file [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env). Even if there is a valid
-default value, we can just add empty value. This file serves as reference to all required properties
+file [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env).
+Even if we do not have a valid default value, we must just add empty value.
+This file serves as a reference to all required properties.
 
-We use two different ways of reading configuration properties for the application.
+> **Very Important**: Since React is compiled to a static app, all configuration values can be seen directly in the
+> browser too.
+> Therefore, no secure configurations such as passwords, keys, etc. must be added here.
+
+### Setting Configuration Values
 
 #### .env Files
 
@@ -34,23 +44,34 @@ We use two different ways of reading configuration properties for the applicatio
    Example can be
    found [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/package.json#L20)
 
+> **Important**: .env files must be used only for default configurations or for dev configurations values.
+
 #### Environment Variables
 
-All variables can be overridden by setting environment variables and then running the npm start or build scripts.
+All variables can be overridden by setting environment variables and then running the `npm run start` for development or
+with `docker run` for production.
 
-### Starting local development server
+### Getting Configuration Values
+
+We have a custom implementation which reads the configuration from all sources and provides a unified configuration map.
+Only this must be used for reading configuration from the React app.
+
+Implementation can be found [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/config/config.ts#L16).
+
+## Starting local development server
 
 In the project directory, you can run the below command to start the local development server. This also additionally
 needs `nodejs` to be installed on the development machine.
 
-If there is a local development Zitadel instance, then we must set `REACT_APP_ZITADEL_CLIENT_ID` environment variable
-and then run the below command.
+If there is a local development Zitadel instance and backend API instance, then we must
+set `REACT_APP_ZITADEL_CLIENT_ID` and `REACT_APP_XPANSE_API_URL` environment variables with respective values
+and then run the below command for the application to start.
 
 ```shell
 $ npm run start
 ```
 
-If you wish to use our central Zitadel testbed instance, then simply start the application with below command.
+If you wish to use our central Zitadel testbed instance, then simply start the application with the below command.
 
 ```shell
 $ npm run start-with-zitadel-testbed
@@ -58,13 +79,33 @@ $ npm run start-with-zitadel-testbed
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+### Static Code Analysis
+
+We use `eslint` to statically analyze code.
+Always run the below command locally to ensure the changes made results in no errors. This will also validate the code
+format.
+In case of any errors, the CI pipeline will fail when a PR is opened.
+
+```shell
+ npx eslint . --ext .js,.jsx,.ts,.tsx --config package.json --max-warnings=0
+```
+
+### Code Formatting
+
+We use `prettier` to format our UI code. To auto format the code, you can run the below command.
+
+```shell
+npx prettier --config .prettierrc --write .
+```
+
 ### Generate Rest Client for Xpanse API
 
 We use the openapi generator to generate data models and rest client from the openapi json file.
 The following steps must be followed to generate a new client and data models whenever there is a new version if the
 swagger json.
 
-1. Copy the openapi file to [OpenApi JSON File](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json)
+1. Copy the openapi file
+   to [OpenApi JSON File](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json)
 2. Run the code generator as below
     ```shell
         cd src/xpanse-api
@@ -76,47 +117,31 @@ swagger json.
 
 ## Build for production
 
-The build must ensure that all configuration parameters are correctly set.
-We can either export the parameters as environment variables or add `.env` files and execute the build command as below.
-
-```shell
-$ npm run build
-```
-
-Builds the app for production to the `build` folder. Contents can be copied to any webserver to host the frontend files.
-
-> Note: Since the UI application is completely browser-based, all configuration parameters must be injected directly to
-> the application at build time. No configuration can be updated at runtime.
+The only recommended way to run UI in production is to use the docker image
 
 ## Docker Image
 
 Docker image for the UI project is based on nginx base image. This is because the project only serves static content.
 
-### Pre-requisites
-
-Before the docker image can be built, all required parameters must be set and then the following steps must be
-executed so that all dependent files are generated.
-
-```shell
-npm install && \
-npm run build
-```
-
-### Build Image
-
-TO build image, run the below command.
-
-```shell
-docker build  -t xpanse-ui -f docker/Dockerfile .
-```
+As part of our UI release process, we deliver our official images to GitHub packages.
+All available images can be found [here](https://github.com/orgs/eclipse-xpanse/packages?tab=packages&q=xpanse-ui).
 
 ### Run UI Container
 
-Container runs the application on port `80` by default. If you want the application to be reachable on port 3000 for
-development purposes, then the container can be started as below.
+Container runs the application on port `3000` by default and exposes the UI using HTTP.
+We must use another SSL load balancer to expose the UI for end users.
+
+Production configuration values must be passed as environment variables to docker run for the below vars using `-e` option.
+
+```dotenv
+REACT_APP_ZITADEL_AUTHORITY_NAME # URL for the Oauth provider
+REACT_APP_ZITADEL_CLIENT_ID # Client ID provided by the Oauth provider for UI
+REACT_APP_XPANSE_API_URL # Backend API URL
+```
 
 ```shell
-docker run -d -p 80:3000 --name ui xpanse-ui
+docker pull ghcr.io/eclipse-xpanse/xpanse-ui:${version}
+docker run -d --name ui xpanse-ui
 ```
 
 ### Application Logs
