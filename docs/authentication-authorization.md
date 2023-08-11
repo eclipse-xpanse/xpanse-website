@@ -77,7 +77,7 @@ To keep our initial role configuration simple, the following roles are considere
 
 > `user` - this is the role allocated to end user.
 >
-> `csp` - this is the role allocated to cloud service provider users.
+> `isv` - this is the role allocated to ISV (independent software vendor) users.
 >
 > `admin` - this is the role allocated to administrators running Xpanse.
 >
