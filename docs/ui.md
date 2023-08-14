@@ -81,13 +81,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Static Code Analysis
 
-We use `eslint` to statically analyze code.
+We use `eslint` and `knip` to statically analyze code.
 Always run the below command locally to ensure the changes made results in no errors. This will also validate the code
 format.
 In case of any errors, the CI pipeline will fail when a PR is opened.
 
 ```shell
  npx eslint . --ext .js,.jsx,.ts,.tsx --config package.json --max-warnings=0
+ npx knip
 ```
 
 ### Code Formatting
