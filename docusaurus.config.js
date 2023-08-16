@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
     title: 'xpanse',
     url: 'https://eclipse-xpanse.github.io',
-    baseUrl: '/xpanse-website/',
+    baseUrl: '/xpanse',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',

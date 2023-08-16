@@ -10,13 +10,11 @@ on:
     workflow_dispatch:
 
 permissions:
-    contents: read
-    pages: write
-    id-token: write
+    contents: write
 
-concurrency:
-    group: 'pages'
-    cancel-in-progress: false
+env:
+    BOT_USER_NAME: eclipse-xpanse-bot
+    BOT_EMAIL_ID: xpanse-bot@eclipse.org
 
 jobs:
     build:
@@ -31,18 +29,13 @@ jobs:
             - name: Run build
               working-directory: ./
               run: npm run build
-            - name: Setup Pages
-              uses: actions/configure-pages@v3
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v1
-              with:
-                  path: build
-    deploy:
-        needs: build
-        environment: github-pages
-        runs-on: ubuntu-latest
-        if: github.repository == 'eclipse-xpanse/xpanse-website'
-        steps:
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v2
+            - name: Push changes to gh-pages branch
+              uses: s0/git-publish-subdir-action@v2.6.0
+              env:
+                  REPO: self
+                  BRANCH: gh-pages
+                  FOLDER: build
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  MESSAGE: '[GitHub Action] Update website changes'
+                  COMMIT_NAME: ${{ env.BOT_USER_NAME }}
+                  COMMIT_EMAIL: ${{ env.BOT_EMAIL_ID }}
