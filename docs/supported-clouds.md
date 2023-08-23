@@ -11,3 +11,4 @@ Here's the list of the cloud providers supporting OSC:
 -   [Huawei Cloud](https://www.huaweicloud.com/)
 -   Openstack powered cloud
 -   FlexibleEngine
+-   [Sovereign Cloud Stack (SCS)](https://scs.community/)
