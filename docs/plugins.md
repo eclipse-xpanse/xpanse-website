@@ -51,18 +51,15 @@ No mandatory configuration properties required.
 
 ### SCS - Sovereign Cloud Stack
 
-Mandatory configuration properties are the following
+No mandatory configuration properties required.
+But `OS_AUTH_URL` which is the keystone base URL of the SCS installation must be passed one of the fixed deployment variables as below in all the service registration requests.
 
--   `OS_AUTH_URL` - Keystone URL of the SCS installation.
-
-Other optional config properties
-
--   `OS_SERVICE_PROJECT` - SCS project to be used to get monitoring information. All metrics data is stored in a
-    different central project. If this is not provided, then the project where the resource is hosted is used to get the
-    metrics data.
--   `OS_PROXY_HOST` and `OS_PROXY_PORT` - Proxy server information to reach the Openstack installation.
--   `OS_SSL_DISABLED` - If set to `true`, the certificate validation on the REST API calls to SCS installation will
-    be disabled.
-
-> Note: SCS plugin has variables starting with `OS_` since the SCS currently uses Openstack as their infrastructure
-> layer.
+```yaml
+name: OS_AUTH_URL
+description: SCS cloud instance to be used.
+kind: fix_env # this is important here.
+dataType: string
+mandatory: true
+sensitiveScope: none
+value: 'https://example.com'
+```
