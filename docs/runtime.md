@@ -55,16 +55,10 @@ Ensure all properties mentioned in the [above section](#properties-and-environme
 If you have a fully configured Zitadel instance running on your local system, then you can use the below command to
 start the application by passing all variables.
 
-> **Note:** When using a local instance of Zitadel, it will use port 8080 and this cannot be changed.
-> Hence, the port of the runtime application must be changed from default 8080 to any other port using the `server.port`
-> property.
-
 To start the application from the command line, run the below application from the root of the project.
 
 ```shell
-$ cd runtime/target
-$ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar --spring.profiles.active=zitadel --server.port=8081 \
---authorization-server-endpoint=${zitadel-endpoint} \
+$ java -jar runtime/target/xpanse-runtime-1.0.0-SNAPSHOT.jar \
 --authorization-api-client-id=${client-id} \
 --authorization-api-client-secret=${client-secret} \
 --authorization-swagger-ui-client-id=${swagger-ui-cleint-id}
