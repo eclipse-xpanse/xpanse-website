@@ -74,23 +74,28 @@ const config = {
             items: [
                 {
                     label: 'API',
-                    position: 'right',
+                    position: 'left',
                     href: '/docs/api',
-                },
-                {
-                    label: 'Calendar',
-                    to: '/docs/Contribute/calendar',
-                    position: 'right',
                 },
                 {
                     type: 'doc',
                     docId: 'intro',
-                    position: 'right',
+                    position: 'left',
                     label: 'Documentation',
                 },
                 {
+                    className: 'header-youtube-link',
+                    href: 'https://www.youtube.com/playlist?list=PLy7t4z5SYNaTpG7zDP4u4icR356zNUJUC',
+                    position: 'right',
+                },
+                {
+                    className: 'header-calender-link',
+                    to: '/docs/Contribute/calendar',
+                    position: 'right',
+                },
+                {
                     href: 'https://github.com/eclipse-xpanse',
-                    label: 'GitHub',
+                    className: 'header-github-link',
                     position: 'right',
                 },
             ],
