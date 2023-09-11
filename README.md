@@ -21,11 +21,11 @@ having to restart the server.
 
 ### Production Deployment
 
-Website is currently deployed as GitHub pages.
+The website is currently deployed on Eclipse Foundation's infrastructure.
 All changes that are pushed to `main` branch will trigger a re-deployment of the website.
 
 In case the website needs to be deployed anywhere else, then run the below command and copy the contents generated in the
-`build` folder to any server which can server static websites.
+`build` folder to any server that can server static websites.
 
 ```shell
 npm run build
