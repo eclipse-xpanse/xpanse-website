@@ -64,15 +64,15 @@ found [here](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main
 
 #### Overriding Default Configuration
 
-We can override the above two default configuration by starting the application as below by replacing the placeholders
-with actual values for `database-host`, `database-port` and `database-name`.
+We can override the above two default configurations by starting the application as below by replacing the placeholders
+with actual values.
 
 ```shell
 java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
           -Dspring.profiles.active=mariadb \
-          -Dspring.datasource.username=${username} \
-          -Dspring.datasource.password=${password} \
-          -D spring.datasource.url=jdbc:mariadb://${database-host}:${database-port}/${database-name}
+          -Dspring.datasource.username=<replace-with-db-username> \
+          -Dspring.datasource.password=<replace-with-db-password> \
+          -D spring.datasource.url=jdbc:mariadb://<replace-with-db-hostname>:<replace-with-db-port>/<replace-with-db-name>
 
 ```
 
@@ -107,18 +107,17 @@ updated to the value of our choice.
 
 ```shell
 docker run --name ${container-name} \
-            -e MARIADB_ROOT_PASSWORD=${database-root-user} \
-            -e MARIADB_DATABASE=${database-name} \
-            -e MARIADB_USER=${database-user} \
-            -e MARIADB_PASSWORD${database-password} \
-            -p 3306:${database-port} -d
+            -e MARIADB_ROOT_PASSWORD=<replace-with-db-root-password> \
+            -e MARIADB_DATABASE=<replace-with-db-name> \
+            -e MARIADB_USER=<replace-with-db-user> \
+            -e MARIADB_PASSWORD=<replace-with-db-password> \
+            -p 3306:<replace-with-db-port> -d mariadb:10.11.4
 ```
 
 > **Note:** To avoid passing database related properties in command line, we can use the ` --env-file` option of the `
 docker run` command to store all sensitive data.
-> Again here the property names must be in UPPERCASE.
 
 #### Database Objects Creation
 
-All database objects such as tables needed by the application are automatically created by the application when it boots
+The application automatically creates all database objects such as tables needed by the application when it boots
 up and uses a database for the first time.
