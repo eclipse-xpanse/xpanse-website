@@ -47,10 +47,10 @@ documented [here](https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel
 
 Runtime application needs the following properties to be set for the authentication and authorization to work.
 
--   authorization-server-endpoint
--   authorization-api-client-id
--   authorization-api-client-secret
--   authorization-swagger-ui-client-id
+-   authorization.server.endpoint
+-   authorization.api.client.id
+-   authorization.api.client.secret
+-   authorization.swagger.ui.client.id
 
 #### UI
 
