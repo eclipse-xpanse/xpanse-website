@@ -26,6 +26,8 @@ available for it to work. These mandatory configuration properties must be decla
 any of the required configuration properties are not available, then such plugin is simply not considered for processing
 any requests.
 
+> **Note**: These mandatory variables will also be injected into the deployment environment as environment variables.
+
 ### Openstack
 
 Mandatory configuration properties are the following
