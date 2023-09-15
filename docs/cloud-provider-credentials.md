@@ -21,7 +21,7 @@ the [AuthenticationCapabilities](https://github.com/eclipse-xpanse/xpanse/blob/m
 interface by the corresponding plugin.
 
 The same information is also made available to consumers via the REST API
-method [getCredentialCapabilitiesByCsp](https://eclipse-xpanse.github.io/xpanse-website/docs/api/#tag/Credentials-Management/operation/getCredentialDefinitionsByCsp)
+method [getCredentialCapabilitiesByCsp](https://eclipse.dev/xpanse/docs/api/#tag/Credentials-Management/operation/getCredentialDefinitionsByCsp)
 in the CredentialsApi, which returns all credential types defined and supported by the plugin.
 
 This list is enhanced as and when Xpanse plugin for a specific CSP adds integration for new authentication methods
@@ -53,13 +53,13 @@ Xpanse instance, but the username and password can vary for each Xpanse user.
 ###### Xpanse User Specific Credentials
 
 A credential for combination of a specific CSP, `CredentialType` and a specific Xpanse user can be added using
-the [addCredential](https://eclipse-xpanse.github.io/xpanse-website/docs/api/#tag/Credentials-Management/operation/addCredential)
+the [addCredential](https://eclipse.dev/xpanse/docs/api/#tag/Credentials-Management/operation/addCredential)
 API method.
 This means for all services ordered by a Xpanse user or for monitoring services which are ordered by this
 specific Xpanse user, this added credential will be used.
 
 This exact request body definition for each of the CSP and Credential Types can be found
-using [getCredentialOpenApi](https://eclipse-xpanse.github.io/xpanse-website/docs/api/#tag/Services-Available/operation/getCredentialOpenApi).
+using [getCredentialOpenApi](https://eclipse.dev/xpanse/docs/api/#tag/Services-Available/operation/getCredentialOpenApi).
 This method provides a link to OpenAPI definition and sample request for adding credentials for each CSP.
 
 Credential variable values sent from this API are stored directly into [CredentialCache](#credential-cache)
