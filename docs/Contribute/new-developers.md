@@ -21,7 +21,7 @@ When you complete that, follow the instructions sent to your email to activate t
 
 ## Signing the ECA
 
-In order to contribute to the |main_project_name| you need to sign the
+In order to contribute to the eclipse-xpanse, you need to sign the
 [Eclipse Contributor Agreement](https://accounts.eclipse.org/user/eca),
 which describes the terms under which you can contribute to the project.
 
