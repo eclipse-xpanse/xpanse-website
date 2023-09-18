@@ -98,6 +98,11 @@ const config = {
                     className: 'header-github-link',
                     position: 'right',
                 },
+                {
+                    href: 'https://eclipse-xpanse.slack.com/',
+                    className: 'header-slack-link',
+                    position: 'right',
+                },
             ],
         },
         footer: {
@@ -207,6 +212,10 @@ const config = {
                         {
                             label: 'Mailing Lists',
                             href: 'https://accounts.eclipse.org/mailing-list/xpanse-dev',
+                        },
+                        {
+                            label: 'Slack',
+                            href: 'https://eclipse-xpanse.slack.com/',
                         },
                     ],
                 },
