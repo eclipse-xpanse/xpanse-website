@@ -99,7 +99,7 @@ const config = {
                     position: 'right',
                 },
                 {
-                    href: 'https://eclipse-xpanse.slack.com/',
+                    href: 'https://join.slack.com/t/eclipse-xpanse/shared_invite/zt-23exwf1wj-plDaTMnIV6ptp0Yo1h9FUQ',
                     className: 'header-slack-link',
                     position: 'right',
                 },
@@ -215,7 +215,7 @@ const config = {
                         },
                         {
                             label: 'Slack',
-                            href: 'https://eclipse-xpanse.slack.com/',
+                            href: 'https://join.slack.com/t/eclipse-xpanse/shared_invite/zt-23exwf1wj-plDaTMnIV6ptp0Yo1h9FUQ',
                         },
                     ],
                 },
