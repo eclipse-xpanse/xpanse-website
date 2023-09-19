@@ -98,6 +98,11 @@ const config = {
                     className: 'header-github-link',
                     position: 'right',
                 },
+                {
+                    href: 'https://join.slack.com/t/eclipse-xpanse/shared_invite/zt-23exwf1wj-plDaTMnIV6ptp0Yo1h9FUQ',
+                    className: 'header-slack-link',
+                    position: 'right',
+                },
             ],
         },
         footer: {
@@ -207,6 +212,10 @@ const config = {
                         {
                             label: 'Mailing Lists',
                             href: 'https://accounts.eclipse.org/mailing-list/xpanse-dev',
+                        },
+                        {
+                            label: 'Slack',
+                            href: 'https://join.slack.com/t/eclipse-xpanse/shared_invite/zt-23exwf1wj-plDaTMnIV6ptp0Yo1h9FUQ',
                         },
                     ],
                 },
