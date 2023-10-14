@@ -14,7 +14,7 @@ the remote terraform-boot service. The remote terraform-boot service is used by 
 1. If using local terraform module, the `Xpanse Runtime` host must have `Terraform CLI` installed.
 
 2. If using remote terraform-boot service, a remote `Terrafom-boot` service must be
-   deployed/started.More details about Terraform-boot project can be found
+   deployed/started.More details about the Terraform-boot project can be found
    [here](https://github.com/eclipse-xpanse/terraform-boot/blob/main/README.md).
 
 3. Fully configured Zitadel instance.
@@ -97,7 +97,7 @@ spring.profiles.active=zitadel,zitadel-testbed
 Or the application can be started using the IDE by executing the main application directly. Below is
 the example from IntellijIdea
 
-![img.png](images/ide-run.png)
+![img.png](../static/img/ide-run.png)
 
 You must see the below messages in the console.
 

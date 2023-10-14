@@ -98,7 +98,18 @@ This option can be found on the UI under - users -> click on user -> Authorizati
 2. Xpanse UI fetches the user information from `Identity Provider` and based on the roles allocated to the user, menu
    options are displayed in the UI.
 
-### Execute authenticated APIs
+## Attribute Based Access Control - ABAC
+
+### OIDC Metadata
+
+In order to allow service vendors to manage only their own services, we use ABAC. This is achieved by using OIDC's `metadata` feature to assign `isv` users to a specific namespace.
+
+![img.png](../static/img/metadata.png)
+
+While registering a service, the service vendor must specify the same namespace value in the `namespace` field.
+With this, users of another namespace will not be allowed to view, update or delete these service templates.
+
+## Execute authenticated APIs
 
 When the application has activated authorization with 'zitadel' profile, all protected APIs must have an
 `Authorization` header in the `Bearer ${access token}` format in the http request.
@@ -106,11 +117,11 @@ Here are two ways to get access_token for executing authenticated APIs:
 
 The first way is to open the Swagger-UI page of the Xpanse server.
 In case of local development server, the Swagger-UI is reachable on `http://localhost:8080/swagger-ui/index.html`.
-![Browser open openAPI page](images/browser-open-openapi-page.png)
+![Browser open openAPI page](../static/img/browser-open-openapi-page.png)
 
 Click on the 'Authorize' button on the SwaggerUI page to open the authentication window.
 Click on the 'select all' option to select all 'Scopes' and click on 'Authorize'
-![Authorize in the authentication window](images/authorize-in-authorization-window.png)
+![Authorize in the authentication window](../static/img/authorize-in-authorization-window.png)
 
 The browser will redirect to the login page of the IAM service.
 Fill username and password to complete user login.
@@ -119,7 +130,7 @@ Close the authentication window and select the API which you want to execute and
 then click on 'Try it out' and 'Execute' to execute the API method.
 In the Curl command, you can see the request header named `Authorization` with the value of
 ${access_token} after prefix `Bearer `.
-![Execute APIs using openAPI page](images/execute-api-in-openapi-page.png)
+![Execute APIs using openAPI page](../static/img/execute-api-in-openapi-page.png)
 
 The other way is to use the `Authorize` REST API.
 Call the method using browser.
@@ -130,4 +141,4 @@ After successful login in the IAM, the browser will back to the token API
 url with response model 'TokenResponse' with field 'access_token.'
 Then you can use the value of 'access_token' to fill header 'Authorization' in the http request when executing
 authenticated APIs with CLI or the other http client tools.
-![Authorized access token response](images/authorized-access-token-response.png)
+![Authorized access token response](../static/img/authorized-access-token-response.png)
