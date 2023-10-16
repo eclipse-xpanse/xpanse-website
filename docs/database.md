@@ -34,33 +34,33 @@ rm *.db
 We plan to support multiple RDBMS flavors. By **support**, we mean configurations for the database added and also all
 functionalities tested.
 
-### Maria DB
+### MySQL DB
 
 At the moment, this is the only DB that is fully supported.
-To use `MariaDB` as the database for Xpanse, it must be activated by starting the application with profile `mariadb` and
+To use `MySQL` as the database for Xpanse, it must be activated by starting the application with profile `mysql` and
 by replacing the placeholders for database`username` and `password` as below.
 
 ```shell
 java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
-          -Dspring.profiles.active=mariadb \
+          -Dspring.profiles.active=mysql \
           -Dspring.datasource.username=${database-username} \
           -Dspring.datasource.password=${database-password}
 ```
 
 #### Versions Supported
 
-Current supported version of MariaDB is `10.11.4`. This is the latest LTS release of MariaDB.
+Current supported version of MySQL is `8.1.0`. This is the latest LTS release of MySQL.
 
 #### Default Configuration
 
 The above command will start the Xpanse runtime with the following default configurations:
 
-1. MariaDB running on the same machine where Xpanse is running. (Same localhost)
+1. MySQL running on the same machine where Xpanse is running. (Same localhost)
 2. Database is listening on port `3306`.
 3. Name of the database is `xpanse`. This must be created on the DB server. It will **not** be automatically created.
 
 The Default configuration file can be
-found [here](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-mariadb.properties#L6).
+found [here](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-mysql.properties#L6).
 
 #### Overriding Default Configuration
 
@@ -69,10 +69,10 @@ with actual values.
 
 ```shell
 java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
-          -Dspring.profiles.active=mariadb \
+          -Dspring.profiles.active=mysql \
           -Dspring.datasource.username=<replace-with-db-username> \
           -Dspring.datasource.password=<replace-with-db-password> \
-          -D spring.datasource.url=jdbc:mariadb://<replace-with-db-hostname>:<replace-with-db-port>/<replace-with-db-name>
+          -D spring.datasource.url=jdbc:mysql://<replace-with-db-hostname>:<replace-with-db-port>/<replace-with-db-name>
 
 ```
 
@@ -84,21 +84,21 @@ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
 > **Note:** Using this startup command, the database can run on any machine that is reachable from the Xpanse runtime
 > application.
 
-#### MariaDB as a Docker Container
+#### MySQL as a Docker Container
 
-MariaDB offers official Docker images for running a database as a container.
-More details can be found here on the official page of MariaDB
-website [here](https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/) and on
-DockerHub [here](https://hub.docker.com/_/mariadb/).
+MySQL offers official Docker images for running a database as a container.
+More details can be found here on the official page of MySQL
+website [here](https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/docker-mysql-getting-started.html) and on
+DockerHub [here](https://hub.docker.com/_/mysql/).
 
 ##### Starting new container
 
-While starting the MariaDB docker container for the first time, we can `database-host`, `database-port` and
+While starting the MySQL docker container for the first time, we can configure `database-host`, `database-port` and
 `database-name` as below and the same can be used in starting the Xpanse runtime using the command described
 [above](#overriding-default-configuration).
 
 ```shell
-docker pull mariadb:10.11.4
+docker pull mysql:8.1.0
 ```
 
 By starting the container with the below command, the database is started by automatically configuring the database with
@@ -107,11 +107,11 @@ updated to the value of our choice.
 
 ```shell
 docker run --name ${container-name} \
-            -e MARIADB_ROOT_PASSWORD=<replace-with-db-root-password> \
-            -e MARIADB_DATABASE=<replace-with-db-name> \
-            -e MARIADB_USER=<replace-with-db-user> \
-            -e MARIADB_PASSWORD=<replace-with-db-password> \
-            -p 3306:<replace-with-db-port> -d mariadb:10.11.4
+            -e MYSQL_ROOT_PASSWORD=<replace-with-db-root-password> \
+            -e MYSQL_DATABASE=<replace-with-db-name> \
+            -e MYSQL_USER=<replace-with-db-user> \
+            -e MYSQL_PASSWORD=<replace-with-db-password> \
+            -p 3306:<replace-with-db-port> -d mysql:8.1.0
 ```
 
 > **Note:** To avoid passing database related properties in command line, we can use the ` --env-file` option of the `
