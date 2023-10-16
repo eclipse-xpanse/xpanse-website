@@ -4,13 +4,13 @@ sidebar_position: 9
 
 # Service Deployment
 
-Xpanse aims to unify the service deployment on any cloud by re-using already available cloud infrastructure tools such
+Xpanse aims to unify the service deployment on any cloud by re-using already available cloud infrastructure management tools such
 as Terraform, Pulumi, etc., in the market.
 
 Service Deployment involves the following tasks
 
-1. The service provider must provide the script that must be executed to create the customer-specific infrastructure
-   required for running the service. The script must be provided as part of the service definition.
+1. The service provider must provide the script that must be executed to create the cloud resources
+   required for running the service. The script must be provided as part of the service template.
 2. Install the software and configurations needed for running the service.
 
 > Note: At the moment, only Terraform is supported by Xpanse for service deployment. We plan to add support for other
@@ -34,6 +34,11 @@ the [samples'](https://github.com/eclipse-xpanse/xpanse/tree/main/samples) folde
 
 > **Terraform** binaries must be installed on the system where runtime is running. Or use our docker image, which
 > contains all required software installed.
+
+### Terraform Boot
+
+To offload the service deployment tasks from the Xpanse's main runtime engine, we created a project called [terraform-boot](https://github.com/eclipse-xpanse/terraform-boot).
+We used this application for all our Terraform related tasks.
 
 ### Script Validation
 
