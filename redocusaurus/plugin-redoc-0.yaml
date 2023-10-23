@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Xpanse API
   description: RESTful Services to interact with Xpanse runtime
-  version: 1.0.0-SNAPSHOT
+  version: 1.0.2-SNAPSHOT
 servers:
   - url: http://localhost:8080
     description: Generated server url
@@ -17,6 +17,8 @@ tags:
     description: APIs for managing user's cloud provider credentials
   - name: Service Vendor
     description: APIs to manage service templates.
+  - name: WorkFlow
+    description: APIs to manage the WorkFlow
   - name: Admin
     description: APIs for administrating Xpanse
   - name: Service Catalog
@@ -30,6 +32,111 @@ tags:
   - name: Monitor
     description: APIs for getting metrics of deployed services.
 paths:
+  /xpanse/workflow/task/{id}:
+    put:
+      tags:
+        - WorkFlow
+      description: >-
+        Complete tasks by task ID and set global process variables .<br>Required
+        role:<b> admin</b> or <b>user</b>
+      operationId: completeTask
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /xpanse/workflow/task/{id}/{retryOrder}:
+    put:
+      tags:
+        - WorkFlow
+      description: Manage failed task orders.<br>Required role:<b> admin</b> or <b>user</b>
+      operationId: manageFailedOrder
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: retryOrder
+          in: path
+          required: true
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
   /xpanse/service_templates/{id}:
     get:
       tags:
@@ -51,7 +158,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceTemplateVo'
+                $ref: '#/components/schemas/ServiceTemplateDetailVo'
         '400':
           description: Bad Request
           content:
@@ -114,7 +221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceTemplateVo'
+                $ref: '#/components/schemas/ServiceTemplateDetailVo'
         '400':
           description: Bad Request
           content:
@@ -223,7 +330,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceTemplateVo'
+                $ref: '#/components/schemas/ServiceTemplateDetailVo'
         '400':
           description: Bad Request
           content:
@@ -273,11 +380,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
         - name: type
           in: query
           description: The type of credential.
@@ -438,11 +545,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
         - name: type
           in: query
           description: The type of credential.
@@ -529,11 +636,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
         - name: serviceName
           in: query
           description: name of the service
@@ -610,7 +717,59 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRequest'
+              $ref: '#/components/schemas/DeployRequest'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /xpanse/services/migration:
+    post:
+      tags:
+        - Service
+      description: >-
+        Create a job to migrate the deployed service.<br>Required role:<b>
+        admin</b> or <b>user</b>
+      operationId: migrate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MigrateRequest'
         required: true
       responses:
         '202':
@@ -686,11 +845,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
         - name: serviceName
           in: query
           description: name of the service
@@ -711,7 +870,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserAvailableServiceVo'
+                  $ref: '#/components/schemas/ServiceTemplateDetailVo'
         '400':
           description: Bad Request
           content:
@@ -767,7 +926,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceTemplateVo'
+                $ref: '#/components/schemas/ServiceTemplateDetailVo'
         '400':
           description: Bad Request
           content:
@@ -819,7 +978,152 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceTemplateVo'
+                $ref: '#/components/schemas/ServiceTemplateDetailVo'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /xpanse/workflow/task/todo:
+    get:
+      tags:
+        - WorkFlow
+      description: >-
+        Query the tasks that need to be done by me<br>Required role:<b>
+        admin</b> or <b>user</b>
+      operationId: queryTodoTasks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkFlowTask'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /xpanse/workflow/task/done:
+    get:
+      tags:
+        - WorkFlow
+      description: >-
+        Query the tasks I have completed<br>Required role:<b> admin</b> or
+        <b>user</b>
+      operationId: queryDoneTasks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkFlowTask'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /xpanse/workflow/state/{id}:
+    get:
+      tags:
+        - WorkFlow
+      description: >-
+        Query process status by processInstanceId<br>Required role:<b> admin</b>
+        or <b>user</b>
+      operationId: queryWorkFlowById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
         '400':
           description: Bad Request
           content:
@@ -1106,6 +1410,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'
+  /xpanse/csp:
+    get:
+      tags:
+        - Admin
+      description: >-
+        List cloud service provider.<br>Required role:<b> admin</b> or
+        <b>isv</b> or <b>user</b>
+      operationId: getCsps
+      parameters:
+        - name: active
+          in: query
+          description: Whether only list cloud service provider with active plugin.
+          required: true
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - huawei
+                    - flexibleEngine
+                    - openstack
+                    - scs
+                    - alicloud
+                    - aws
+                    - azure
+                    - google
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
   /xpanse/credentials/openapi/{csp}/{type}:
     get:
       tags:
@@ -1125,11 +1492,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
         - name: type
           in: path
           description: The type of credential.
@@ -1197,11 +1564,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
         - name: type
           in: query
           description: The type of credential.
@@ -1277,11 +1644,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
       responses:
         '200':
           description: OK
@@ -1333,7 +1700,7 @@ paths:
       description: >-
         List of all registered services which are available for user to
         order.<br>Required role:<b> admin</b> or <b>user</b>
-      operationId: listAvailableServices
+      operationId: listOrderableServices
       parameters:
         - name: categoryName
           in: query
@@ -1362,11 +1729,11 @@ paths:
               - huawei
               - flexibleEngine
               - openstack
+              - scs
               - alicloud
               - aws
               - azure
               - google
-              - scs
         - name: serviceName
           in: query
           description: name of the service
@@ -1387,12 +1754,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserAvailableServiceVo'
+                  $ref: '#/components/schemas/UserOrderableServiceVo'
             application/hal+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserAvailableServiceVo'
+                  $ref: '#/components/schemas/UserOrderableServiceVo'
         '400':
           description: Bad Request
           content:
@@ -1430,11 +1797,11 @@ paths:
       description: >-
         Get deployable service by id.<br>Required role:<b> admin</b> or
         <b>user</b>
-      operationId: availableServiceDetails
+      operationId: getOrderableServiceDetails
       parameters:
         - name: id
           in: path
-          description: The id of available service.
+          description: The id of orderable service.
           required: true
           schema:
             type: string
@@ -1444,7 +1811,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserAvailableServiceVo'
+                $ref: '#/components/schemas/UserOrderableServiceVo'
         '400':
           description: Bad Request
           content:
@@ -1480,7 +1847,7 @@ paths:
       tags:
         - Service Catalog
       description: >-
-        Get the API document of the available service.<br>Required role:<b>
+        Get the API document of the orderable service.<br>Required role:<b>
         admin</b> or <b>isv</b> or <b>user</b>
       operationId: openApi
       parameters:
@@ -1715,7 +2082,9 @@ components:
             - Access Denied
             - Sensitive Field Encryption Or Decryption Failed Exception
             - Unsupported Enum Value
+            - Terraform Boot Request Failed
             - Metrics Data Not Ready
+            - Variable Validation Failed
         details:
           type: array
           description: Details of the errors occurred
@@ -1769,11 +2138,11 @@ components:
             - huawei
             - flexibleEngine
             - openstack
+            - scs
             - alicloud
             - aws
             - azure
             - google
-            - scs
         regions:
           type: array
           description: The regions of the Cloud Service Provider
@@ -1815,9 +2184,12 @@ components:
         mandatory:
           type: boolean
           description: Indicates if the variable is mandatory
-        validator:
-          type: string
-          description: Validator of the variable
+        valueSchema:
+          type: object
+          additionalProperties:
+            type: object
+            description: valueSchema of the variable
+          description: valueSchema of the variable
         sensitiveScope:
           type: string
           description: Sensitive scope of variable storage
@@ -2033,17 +2405,23 @@ components:
           type: string
         name:
           type: string
-    ServiceTemplateVo:
+    ServiceTemplateDetailVo:
       required:
+        - billing
         - category
         - createTime
         - csp
+        - deployment
+        - description
+        - flavors
+        - icon
         - id
         - lastModifiedTime
         - name
         - namespace
-        - ocl
+        - regions
         - serviceRegistrationState
+        - variables
         - version
       type: object
       properties:
@@ -2064,11 +2442,11 @@ components:
             - huawei
             - flexibleEngine
             - openstack
+            - scs
             - alicloud
             - aws
             - azure
             - google
-            - scs
         category:
           type: string
           description: Category of the registered service.
@@ -2086,8 +2464,33 @@ components:
         namespace:
           type: string
           description: Namespace of the user who registered service template.
-        ocl:
-          $ref: '#/components/schemas/Ocl'
+        regions:
+          type: array
+          description: The regions of the Cloud Service Provider.
+          items:
+            $ref: '#/components/schemas/Region'
+        description:
+          type: string
+          description: The description of the registered service.
+        icon:
+          type: string
+          description: The icon of the registered service.
+        deployment:
+          $ref: '#/components/schemas/Deployment'
+        variables:
+          type: array
+          description: >-
+            The variables for the deployment, which will be passed to the
+            deployer.
+          items:
+            $ref: '#/components/schemas/DeployVariable'
+        flavors:
+          type: array
+          description: The flavors of the registered service.
+          items:
+            $ref: '#/components/schemas/Flavor'
+        billing:
+          $ref: '#/components/schemas/Billing'
         createTime:
           type: string
           description: createTime of the registered service.
@@ -2098,7 +2501,7 @@ components:
           format: date-time
         serviceRegistrationState:
           type: string
-          description: State of service.
+          description: State of registered service.
           enum:
             - registered
             - updated
@@ -2125,11 +2528,11 @@ components:
             - huawei
             - flexibleEngine
             - openstack
+            - scs
             - alicloud
             - aws
             - azure
             - google
-            - scs
         description:
           type: string
           description: The description of the credential
@@ -2189,7 +2592,7 @@ components:
             The value of the CredentialVariable, this field is filled by the
             user.
       description: The variables list of the credential
-    CreateRequest:
+    DeployRequest:
       required:
         - category
         - csp
@@ -2234,11 +2637,11 @@ components:
             - huawei
             - flexibleEngine
             - openstack
+            - scs
             - alicloud
             - aws
             - azure
             - google
-            - scs
         flavor:
           type: string
           description: The flavor of the Service.
@@ -2248,6 +2651,110 @@ components:
             type: string
             description: The properties for the requested service
           description: The properties for the requested service
+    MigrateRequest:
+      required:
+        - category
+        - csp
+        - flavor
+        - id
+        - region
+        - serviceName
+        - version
+      type: object
+      properties:
+        category:
+          type: string
+          description: The category of the service
+          enum:
+            - ai
+            - compute
+            - container
+            - storage
+            - network
+            - database
+            - mediaService
+            - security
+            - middleware
+            - others
+        serviceName:
+          type: string
+          description: The name of the service ordered.
+        customerServiceName:
+          type: string
+          description: >-
+            Customer's name for the service. Used only for customer's
+            reference.If not provided, this value will be auto-generated
+        version:
+          type: string
+          description: The version of service
+        region:
+          type: string
+          description: The region of the provider.
+        csp:
+          type: string
+          description: The csp of the Service.
+          enum:
+            - huawei
+            - flexibleEngine
+            - openstack
+            - scs
+            - alicloud
+            - aws
+            - azure
+            - google
+        flavor:
+          type: string
+          description: The flavor of the Service.
+        serviceRequestProperties:
+          type: object
+          additionalProperties:
+            type: string
+            description: The properties for the requested service
+          description: The properties for the requested service
+        id:
+          type: string
+          description: The id of the service to migrate
+          format: uuid
+    WorkFlowTask:
+      required:
+        - businessKey
+        - createTime
+        - executionId
+        - processDefinitionId
+        - processDefinitionName
+        - processInstanceId
+        - taskId
+        - taskName
+      type: object
+      properties:
+        processInstanceId:
+          type: string
+          description: The id of the ProcessInstance
+        processInstanceName:
+          type: string
+          description: The name of the ProcessInstance
+        processDefinitionId:
+          type: string
+          description: The id of the ProcessDefinition
+        processDefinitionName:
+          type: string
+          description: The name of the ProcessDefinition
+        executionId:
+          type: string
+          description: The execution id of the ProcessInstance
+        taskId:
+          type: string
+          description: The id of the task
+        taskName:
+          type: string
+          description: The name of the task
+        businessKey:
+          type: string
+          description: The businessKey of the Process
+        createTime:
+          type: string
+          description: The create time of the task
+          format: date-time
     ServiceVo:
       required:
         - category
@@ -2300,11 +2807,11 @@ components:
             - huawei
             - flexibleEngine
             - openstack
+            - scs
             - alicloud
             - aws
             - azure
             - google
-            - scs
         flavor:
           type: string
           description: The flavor of the service
@@ -2361,9 +2868,9 @@ components:
     ServiceDetailVo:
       required:
         - category
-        - createRequest
         - createTime
         - csp
+        - deployRequest
         - id
         - lastModifiedTime
         - name
@@ -2411,11 +2918,11 @@ components:
             - huawei
             - flexibleEngine
             - openstack
+            - scs
             - alicloud
             - aws
             - azure
             - google
-            - scs
         flavor:
           type: string
           description: The flavor of the service
@@ -2438,8 +2945,8 @@ components:
           type: string
           description: Time of update service.
           format: date-time
-        createRequest:
-          $ref: '#/components/schemas/CreateRequest'
+        deployRequest:
+          $ref: '#/components/schemas/DeployRequest'
         deployResources:
           type: array
           description: The resource list of the deployed service.
@@ -2454,110 +2961,6 @@ components:
         resultMessage:
           type: string
           description: The result message of the deployed service.
-    UserAvailableServiceVo:
-      required:
-        - billing
-        - category
-        - createTime
-        - csp
-        - deployment
-        - description
-        - flavors
-        - icon
-        - id
-        - lastModifiedTime
-        - name
-        - namespace
-        - regions
-        - serviceRegistrationState
-        - variables
-        - version
-      type: object
-      properties:
-        id:
-          type: string
-          description: The id of the available service.
-          format: uuid
-        category:
-          type: string
-          description: The catalog of the available service.
-          enum:
-            - ai
-            - compute
-            - container
-            - storage
-            - network
-            - database
-            - mediaService
-            - security
-            - middleware
-            - others
-        name:
-          type: string
-          description: The name of the available service.
-        version:
-          type: string
-          description: The version of the available service.
-        csp:
-          type: string
-          description: The Cloud Service Provider of the available service.
-          enum:
-            - huawei
-            - flexibleEngine
-            - openstack
-            - alicloud
-            - aws
-            - azure
-            - google
-            - scs
-        regions:
-          type: array
-          description: The regions of the Cloud Service Provider.
-          items:
-            $ref: '#/components/schemas/Region'
-        description:
-          type: string
-          description: The description of the available service.
-        namespace:
-          type: string
-          description: The namespace of the available service.
-        icon:
-          type: string
-          description: The icon of the available service.
-        deployment:
-          $ref: '#/components/schemas/Deployment'
-        variables:
-          type: array
-          description: >-
-            The variables for the deployment, which will be passed to the
-            deployer.
-          items:
-            $ref: '#/components/schemas/DeployVariable'
-        flavors:
-          type: array
-          description: The flavors of the available service.
-          items:
-            $ref: '#/components/schemas/Flavor'
-        billing:
-          $ref: '#/components/schemas/Billing'
-        createTime:
-          type: string
-          description: The registration time of the service.
-          format: date-time
-        lastModifiedTime:
-          type: string
-          description: The latest update time of the available service.
-          format: date-time
-        serviceRegistrationState:
-          type: string
-          description: The state of the available service.
-          enum:
-            - registered
-            - updated
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
     Metric:
       required:
         - monitorResourceType
@@ -2699,7 +3102,6 @@ components:
         - description
         - name
         - type
-        - userId
       type: object
       allOf:
         - $ref: '#/components/schemas/CredentialVariables'
@@ -2712,11 +3114,11 @@ components:
                 - huawei
                 - flexibleEngine
                 - openstack
+                - scs
                 - alicloud
                 - aws
                 - azure
                 - google
-                - scs
             type:
               type: string
               description: >-
@@ -2740,14 +3142,13 @@ components:
                 the plugin of cloud service provider.
             userId:
               type: string
-              description: The id of user who create the credential.
+              description: The id of user who created the credential.
     CredentialVariables:
       required:
         - csp
         - description
         - name
         - type
-        - userId
         - variables
       type: object
       properties:
@@ -2758,11 +3159,11 @@ components:
             - huawei
             - flexibleEngine
             - openstack
+            - scs
             - alicloud
             - aws
             - azure
             - google
-            - scs
         type:
           type: string
           description: >-
@@ -2786,12 +3187,106 @@ components:
             plugin of cloud service provider.
         userId:
           type: string
-          description: The id of user who create the credential.
+          description: The id of user who created the credential.
         variables:
           type: array
           description: The variables list of the credential.
           items:
             $ref: '#/components/schemas/CredentialVariable'
+    FlavorBasic:
+      required:
+        - fixedPrice
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The flavor name
+        fixedPrice:
+          type: integer
+          description: The price of the flavor
+          format: int32
+      description: The flavors of the orderable service.
+    UserOrderableServiceVo:
+      required:
+        - billing
+        - category
+        - csp
+        - description
+        - flavors
+        - icon
+        - id
+        - name
+        - regions
+        - variables
+        - version
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the orderable service.
+          format: uuid
+        category:
+          type: string
+          description: The category of the orderable service.
+          enum:
+            - ai
+            - compute
+            - container
+            - storage
+            - network
+            - database
+            - mediaService
+            - security
+            - middleware
+            - others
+        name:
+          type: string
+          description: The name of the orderable service.
+        version:
+          type: string
+          description: The version of the orderable service.
+        csp:
+          type: string
+          description: The Cloud Service Provider of the orderable service.
+          enum:
+            - huawei
+            - flexibleEngine
+            - openstack
+            - scs
+            - alicloud
+            - aws
+            - azure
+            - google
+        regions:
+          type: array
+          description: The regions of the Cloud Service Provider.
+          items:
+            $ref: '#/components/schemas/Region'
+        description:
+          type: string
+          description: The description of the orderable service.
+        icon:
+          type: string
+          description: The icon of the orderable service.
+        variables:
+          type: array
+          description: >-
+            The variables for the deployment, which will be passed to the
+            deployer.
+          items:
+            $ref: '#/components/schemas/DeployVariable'
+        flavors:
+          type: array
+          description: The flavors of the orderable service.
+          items:
+            $ref: '#/components/schemas/FlavorBasic'
+        billing:
+          $ref: '#/components/schemas/Billing'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
     TokenResponse:
       required:
         - access_token
