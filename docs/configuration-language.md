@@ -4,17 +4,16 @@ sidebar_position: 4
 
 # Configuration Language
 
-A managed service is described using Open Services Cloud Configuration Language
-(OCL).
+A managed service is described using Xpanse Service Description Language
+(XSDL).
 
-OCL is a yaml descriptor of a managed service, describing the expected final state of your service, interacting with the
-fundamental APIs:
+XSDL is a yaml descriptor of a managed service which fully describes the service and the way to deploy the service.
 
-Examples of managed services described using OCL for multiple clouds can be found [here](https://github.com/eclipse-xpanse/xpanse/tree/main/samples).
+Examples of managed services described using XSDL for multiple clouds can be found [here](https://github.com/eclipse-xpanse/xpanse/tree/main/samples).
 
 ### Deployment Scripts
 
-In OCL, the deployer variable can contain the script that must be executed for provisioning the managed service.
+In XSDL, the deployer can contain the script that must be executed for provisioning the managed service.
 Currently, the only allowed script is Terraform.
 
 ### Flavors
@@ -29,14 +28,14 @@ property names. Runtime will ensure that these variables are automatically avail
 
 ### Deployment Variables
 
-As part of the OCL, the managed service provider can define variables that can be either entered by the user or
-available as defaults. All possible types of variables are defined
+As part of the XSDL, the managed service provider can define variables that can be either entered by the user or
+available as defaults or variables that can be read for any other sources such as the environment variables. All possible types of variables are defined
 here [Deployment Variables](https://github.com/eclipse-xpanse/xpanse/blob/main/modules/models/src/main/java/org/eclipse/xpanse/modules/models/service/register/DeployVariable.java)
 The variables can then be used in the deployment scripts.
 
-## OCL loading
+## XSDL loading
 
-Xpanse provides different options to generate and provision OCL:
+Xpanse provides different options to register service templates defined using XSDL:
 
 -   REST API on the xpanse runtime
 -   Xpanse UI
