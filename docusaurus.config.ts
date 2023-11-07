@@ -1,9 +1,12 @@
-// @ts-check
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+import type { Config } from '@docusaurus/types';
+import { PrismTheme } from 'prism-react-renderer';
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-var-requires
+const lightCodeTheme: PrismTheme = require('prism-react-renderer').themes.github as PrismTheme;
+// eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-member-access
+const darkCodeTheme: PrismTheme = require('prism-react-renderer').themes.dracula as PrismTheme;
+
+const config: Config = {
     title: 'xpanse',
     url: 'https://eclipse-xpanse.github.io',
     baseUrl: '/xpanse',
@@ -25,10 +28,9 @@ const config = {
     presets: [
         [
             'classic',
-            /** @type {import('@docusaurus/preset-classic').Options} */
-            ({
+            {
                 docs: {
-                    sidebarPath: require.resolve('./sidebars.js'),
+                    sidebarPath: require.resolve('./sidebars.ts'),
                 },
                 blog: {
                     showReadingTime: true,
@@ -36,7 +38,7 @@ const config = {
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
                 },
-            }),
+            },
         ],
         [
             'redocusaurus',
@@ -65,7 +67,6 @@ const config = {
             disableSwitch: true,
             respectPrefersColorScheme: false,
         },
-        /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         navbar: {
             logo: {
                 alt: 'xpanse',

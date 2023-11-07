@@ -129,7 +129,7 @@ Once the login is successful, the control is automatically redirected to the Swa
 Close the authentication window and select the API which you want to execute and click to expand it,
 then click on 'Try it out' and 'Execute' to execute the API method.
 In the Curl command, you can see the request header named `Authorization` with the value of
-${access_token} after prefix `Bearer `.
+`${access_token}` after prefix `Bearer `.
 ![Execute APIs using openAPI page](../static/img/execute-api-in-openapi-page.png)
 
 The other way is to use the `Authorize` REST API.
