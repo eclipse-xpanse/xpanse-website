@@ -100,8 +100,8 @@ const config: Config = {
                     position: 'right',
                 },
                 {
-                    href: 'https://join.slack.com/t/eclipse-xpanse/shared_invite/zt-23exwf1wj-plDaTMnIV6ptp0Yo1h9FUQ',
-                    className: 'header-slack-link',
+                    href: 'https://matrix.to/#/#eclipse-xpanse:matrix.eclipse.org',
+                    className: 'header-matrix-link',
                     position: 'right',
                 },
             ],
@@ -215,8 +215,8 @@ const config: Config = {
                             href: 'https://accounts.eclipse.org/mailing-list/xpanse-dev',
                         },
                         {
-                            label: 'Slack',
-                            href: 'https://join.slack.com/t/eclipse-xpanse/shared_invite/zt-23exwf1wj-plDaTMnIV6ptp0Yo1h9FUQ',
+                            label: 'Matrix',
+                            href: 'https://matrix.to/#/#eclipse-xpanse:matrix.eclipse.org',
                         },
                     ],
                 },

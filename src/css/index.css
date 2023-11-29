@@ -54,7 +54,7 @@
 .header-github-link:before,
 .header-calender-link:before,
 .header-youtube-link:before,
-.header-slack-link:before {
+.header-matrix-link:before {
     content: '';
     width: 30px;
     height: 30px;
@@ -64,7 +64,7 @@
 .header-github-link,
 .header-youtube-link,
 .header-calender-link,
-.header-slack-link {
+.header-matrix-link {
     padding-left: 10px;
 }
 .header-github-link:before {
@@ -79,14 +79,14 @@
     background: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%23606770" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>')
         no-repeat;
 }
-.header-slack-link:before {
-    background: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%23606770" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-slack"><rect width="3" height="8" x="13" y="2" rx="1.5"/><path d="M19 8.5V10h1.5A1.5 1.5 0 1 0 19 8.5"/><rect width="3" height="8" x="8" y="14" rx="1.5"/><path d="M5 15.5V14H3.5A1.5 1.5 0 1 0 5 15.5"/><rect width="8" height="3" x="14" y="13" rx="1.5"/><path d="M15.5 19H14v1.5a1.5 1.5 0 1 0 1.5-1.5"/><rect width="8" height="3" x="2" y="8" rx="1.5"/><path d="M8.5 5H10V3.5A1.5 1.5 0 1 0 8.5 5"/></svg>')
+.header-matrix-link:before {
+    background: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%23606770" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-messages-square"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>')
         no-repeat;
 }
 
 .header-github-link:hover,
 .header-calender-link:hover,
 .header-youtube-link:hover,
-.header-slack-link:hover {
+.header-matrix-link:hover {
     opacity: 0.6;
 }
