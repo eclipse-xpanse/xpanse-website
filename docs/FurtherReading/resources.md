@@ -13,3 +13,5 @@ sidebar_position: 7
 -   [EclipseCon 2022, Open Services Cloud: unleash cloud managed services (video)](https://youtu.be/O_4L2S6XF00)
 -   [KubeCon Europe 2022](https://docs.google.com/presentation/d/1BLwnFJemnGkoaI0RPjJfEBHzYFBMBi3DCe48i1Mel58/edit?usp=sharing)
 -   [Mobile World Congress 2022](https://docs.google.com/presentation/d/1eF9h9jUQr5pPYhLN9ULj3Uq4ABfv91qVJvTCpHFYJvw/edit?usp=sharing)
+-   [EclipseCon 2023 - Eclipse Xpanse - An Open Services Cloud Project (video)](https://www.youtube.com/watch?v=99wqDZA1yVU&t)
+-   [EclipseCon 2023 - Open Cloud Services and an Open Cloud Computing Stack (video)](https://www.youtube.com/watch?v=6InnOvfn2Kk&t)
