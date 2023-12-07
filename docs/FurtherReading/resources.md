@@ -4,14 +4,13 @@ sidebar_position: 7
 
 # Resources
 
--   [Pitch Deck](https://docs.google.com/presentation/d/1NUUiVZ2Z4lsckYWgojLAq1xGylUVck7qcv5Jm104wM8/edit?usp=sharing)
+-   [Pitch Slide Deck](https://github.com/eclipse-xpanse/xpanse-relops/blob/main/presentations/osc-pitch-deck.pdf)
 -   [Demo](https://youtu.be/P5C4z12YUGI)
 
 # Presentations at events
 
--   [EclipseCon 2022, Open Services Cloud: unleash cloud managed services (slides)](https://docs.google.com/presentation/d/1mN5keTLPzFfzEwcTd_sFlbA3sf9MtRhE9q6oPJEqVag/edit?usp=sharing)
 -   [EclipseCon 2022, Open Services Cloud: unleash cloud managed services (video)](https://youtu.be/O_4L2S6XF00)
--   [KubeCon Europe 2022](https://docs.google.com/presentation/d/1BLwnFJemnGkoaI0RPjJfEBHzYFBMBi3DCe48i1Mel58/edit?usp=sharing)
--   [Mobile World Congress 2022](https://docs.google.com/presentation/d/1eF9h9jUQr5pPYhLN9ULj3Uq4ABfv91qVJvTCpHFYJvw/edit?usp=sharing)
 -   [EclipseCon 2023 - Eclipse Xpanse - An Open Services Cloud Project (video)](https://www.youtube.com/watch?v=99wqDZA1yVU&t)
+-   [EclipseCon 2023 - Eclipse Xpanse - An Open Services Cloud Project (slides)](https://github.com/eclipse-xpanse/xpanse-relops/blob/main/presentations/eclipsecon-2023-xpanse.pdf)
 -   [EclipseCon 2023 - Open Cloud Services and an Open Cloud Computing Stack (video)](https://www.youtube.com/watch?v=6InnOvfn2Kk&t)
+-   [EclipseCon 2023 - Open Cloud Services and an Open Cloud Computing Stack (slides)](https://github.com/eclipse-xpanse/xpanse-relops/blob/main/presentations/eclipsecon-2023-scs-xpanse.pdf)
