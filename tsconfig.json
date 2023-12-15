@@ -3,5 +3,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "strict": true
-    }
+    },
+    "include": ["./src/**/*.*","babel.config.js", "types.d.ts", "sidebars.ts", "docusaurus.config.ts"],
+    "exclude": ["node_modules", "build"]
 }

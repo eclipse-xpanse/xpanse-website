@@ -24,6 +24,9 @@ jobs:
             - name: Check Prettier Format
               working-directory: ./
               run: npx prettier --config .prettierrc --check .
+            - name: Run TS compiler
+              working-directory: ./
+              run: tsc
             - name: Run build
               working-directory: ./
               run: npm run build
