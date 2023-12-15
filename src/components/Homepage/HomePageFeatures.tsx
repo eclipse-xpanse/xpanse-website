@@ -3,7 +3,7 @@ import React from 'react';
 import { FeatureList } from '@site/src/components/Homepage/features';
 import Feature from '@site/src/components/Homepage/Feature';
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures(): React.JSX.Element {
     return (
         <section className={'features'}>
             <div className='container'>

@@ -4,7 +4,7 @@ import Link from '@docusaurus/Link';
 import React from 'react';
 import XpanseLogo from '@site/static/img/full-logo.png';
 
-function HeroBanner(): JSX.Element {
+function HeroBanner(): React.JSX.Element {
     const tagLine = () => {
         return (
             <>
