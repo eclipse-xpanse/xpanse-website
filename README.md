@@ -34,3 +34,7 @@ npm run build
 ### Icons
 
 Free icons on this website are taken from [Luicde](https://lucide.dev/).
+
+## Dependencies File
+
+All third-party related content is listed in the [DEPENDENCIES](DEPENDENCIES) file.
