@@ -26,7 +26,7 @@
         "redocusaurus": "^2.0.0"
     },
     "devDependencies": {
-        "@docusaurus/module-type-aliases": "^3.0.1",
+        "@docusaurus/module-type-aliases": "^3.1.0",
         "@tsconfig/docusaurus": "^2.0.2",
         "@typescript-eslint/eslint-plugin": "^6.17.0",
         "@typescript-eslint/parser": "^6.17.0",
