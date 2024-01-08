@@ -31,7 +31,7 @@ The orchestrator defines the following lifecycle for each service:
 2. Once registered, the service is available for the end user for deployments.
 3. the orchestrator can delete the service and with this will remove the service from the catalog.
 
-You can interact with the Xpanse API using the [REST API](/docs/api).
+You can interact with the Xpanse API using the [REST API](https://app.swaggerhub.com/apis/eclipse-xpanse-bot/XpanseRuntimeApi).
 
 The orchestrator, plugins and API are all managed in the Xpanse runtime Spring Boot application.
 The runtime is the glue between all components.

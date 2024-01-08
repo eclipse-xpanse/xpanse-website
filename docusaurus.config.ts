@@ -5,6 +5,7 @@ import { PrismTheme } from 'prism-react-renderer';
 const lightCodeTheme: PrismTheme = require('prism-react-renderer').themes.github as PrismTheme;
 // eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-member-access
 const darkCodeTheme: PrismTheme = require('prism-react-renderer').themes.dracula as PrismTheme;
+const swaggerHubApiUrl: string = 'https://app.swaggerhub.com/apis/eclipse-xpanse-bot/XpanseRuntimeApi';
 
 const config: Config = {
     title: 'xpanse',
@@ -40,20 +41,6 @@ const config: Config = {
                 },
             },
         ],
-        [
-            'redocusaurus',
-            {
-                specs: [
-                    {
-                        spec: 'static/xpanse-api/openapi.json',
-                        route: '/docs/api/',
-                    },
-                ],
-                theme: {
-                    primaryColor: '#1890ff',
-                },
-            },
-        ],
     ],
 
     themeConfig: {
@@ -74,15 +61,15 @@ const config: Config = {
             },
             items: [
                 {
-                    label: 'API',
-                    position: 'left',
-                    href: '/docs/api',
-                },
-                {
                     type: 'doc',
                     docId: 'intro',
                     position: 'left',
                     label: 'Documentation',
+                },
+                {
+                    label: 'API',
+                    position: 'left',
+                    href: swaggerHubApiUrl,
                 },
                 {
                     className: 'header-youtube-link',
@@ -118,7 +105,7 @@ const config: Config = {
                         },
                         {
                             label: 'API',
-                            to: '/docs/api',
+                            href: swaggerHubApiUrl,
                         },
                         {
                             label: 'Architecture',
