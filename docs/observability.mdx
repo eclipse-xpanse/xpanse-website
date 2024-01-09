@@ -2,6 +2,8 @@
 sidebar_position: 7
 ---
 
+import Link from '../src/components/link/Link';
+
 # Observability
 
 Xpanse stack is built with observability in mind. It provides traces, metrics and logging at different levels
@@ -11,11 +13,10 @@ which helps to monitor all systems involved in the Xpanse stack.
 
 ![OpenTelemetry](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyN7sCv7Y3XWDuSl3Pz0KSEBpO8mryvl_l5c7qbQv3cw&s)
 
-As a default implementation, we use [OpenTelemetry](https://opentelemetry.io/) to generate and collect telemetry data.
-The OpenTelemetry provided SDKs and auto-instrumentation features helps to generate all necessary data with no
-additional
-implementation. Using OpenTelemetry provides an advantage that, we generate data based on standards specified by
-OpenTelemetry and thereby gives us the flexibility to feed this data to any OpenTelemetry protocol supported backends.
+As a default implementation, we use <Link url={'https://opentelemetry.io/'} name={'OpenTelemetry'} /> to generate and collect telemetry data. The OpenTelemetry
+provided SDKs and auto-instrumentation features helps to generate all necessary data with no additional implementation. Using
+OpenTelemetry provides an advantage that, we generate data based on standards specified by OpenTelemetry and thereby gives
+us the flexibility to feed this data to any OpenTelemetry protocol supported backends.
 
 ### Telemetry Data Generated
 
@@ -50,4 +51,4 @@ must then be configured in the data producing systems for forwarding the generat
 An example on how to enable auto-instrumentation for all Xpanse components and then export data to OTEL collector which
 can
 be later feed into Grafana monitoring stack can be
-found [here](https://github.com/eclipse-xpanse/xpanse-relops/blob/main/testbed/full-stack/docker-compose.yml).
+found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-relops/blob/main/testbed/full-stack/docker-compose.yml'}/>.

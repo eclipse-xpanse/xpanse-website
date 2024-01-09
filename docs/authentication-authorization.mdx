@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import Link from '../src/components/link/Link';
+
 # Authentication and Authorization
 
 With security being at the heart of Xpanse project, all entry points to the application are completely protected.
@@ -25,23 +27,23 @@ configured with the consumer detail
 
 ## Zitadel
 
-As a default implementation, Xpanse runtime is integrated with [Zitadel](https://zitadel.com/) Identity Provider.
+As a default implementation, Xpanse runtime is integrated with <Link name={'Zitadel'} url={'https://zitadel.com/'}/> Identity Provider.
 
 To enable Zitadel authentication layer, the runtime must be started with `zitadel` profile.
 
-More details can be found [here](runtime.md).
+More details can be found <Link name={'here.'} url={'./runtime'}/>.
 
 ### Zitadel Provider Configuration
 
 After starting the vanilla Zitadel application, all required configurations can be applied using the Terraform scripts
 provided.
 All steps required for initial configuration are
-available [here](https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md).
+available <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md'}/>.
 
 ### Zitadel Consumer Configuration
 
 All generated configuration details can be obtained as
-documented [here](https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md#get-consumer-details).
+documented <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md#get-consumer-details'}/>.
 
 #### Runtime
 
@@ -55,7 +57,7 @@ Runtime application needs the following properties to be set for the authenticat
 #### UI
 
 UI can be then started using the consumer details as
-documented [here](ui.md#starting-local-development-server).
+documented <Link name={'here'} url={'./ui#starting-local-development-server'}/>.
 
 #### End Users Configuration
 

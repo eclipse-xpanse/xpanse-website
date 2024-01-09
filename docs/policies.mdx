@@ -2,11 +2,13 @@
 sidebar_position: 7
 ---
 
+import Link from '../src/components/link/Link';
+
 # Policies
 
 Policies in Xpanse are ways to validate the infrastructure changes that a managed service deployment would do, before
 the service is actually deployed.
-Xpanse uses [OPA - Open Policy Agent](https://www.openpolicyagent.org/) for this purpose.
+Xpanse uses <Link name={'OPA - Open Policy Agent'} url={'https://www.openpolicyagent.org/'}/> for this purpose.
 
 ## OPA - Open Policy Agent
 
@@ -14,7 +16,7 @@ Xpanse uses [OPA - Open Policy Agent](https://www.openpolicyagent.org/) for this
 
 Policies in OPA must be written in `Rego` which is a Policy Language designed by OPA project.
 More details on how policies can be written using `Rego` can be
-found [here](https://www.openpolicyagent.org/docs/latest/policy-language/).
+found <Link name={'here'} url={'https://www.openpolicyagent.org/docs/latest/policy-language/'}/>.
 
 ## Example Use Cases
 
@@ -42,7 +44,7 @@ Xpanse provides two sets of APIs for managing life-cycle of policies.
 
 ## Policy-Man
 
-Xpanse uses an application called [policy-man](https://github.com/eclipse-xpanse/policy-man) for the below purposes
+Xpanse uses an application called <Link name={'policy-man'} url={'https://github.com/eclipse-xpanse/policy-man'}/> for the below purposes
 
 -   Rego syntax validation when policies are uploaded.
 -   OPA policy validation when services are deployed.
