@@ -1,0 +1,53 @@
+---
+sidebar_position: 7
+---
+
+# Observability
+
+Xpanse stack is built with observability in mind. It provides traces, metrics and logging at different levels
+which helps to monitor all systems involved in the Xpanse stack.
+
+### OpenTelemetry
+
+![OpenTelemetry](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyN7sCv7Y3XWDuSl3Pz0KSEBpO8mryvl_l5c7qbQv3cw&s)
+
+As a default implementation, we use [OpenTelemetry](https://opentelemetry.io/) to generate and collect telemetry data.
+The OpenTelemetry provided SDKs and auto-instrumentation features helps to generate all necessary data with no
+additional
+implementation. Using OpenTelemetry provides an advantage that, we generate data based on standards specified by
+OpenTelemetry and thereby gives us the flexibility to feed this data to any OpenTelemetry protocol supported backends.
+
+### Telemetry Data Generated
+
+#### Logs
+
+All application runtimes involved in the Xpanse stack, generates logs with useful information to trace a request
+end-to-end.
+Logs have metadata which provides very high level of traceability.
+
+The OpenTelemetry auto-instrumentation SDK is then used to export all generated logs from existing logging frameworks to
+OTEL collector.
+
+#### Metrics and Traces
+
+All application runtimes are provided with an option to enable OpenTelemetry's auto-instrumentation features which then
+generates metrics and traces.
+
+### Telemetry Data collector
+
+We can use any product which implements the OpenTelemetry specifications for collecting data. The collector's endpoint
+must then be configured in the data producing systems for forwarding the generated Telemetry data to the collector.
+
+### Components Generating Observability Data
+
+-   xpanse - activated using spring profile `opentelemetry`
+-   terraform-boot - activated using spring profile `opentelemetry`
+-   policy-man - activated by starting OpenTelemetry's instrumentation process together with policy-man
+-   zitadel - enabled by default
+
+### Sample Full Stack Observability
+
+An example on how to enable auto-instrumentation for all Xpanse components and then export data to OTEL collector which
+can
+be later feed into Grafana monitoring stack can be
+found [here](https://github.com/eclipse-xpanse/xpanse-relops/blob/main/testbed/full-stack/docker-compose.yml).
