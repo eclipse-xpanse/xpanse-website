@@ -2,6 +2,8 @@
 sidebar_position: 6
 ---
 
+import Link from '../src/components/link/Link';
+
 # Database
 
 ## Development Environments
@@ -12,7 +14,7 @@ For all development purposes, we use a file-based H2 database which is automatic
 
 The UI to the H2 DB can be accessed at `http://localhost:8080/h2-console/login.jsp`.
 Credentials to this admin UI can be
-found [here](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application.properties#L10).
+found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application.properties#L10'}/>.
 
 ### Cleanup
 
@@ -60,7 +62,7 @@ The above command will start the Xpanse runtime with the following default confi
 3. Name of the database is `xpanse`. This must be created on the DB server. It will **not** be automatically created.
 
 The Default configuration file can be
-found [here](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-mysql.properties#L6).
+found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-mysql.properties#L6'}/>.
 
 #### Overriding Default Configuration
 
@@ -88,14 +90,15 @@ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
 
 MySQL offers official Docker images for running a database as a container.
 More details can be found here on the official page of MySQL
-website [here](https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/docker-mysql-getting-started.html) and on
-DockerHub [here](https://hub.docker.com/_/mysql/).
+website <Link name={'here'} url={'https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/docker-mysql-getting-started.html'}/> and on
+DockerHub <Link name={'here'} url={'https://hub.docker.com/_/mysql/'}/>.
 
 ##### Starting new container
 
 While starting the MySQL docker container for the first time, we can configure `database-host`, `database-port` and
 `database-name` as below and the same can be used in starting the Xpanse runtime using the command described
-[above](#overriding-default-configuration).
+
+<Link name={'above'} url={'./database#overriding-default-configuration'} isOpenInNewTab={false} />.
 
 ```shell
 docker pull mysql:8.1.0

@@ -1,6 +1,8 @@
 ---
-sidebar_position: 9
+sidebar_position: 8
 ---
+
+import Link from '../src/components/link/Link';
 
 # Service Deployment
 
@@ -30,14 +32,14 @@ The clients can then fetch the status of the deployment using `getDeployedServic
 
 Terraform script that must be executed must be passed as is, in the service definition when the service is registered.
 You can find examples of how the script can look like in
-the [samples'](https://github.com/eclipse-xpanse/xpanse/tree/main/samples) folder.
+the <Link name={'samples'} url={'https://github.com/eclipse-xpanse/xpanse/tree/main/samples'}/> folder.
 
 > **Terraform** binaries must be installed on the system where runtime is running. Or use our docker image, which
 > contains all required software installed.
 
 ### Terraform Boot
 
-To offload the service deployment tasks from the Xpanse's main runtime engine, we created a project called [terraform-boot](https://github.com/eclipse-xpanse/terraform-boot).
+To offload the service deployment tasks from the Xpanse's main runtime engine, we created a project called <Link name={'terraform-boot'} url={'https://github.com/eclipse-xpanse/terraform-boot'}/>.
 We used this application for all our Terraform related tasks.
 
 ### Script Validation
@@ -45,7 +47,7 @@ We used this application for all our Terraform related tasks.
 As part of the service registration process, Xpanse validates the syntax of the Terraform script provided. The service
 is registered only when the script validation is successful.
 
-We use the Terraform [validate](https://developer.hashicorp.com/terraform/cli/commands/validate) feature to achieve
+We use the Terraform <Link name={'validate'} url={'https://developer.hashicorp.com/terraform/cli/commands/validate'}/> feature to achieve
 this.
 
 ### Script Execution
@@ -72,7 +74,7 @@ For any service ordered by the customer, it is important to return the details o
 credentials, etc. which the customer must use to start consuming the service.
 
 We use the
-Terraform `output` [feature](https://developer.hashicorp.com/terraform/tutorials/configuration-language/outputs) to get
+Terraform `output` <Link name={'feature'} url={'https://developer.hashicorp.com/terraform/tutorials/configuration-language/outputs'}/> to get
 such information from the service deployment. So it is important to add the `output` section to the scripts. The same
 is also used by the Xpanse UI for displaying the service details.
 
@@ -82,7 +84,7 @@ Xpanse currently uses Terraform to orchestrate resources on cloud providers, but
 Terraform for cloud providers are in constant iteration. In order to configure the Terraform version
 of the cloud providers more conveniently and quickly, you can configure the Terraform version of the
 cloud providers in
-the [xpanse configuration file](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application.properties).
+the <Link name={'xpanse configuration file'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application.properties'}/>.
 
 #### The Version Key Of The Terraform Providers
 

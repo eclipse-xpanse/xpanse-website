@@ -2,6 +2,8 @@
 sidebar_position: 8
 ---
 
+import Link from '../src/components/link/Link';
+
 # Runtime
 
 Xpanse runtime is the running module built on SpringBoot.
@@ -14,8 +16,7 @@ the remote terraform-boot service. The remote terraform-boot service is used by 
 1. If using local terraform module, the `Xpanse Runtime` host must have `Terraform CLI` installed.
 
 2. If using remote terraform-boot service, a remote `Terrafom-boot` service must be
-   deployed/started.More details about the Terraform-boot project can be found
-   [here](https://github.com/eclipse-xpanse/terraform-boot/blob/main/README.md).
+   deployed/started.More details about the Terraform-boot project can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/terraform-boot/blob/main/README.md'} />.
 
 3. Fully configured Zitadel instance.
 
@@ -27,22 +28,22 @@ that the developer and the production administrators must take care of before st
 xpanse.
 
 1. Configuration properties of authentication layer.
-   Documented [here](authentication-authorization.md#runtime).
-2. Configuration properties of database layer. Documented [here](database.md#maria-db).
-3. Plugin activation variables. Documented [here](plugins.md#plugin-activation).
+   Documented [here](authentication-authorization.mdx#runtime).
+2. Configuration properties of database layer. Documented <Link name={'here'} url={'./database.mdx#maria-db'} isOpenInNewTab={true}/>.
+3. Plugin activation variables. Documented <Link name={'here'} url={'./plugins#plugin-activation'}/>.
 
 ### Terraform CLI Installation
 
 Terraform CLI can be installed using the steps from
-the [official guide](https://developer.hashicorp.com/terraform/downloads).
+the <Link name={'official guide'} url={'https://developer.hashicorp.com/terraform/downloads'}/>.
 
 ### Local Development
 
 #### Build
 
 As a requirement, we need Java Developer Kit (JDK) version 17 installed. You can
-use [openjdk](https://openjdk.org/)
-or [temurin](https://adoptium.net/)
+use <Link name={'openjdk'} url={'https://openjdk.org/'}/>
+or <Link name={'temurin'} url={'https://adoptium.net/'}/>.
 
 Clone the project using the command below
 
@@ -59,7 +60,7 @@ $ ./mvnw clean install -DskipTests
 
 #### Run
 
-Ensure all properties mentioned in the [above section](#properties-and-environment-variables) are
+Ensure all properties mentioned in the <Link name={'above section'} url={'./runtime#properties-and-environment-variables'} isOpenInNewTab={false}/> are
 correctly set.
 
 ##### From Command Line
@@ -124,15 +125,14 @@ http://localhost:8080/swagger-ui/index.html
 
 ### Production
 
-Ensure all properties mentioned in the [above section](#properties-and-environment-variables) are
+Ensure all properties mentioned in the <Link name={'above section'} url={'./runtime#properties-and-environment-variables'} isOpenInNewTab={false}/> are
 correctly set.
 
 #### Run using jar
 
-Download the released runtime jar from maven central repository. You can list all available released
-versions [here](https://oss.sonatype.org/#nexus-search;quick~xpanse-runtime).
+Download the released runtime jar from GitHub releases. You can get the latest from <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/releases/latest'}/>.
 
-After downloading, follow the same steps mentioned in [this](#from-command-line) section.
+After downloading, follow the same steps mentioned in <Link name={'this'} url={'runtime#from-command-line'}/> section.
 
 #### Run using Docker image
 

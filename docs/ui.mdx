@@ -2,6 +2,8 @@
 sidebar_position: 10
 ---
 
+import Link from '../src/components/link/Link';
+
 # UI
 
 This is the frontend for the Xpanse project which allows cloud service providers to register managed services to the
@@ -19,12 +21,12 @@ Authentication and authorization are built using `Zitadel` which is an oauth2 pr
 ## Zitadel Configuration
 
 Before we can start using the UI, we must ensure `Zitadel` instance that we consider using,
-has all the required configuration. Details can be found [here](https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md).
+has all the required configuration. Details can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md'}/>.
 
 ## Configuration Properties
 
 All required configuration parameters must be added to .env
-file [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env).
+file <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env'}/>.
 Even if we do not have a valid default value, we must just add empty value.
 This file serves as a reference to all required properties.
 
@@ -42,7 +44,7 @@ This file serves as a reference to all required properties.
 2. For non-default properties or to override the values is .env, we can set the values in new .env files and load them
    using `env-cmd` framework which will automatically inject the variables.
    Example can be
-   found [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/package.json#L20)
+   found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/package.json#L25'}/>
 
 > **Important**: .env files must be used only for default configurations or for dev configurations values.
 
@@ -56,7 +58,7 @@ with `docker run` for production.
 We have a custom implementation which reads the configuration from all sources and provides a unified configuration map.
 Only this must be used for reading configuration from the React app.
 
-Implementation can be found [here](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/config/config.ts#L16).
+Implementation can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/config/config.ts#L16'}/>.
 
 ## Starting local development server
 
@@ -106,7 +108,7 @@ The following steps must be followed to generate a new client and data models wh
 swagger json.
 
 1. Copy the openapi file
-   to [OpenApi JSON File](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json)
+   to <Link name={'OpenApi JSON File'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json'}/>
 2. Run the code generator as below
     ```shell
         cd src/xpanse-api
@@ -125,7 +127,7 @@ The only recommended way to run UI in production is to use the docker image
 Docker image for the UI project is based on nginx base image. This is because the project only serves static content.
 
 As part of our UI release process, we deliver our official images to GitHub packages.
-All available images can be found [here](https://github.com/orgs/eclipse-xpanse/packages?tab=packages&q=xpanse-ui).
+All available images can be found <Link name={'here'} url={'https://github.com/orgs/eclipse-xpanse/packages?tab=packages&q=xpanse-ui'}/>.
 
 ### Run UI Container
 

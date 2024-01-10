@@ -2,6 +2,8 @@
 sidebar_position: 7
 ---
 
+import Link from '../src/components/link/Link';
+
 # Plugins
 
 Plugins in Xpanse represent integration with cloud providers.
@@ -12,7 +14,7 @@ service.
 ## Plugin Implementation
 
 A plugin is a class that implements
-the `OrchestratorPlugin` (https://github.com/eclipse-xpanse/xpanse/blob/main/modules/orchestrator/src/main/java/org/eclipse/xpanse/modules/orchestrator/OrchestratorPlugin.java)
+the <Link name={'OrchestratorPlugin'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/orchestrator/src/main/java/org/eclipse/xpanse/modules/orchestrator/OrchestratorPlugin.java'}/>
 interface.
 The plugin implementation class must also be a Spring bean.
 
