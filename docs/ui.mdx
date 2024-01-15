@@ -34,6 +34,21 @@ This file serves as a reference to all required properties.
 > browser too.
 > Therefore, no secure configurations such as passwords, keys, etc. must be added here.
 
+## Oauth Configuration
+
+For local environments, the `access_tokens` are stored with in the browser storage. This is not safe, but it is enough for non-production environments and for debugging purposes.
+
+For production environments, we must use `Service Workers` which will block anyone to access the token. This can be enabled by making the following configurations.
+
+```dotenv
+REACT_APP_AUTH_USE_SERVICE_WORKER_ONLY=true
+```
+
+and the file <Link name={'OidcTrustedDomains.js'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/public/OidcTrustedDomains.js'}/> must be updated with correct information.
+`oidcDomains` must have the identity provider URL and `accessTokenDomains` must have the Xpanse backend server URL.
+
+> **_Note:_** if the same must be used with our official docker images, then this file need not be touched. It will be automatically set from the environment variables.
+
 ### Setting Configuration Values
 
 #### .env Files
@@ -140,6 +155,7 @@ Production configuration values must be passed as environment variables to docke
 REACT_APP_ZITADEL_AUTHORITY_NAME # URL for the Oauth provider
 REACT_APP_ZITADEL_CLIENT_ID # Client ID provided by the Oauth provider for UI
 REACT_APP_XPANSE_API_URL # Backend API URL
+REACT_APP_AUTH_USE_SERVICE_WORKER_ONLY=true # for production. Otherwise, this step config can be ignored.
 ```
 
 ```shell
