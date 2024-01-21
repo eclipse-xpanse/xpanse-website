@@ -2,9 +2,16 @@
 sidebar_position: 8
 ---
 
+# Service Deployment
+
 import Link from '../src/components/link/Link';
 
-# Service Deployment
+export const DEPLOY_RESOURCE_HANDLER_INTERFACE =
+    'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/orchestrator/src/main/java/org/eclipse/xpanse/modules/orchestrator/deployment/DeployResourceHandler.java';
+export const DEPLOYER_INTERFACE =
+    'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/orchestrator/src/main/java/org/eclipse/xpanse/modules/orchestrator/deployment/Deployer.java';
+export const DEPLOY_RESULT_MODEL =
+    'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/models/src/main/java/org/eclipse/xpanse/modules/models/service/deploy/DeployResult.java';
 
 Xpanse aims to unify the service deployment on any cloud by re-using already available cloud infrastructure management tools such
 as Terraform, Pulumi, etc., in the market.
@@ -17,6 +24,46 @@ Service Deployment involves the following tasks
 
 > Note: At the moment, only Terraform is supported by Xpanse for service deployment. We plan to add support for other
 > deployment tools in the upcoming releases.
+
+## Deployer Implementation
+
+Every deployer must implement the methods defined in the <Link name={'Deployer'} url={DEPLOYER_INTERFACE}/> interface.
+The deployer implementation will abstract all the service deployment tasks that must be executed for provisioning the service and return the result as <Link name={'DeployResult'} url={DEPLOY_RESULT_MODEL}/> object.
+
+### Processing Deployment Results
+
+Each deployer can put all the necessary information about deployment results to a `privateProperties` map in `DeployResult` object.
+
+#### Resource Handlers
+
+Each plugin must implement a <Link name={'DeployResourceHandler'} url={DEPLOY_RESOURCE_HANDLER_INTERFACE}/> for each `DeployerKind` and this will be invoked to extract the cloud resources deployed from the `DeployerResult`.
+
+```mermaid
+classDiagram
+    class Deployer
+        <<interface>> Deployer
+        Deployer : deploy()
+        Deployer : destroy()
+    class DeployResourceHandler
+        <<interface>> DeployResourceHandler
+        DeployResourceHandler: handler(DeployResult deployResult)
+    class ServiceResourceHandler
+        <<interface>> ServiceResourceHandler
+        ServiceResourceHandler: resourceHandlers()
+
+    class OrchestratorPlugin
+        <<interface>> OrchestratorPlugin
+    Deployer --> ResourceHandlerManager
+
+    class CloudProviderPlugin
+    class ResourceHandlerManager
+        ResourceHandlerManager: getResourceHandler()
+
+    ResourceHandlerManager --> DeployResourceHandler
+    OrchestratorPlugin <|-- CloudProviderPlugin : implements
+    ServiceResourceHandler <|-- CloudProviderPlugin : implements
+    DeployResourceHandler <|-- CloudProviderPlugin : implements
+```
 
 ## Asynchronous Processing
 
@@ -57,8 +104,9 @@ When the customer orders the service, the following happens
 1. Generate a unique ID for the service requested. This is based on UUID.
 2. Create a folder with this ID as the name.
 3. From the runtime, call the start the Terraform process outside the JVM to do the following
-    - Inside the folder, the runtime will then create a Terraform workspace.
-    - Execute the Terraform scripts
+
+-   Inside the folder, the runtime will then create a Terraform workspace.
+-   Execute the Terraform scripts
 
 > Note: To avoid dependency on the filesystem, the state `terraform.tfstate` file contents are copied to the database at
 > the end of the service deployment. We reuse this later when the customer requests to destroy the service.
