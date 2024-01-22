@@ -128,6 +128,10 @@ const config: Config = {
                             to: '/docs/database',
                         },
                         {
+                            label: 'Package Structure',
+                            to: '/docs/package-structure',
+                        },
+                        {
                             label: 'Plugins',
                             to: '/docs/plugins',
                         },
