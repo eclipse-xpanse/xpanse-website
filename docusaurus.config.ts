@@ -9,7 +9,7 @@ const swaggerHubApiUrl: string = 'https://app.swaggerhub.com/apis/eclipse-xpanse
 
 const config: Config = {
     title: 'xpanse',
-    url: 'https://eclipse-xpanse.github.io',
+    url: 'https://eclipse.dev',
     baseUrl: '/xpanse',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
