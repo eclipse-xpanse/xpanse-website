@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://eclipse-xpanse.github.io/xpanse/blog</id>
+    <id>https://eclipse.dev/xpanse/blog</id>
     <title>xpanse Blog</title>
     <updated>2022-07-20T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://eclipse-xpanse.github.io/xpanse/blog"/>
+    <link rel="alternate" href="https://eclipse.dev/xpanse/blog"/>
     <subtitle>xpanse Blog</subtitle>
-    <icon>https://eclipse-xpanse.github.io/xpanse/img/favicon.ico</icon>
+    <icon>https://eclipse.dev/xpanse/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Open Services Cloud and GAIA-X, digital sovereignty]]></title>
-        <id>https://eclipse-xpanse.github.io/xpanse/blog/2022/07/20/gaiax</id>
-        <link href="https://eclipse-xpanse.github.io/xpanse/blog/2022/07/20/gaiax"/>
+        <id>https://eclipse.dev/xpanse/blog/2022/07/20/gaiax</id>
+        <link href="https://eclipse.dev/xpanse/blog/2022/07/20/gaiax"/>
         <updated>2022-07-20T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[As GAIA-X shapes data sovereignty, and Open Services Cloud frames technology sovereignty, both combined provides digital]]></summary>
         <content type="html"><![CDATA[<p>As GAIA-X shapes data sovereignty, and Open Services Cloud frames technology sovereignty, both combined provides digital
@@ -37,8 +37,8 @@ features, **data portability and data processing portability££.</li>
     </entry>
     <entry>
         <title type="html"><![CDATA[Introduction to Open Services Cloud]]></title>
-        <id>https://eclipse-xpanse.github.io/xpanse/blog/2022/07/14/introduction</id>
-        <link href="https://eclipse-xpanse.github.io/xpanse/blog/2022/07/14/introduction"/>
+        <id>https://eclipse.dev/xpanse/blog/2022/07/14/introduction</id>
+        <link href="https://eclipse.dev/xpanse/blog/2022/07/14/introduction"/>
         <updated>2022-07-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Welcome to Eclipse Open Services Cloud.]]></summary>
         <content type="html"><![CDATA[<p>Welcome to Eclipse Open Services Cloud.</p>
