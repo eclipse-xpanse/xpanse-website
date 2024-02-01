@@ -1,0 +1,43 @@
+---
+sidebar_position: 8
+---
+
+# Service Hosting Types
+
+Service hosting type refers to the cloud provider account that must be used for deploying the managed service.
+
+Xpanse provides an option to offer services directly using the customer's account where the customer is billed directly
+or via the service vendor's account where the service vendor is billed by CSP and the service vendor later bills the end user.
+
+## Available Service Hosting Types
+
+### Self-Hosted
+
+In this case, the service is deployed on the end customer's cloud account. When a service is self-hosted, the end user
+can view more information such as service deployment errors, etc.
+The service vendor only can view only very basic details of the deployed service. The service vendor must contact the
+end user in case any information is required.
+
+### Service-Vendor-Hosted
+
+In this case, the service is deployed on the service vendor's cloud account. When a service is service-vendor hosted,
+the end user has very restricted access to the deployed service details. The user will only receive the end point details to
+access the service.
+
+The service vendor has more access to the service deployment details. But the service vendor cannot access the end point
+details.
+
+This mode makes more sense to host a SaaS type of managed service.
+
+## Credentials
+
+Service vendors can use the `ISV Cloud Credentials Management` services to manage the cloud accounts for service deployments.
+
+End users can use the `User Cloud Credentials Management` services to manage the cloud accounts for service deployments.
+
+## Service With Multiple Service Hosting Types
+
+The service vendor must specify the service hosting type in the service template.
+One service template can only offer a service on only one hosting type.
+So when the service vendor want to offer service on multiple hosting types, then one service template must be registered
+for each hosting type.
