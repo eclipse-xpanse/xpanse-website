@@ -239,6 +239,12 @@ const config: Config = {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
         },
+        algolia: {
+            appId: 'JEC96SR2V4',
+            apiKey: '934cce04614c63aa55f594be2f4fdfbe', // public key. Can be stored in repo.
+            indexName: 'eclipse',
+            contextualSearch: true,
+        },
     },
 };
 
