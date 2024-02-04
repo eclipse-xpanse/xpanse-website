@@ -16,7 +16,7 @@ const config: Config = {
     favicon: 'img/favicon.ico',
     organizationName: 'xpanse',
     projectName: 'xpanse',
-
+    trailingSlash: false,
     i18n: {
         defaultLocale: 'en',
         locales: ['en'],
@@ -238,6 +238,12 @@ const config: Config = {
         prism: {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
+        },
+        algolia: {
+            appId: 'JEC96SR2V4',
+            apiKey: 'b76d21c3f520c127efa4f624af15e355', // public key. Can be stored in repo.
+            indexName: 'eclipse',
+            contextualSearch: false,
         },
     },
 };
