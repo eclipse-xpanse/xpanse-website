@@ -8,17 +8,27 @@ import Link from '../src/components/link/Link';
 
 Xpanse runtime is the running module built on SpringBoot.
 
-`Xpanse Runtime` has two ways to start, one is to use the local terraform module, the other is Use
+`Xpanse Runtime` supports two kinds of deployers: terraform and open tofu.
+
+`Xpanse Runtime` has two ways to start the `terraform`, one is to use the local terraform module, the other is use
 the remote terraform-boot service. The remote terraform-boot service is used by default.
+
+Also, `Xpanse Runtime` has two ways to start the `open tofu`, one is to use the local open tofu module,
+the other is use the remote terraform-boot service. The remote terraform-boot service is used by default.
 
 ## Pre-Requisites
 
 1. If using local terraform module, the `Xpanse Runtime` host must have `Terraform CLI` installed.
 
-2. If using remote terraform-boot service, a remote `Terrafom-boot` service must be
+2. If using remote terraform-boot service, a remote `terraform-boot` service must be
    deployed/started.More details about the Terraform-boot project can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/terraform-boot/blob/main/README.md'} />.
 
-3. Fully configured Zitadel instance.
+3. If using local open tofu module, the `Xpanse Runtime` host must have `Open Tofu CLI` installed.
+
+4. If using remote terraform-boot service, a remote `tofu-maker` service must be
+   deployed/started.More details about the Terraform-boot project can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/tofu-maker/blob/main/README.md'} />.
+
+5. Fully configured Zitadel instance.
 
 ## Properties and Environment Variables
 
@@ -43,11 +53,25 @@ $ git clone https://github.com/eclipse-xpanse/xpanse
 $ cd xpanse
 ```
 
-Then compile the entire project using the below command
+Then compile the entire project using the below command:
 
 ```shell
 $ ./mvnw clean install -DskipTests
 ```
+
+By default, the compile process will enable all plugins supported by Xpanse. If you want to enable a specific plugin,
+add the flag `-Pplugin-xxx` in the command line to enable the specific plugin.
+
+```shell
+$ ./mvnw clean install -DskipTests -Pplugin-huawei
+```
+
+The specific plugin profile in the flag `-Pplugin-xxx` can enable the plugin for the cloud service provider as below:
+
+`-Pplugin-huawei` to enable the plugin for Huawei Cloud.
+`-Pplugin-flexibleengine` to enable the plugin for Flexible Engine Cloud.
+`-Pplugin-openstack` to enable the plugin for Openstack Cloud.
+`-Pplugin-scs` to enable the plugin for Scs Cloud.
 
 #### Run
 
@@ -63,25 +87,37 @@ To start the application from the command line, run the below application from t
 project.
 
 ```shell
-$ java -jar runtime/target/xpanse-runtime-1.0.0-SNAPSHOT.jar \
+$ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar
+```
+
+> **_Note:_**
+> If the executable jar packaged with the specific plugin profile, the running service only supports the specific
+> cloud service provider.
+
+```properties
+spring.profiles.active=zitadel,zitadel-testbed,terraform-boot,tofu-maker
+```
+
+By default, `Xpanse Runtime` starts with our `zitadel-testbed`. If you would not like to use our `zitadel-testbed`,
+you can start the server using the below command by update the `spring.profiles.active` property and with all the required variables.
+
+```shell
+$ cd runtime/target
+$ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar \
+--spring.profiles.active=zitadel,terraform-boot,tofu-maker
 --authorization-api-client-id=${client-id} \
 --authorization-api-client-secret=${client-secret} \
 --authorization-swagger-ui-client-id=${swagger-ui-cleint-id}
 ```
 
-If you would like to use our `zitadel-testbed`, then start the server using the below command. This
-will automatically set properties required for connecting to our Zitadel test bed.
+By default, `Xpanse Runtime` starts with terraform-boot and tofu-maker. If you want to use local terraform and
+local open tofu, just don't activate the terraform-boot and tofu-maker scenario in the application.properties
+configuration file. Use the below start command line with the value of the property `spring.profiles.active`
+removed the profile flag `terraform-boot` and `tofu-maker`.
 
 ```shell
-$ cd runtime/target
-$ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar --spring.profiles.active=zitadel,zitadel-testbed
-```
-
-By default, Xpanse Runtime starts using Terraform-boot. If you want to use local terraform, just
-don't activate the terraform-boot scenario in the application.properties configuration file.
-
-```properties
-spring.profiles.active=zitadel,zitadel-testbed
+$ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar \
+--spring.profiles.active=zitadel,zitadel-testbed
 ```
 
 ##### From IDE
@@ -89,23 +125,24 @@ spring.profiles.active=zitadel,zitadel-testbed
 Or the application can be started using the IDE by executing the main application directly. Below is
 the example from IntellijIdea
 
-![img.png](../static/img/ide-run.png)
+![ide-run.png](../static/img/ide-run.png)
 
 You must see the below messages in the console.
 
 ```shell
+
    _  __   ____    ____ _   ____    _____  ___
   | |/_/  / __ \  / __ `/  / __ \  / ___/ / _ \
  _>  <   / /_/ / / /_/ /  / / / / (__  ) /  __/
 /_/|_|  / .___/  \__,_/  /_/ /_/ /____/  \___/
        /_/
 
-        xpanse 1.0.0-SNAPSHOT (2023)
-13:44:19.633 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Starting XpanseApplication using Java 17.0.5 with PID 7344
-13:44:19.645 [main] INFO  o.e.xpanse.runtime.XpanseApplication - No active profile set, falling back to 1 default profile: "default"
-13:44:22.211 [main] INFO  o.e.x.o.FileOrchestratorStorage - No other storage beans found. Using default file storage.
-13:44:23.878 [main] WARN  o.e.x.o.OrchestratorService - No xpanse plugins loaded by the runtime.
-13:44:23.886 [main] INFO  o.e.xpanse.runtime.XpanseApplication - Started XpanseApplication in 5.029 seconds (process running for 5.992)
+        xpanse 1.0.8-SNAPSHOT (2023)
+11:33:13.144 [main] INFO  o.e.xpanse.runtime.XpanseApplication []- Starting XpanseApplication using Java 21.0.1 with PID 9440 (D:\IdeaProjects\xpanse\runtime\target\classes started by Administrator in D:\IdeaProjects\xpanse)
+11:33:13.146 [main] INFO  o.e.xpanse.runtime.XpanseApplication []- The following 5 profiles are active: "zitadel", "zitadel-testbed", "terraform-boot", "tofu-maker"
+11:33:23.783 [main] INFO  o.e.x.m.orchestrator.PluginManager []- List cloud service providers:[SCS, HUAWEI, FLEXIBLE_ENGINE, OPENSTACK] with activate plugins.
+11:33:23.793 [main] INFO  o.e.x.m.s.IdentityProviderManager []- Identity provider service with type:ZITADEL is active.
+11:33:29.116 [main] INFO  o.e.xpanse.runtime.XpanseApplication []- Started XpanseApplication in 16.584 seconds (process running for 17.701)
 ```
 
 You can check the status of the runtime by opening the swagger UI from any browser:
@@ -132,15 +169,13 @@ contains all necessary tools preinstalled.
 
 ```shell
 $ docker pull ghcr.io/eclipse-xpanse/xpanse:${release-version}
-$ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=zitadel,mariadb" ghcr.io/eclipse-xpanse/xpanse:${release-version}
+$ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=zitadel,mysql" ghcr.io/eclipse-xpanse/xpanse:${release-version}
 $ docker logs xpanse
 ```
 
 > **Note:** It is safe to provide all properties as environment variables rather than passing them
 > directly in the command line.
-> In case of this, the same property name must be set in UPPERCASE for all 4 variables.
->
-> For running, using docker image, we can use the ` --env-file` option of the `
+> In case of this, the same property name must be set in UPPERCASE for all 4 variables.For running, using docker image, we can use the ` --env-file` option of the `
 docker run` command to store all sensitive data.
 > Again here the property names must be in UPPERCASE.
 
