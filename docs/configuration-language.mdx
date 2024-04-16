@@ -35,6 +35,16 @@ available as defaults or variables that can be read for any other sources such a
 here <Link name={'Deployment Variables'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/models/src/main/java/org/eclipse/xpanse/modules/models/servicetemplate/DeployVariable.java'}/>
 The variables can then be used in the deployment scripts.
 
+### Availability Zones
+
+OCL provides a way to define if the service supports deploying on availability zones which the end user wishes.
+
+Or even if the service needs the end user to select multiple availability zones, even that is possible. The availability zone information can be directly injected into deployment scripts.
+
+### ISV Contact Details
+
+Each ISV can provide their support contacts as part of OCL. This can then be used by end user or the CSP in case of issues with the service deployment or managing the service after deployment.
+
 ## XSDL loading
 
 Xpanse provides different options to register service templates defined using XSDL:

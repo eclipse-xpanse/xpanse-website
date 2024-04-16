@@ -1,0 +1,23 @@
+---
+sidebar_position: 8
+---
+
+# Reviews
+
+import Link from '../src/components/link/Link';
+
+When an ISV registers a new template, the service is not immediately available for the end user to consume.
+The service template must be reviewed and approved by the CSP for the end user to consume it.
+
+## Approve/Reject Service Template
+
+CSP can then review the service template based on their internal processes and then either approve or reject the service registration request.
+
+### CSP Role
+
+If the Xpanse runtime is Oauth protected and RBAC enabled, then the user must have `csp` role to be able to review the service templates which are submitted.
+
+### CSP Name in Metadata
+
+CSPs must also have metadata in the identity provider configured to allow user to be linked to a specific CSP.
+Details for this can found <Link name={'here'} url={'./authentication-authorization#metadata-for-csps'}/>.
