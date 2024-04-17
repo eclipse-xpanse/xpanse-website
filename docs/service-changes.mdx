@@ -1,0 +1,14 @@
+---
+sidebar_position: 8
+---
+
+# Service Changes
+
+A successfully deployed service can be modified at different levels. Below the options supported by xpanse.
+
+1. Modify Parameters - This option will allow user to change the service parameters that were used to deploy the service. This may or may not recreate the service based on how the deployment scripts are implemented and APIs supported by the CSP.
+2. Upscale/Downscale - This option will allow to change the flavor of the deployed service. This again may or may not recreate the service depending on how the deployment scripts are implemented and APIs supported by the CSP.
+   For example, if a new flavor needs a different VM size, some CSPs allow updating the existing VM size but some do not. Depending on such capabilities, the flavor change can be with or without service/data loss.
+3. Destroy - This option can be used to delete the service. It will delete all resources used by a service.
+4. Start/Stop/Restart - This option can be used to start/stop/restart the service. Currently, this option controls only VMs that are used in the service.
+5. Migrate - This option is used to migrate an existing service to another CSP.

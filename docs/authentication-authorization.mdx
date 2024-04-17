@@ -85,7 +85,9 @@ To keep our initial role configuration simple, the following roles are considere
 
 > `user` - this is the role allocated to end user.
 >
-> `isv` - this is the role allocated to ISV (independent software vendor) users.
+> `isv` - this is the role allocated to ISV (Independent Software Vendor) users.
+>
+> `csp` - this is the role allocated to CSP (Cloud Service Provider) users.
 >
 > `admin` - this is the role allocated to administrators running Xpanse.
 >
@@ -110,16 +112,24 @@ This option can be found on the UI under - users -> click on user -> Authorizati
 
 ### OIDC Metadata
 
+#### Metadata for ISVs
+
 In order to allow service vendors to manage only their own services, we use ABAC. This is achieved by using OIDC's `metadata` feature to assign `isv` users to a specific namespace.
 
-![img.png](../static/img/metadata.png)
+![img.png](../static/img/metadata-isv.png)
 
 While registering a service, the service vendor must specify the same namespace value in the `namespace` field.
 With this, users of another namespace will not be allowed to view, update or delete these service templates.
 
+#### Metadata for CSPs
+
+Also for CSP users, the metadata must be used to define the CSP to which the user belongs to.
+
+![img.png](../static/img/metadata-csp.png)
+
 ## Execute authenticated APIs
 
-When the application has activated authorization with 'zitadel' profile, all protected APIs must have an
+When the application has activated authorization with 'oauth' profile, all protected APIs must have an
 `Authorization` header in the `Bearer ${access token}` format in the http request.
 Here are two ways to get access_token for executing authenticated APIs:
 
@@ -150,3 +160,11 @@ url with response model 'TokenResponse' with field 'access_token.'
 Then you can use the value of 'access_token' to fill header 'Authorization' in the http request when executing
 authenticated APIs with CLI or the other http client tools.
 ![Authorized access token response](../static/img/authorized-access-token-response.png)
+
+## Disable Authentication and Authorization
+
+If we want to disable Authentication and Authorization completely, then start the application with profile `noauth`.
+
+If we want to disable only Authorization (RBAC), then we must start the application with configuration `enable.role.protection=false`
+
+This might be necessary when we plan to run xpanse behind any other applications which will take care of authentication and authorization.

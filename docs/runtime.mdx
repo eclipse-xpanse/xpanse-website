@@ -95,7 +95,7 @@ $ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar
 > cloud service provider.
 
 ```properties
-spring.profiles.active=zitadel,zitadel-testbed,terraform-boot,tofu-maker
+spring.profiles.active=oauth,zitadel,zitadel-testbed,terraform-boot,tofu-maker
 ```
 
 By default, `Xpanse Runtime` starts with our `zitadel-testbed`. If you would not like to use our `zitadel-testbed`,
@@ -104,7 +104,7 @@ you can start the server using the below command by update the `spring.profiles.
 ```shell
 $ cd runtime/target
 $ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar \
---spring.profiles.active=zitadel,terraform-boot,tofu-maker
+--spring.profiles.active=oauth,zitadel,terraform-boot,tofu-maker
 --authorization-api-client-id=${client-id} \
 --authorization-api-client-secret=${client-secret} \
 --authorization-swagger-ui-client-id=${swagger-ui-cleint-id}
@@ -117,7 +117,7 @@ removed the profile flag `terraform-boot` and `tofu-maker`.
 
 ```shell
 $ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar \
---spring.profiles.active=zitadel,zitadel-testbed
+--spring.profiles.active=oauth,zitadel,zitadel-testbed
 ```
 
 ##### From IDE
@@ -169,7 +169,7 @@ contains all necessary tools preinstalled.
 
 ```shell
 $ docker pull ghcr.io/eclipse-xpanse/xpanse:${release-version}
-$ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=zitadel,mysql" ghcr.io/eclipse-xpanse/xpanse:${release-version}
+$ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=oauth,zitadel,mysql" ghcr.io/eclipse-xpanse/xpanse:${release-version}
 $ docker logs xpanse
 ```
 
