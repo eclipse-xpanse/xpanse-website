@@ -108,48 +108,12 @@ const config: Config = {
                             href: swaggerHubApiUrl,
                         },
                         {
-                            label: 'Architecture',
-                            to: '/docs/architecture',
+                            label: 'Docs Repo',
+                            href: 'https://github.com/eclipse-xpanse/xpanse-website',
                         },
                         {
-                            label: 'Authentication & Authorization',
-                            to: '/docs/authentication-authorization',
-                        },
-                        {
-                            label: 'Cloud Provider Credentials',
-                            to: '/docs/cloud-provider-credentials',
-                        },
-                        {
-                            label: 'Configuration Language',
-                            to: '/docs/configuration-language',
-                        },
-                        {
-                            label: 'Database',
-                            to: '/docs/database',
-                        },
-                        {
-                            label: 'Package Structure',
-                            to: '/docs/package-structure',
-                        },
-                        {
-                            label: 'Plugins',
-                            to: '/docs/plugins',
-                        },
-                        {
-                            label: 'Runtime',
-                            to: '/docs/runtime',
-                        },
-                        {
-                            label: 'Service Deployment',
-                            to: '/docs/service-deployment',
-                        },
-                        {
-                            label: 'Supported Clouds',
-                            to: '/docs/supported-clouds',
-                        },
-                        {
-                            label: 'UI',
-                            to: '/docs/ui',
+                            label: 'Changelog',
+                            href: 'https://github.com/eclipse-xpanse/xpanse/releases',
                         },
                     ],
                 },
