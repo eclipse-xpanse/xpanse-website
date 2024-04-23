@@ -6,21 +6,21 @@ import Link from '../src/components/link/Link';
 
 # Architecture
 
-Xpanse is a project aimed reshaping the cloud services ecosystem:
+xpanse is a project aimed reshaping the cloud services ecosystem:
 
 -   the cloud users can find the same services across different cloud providers, exactly the same services provided by
-    Xpanse.
+    xpanse.
 -   the software vendors can easily create native and portable managed services for their software, including seamless and
     low level integration with cloud provider services. In addition, of software artifacts, software vendor describe the
-    service using the Xpanse data model.
--   the cloud providers can easily extend their services catalog by registering services described using the Xpanse data model.
+    service using the xpanse data model.
+-   the cloud providers can easily extend their services catalog by registering services described using the xpanse data model.
 
-Xpanse allows anyone to create managed services (not only the cloud provider), portable, and fully
+xpanse allows anyone to create managed services (not only the cloud provider), portable, and fully
 integrated within the cloud provider infrastructure.
 
-![Xpanse Architecture](../static/img/xpanse_architecture.svg 'Xpanse Architecture')
+![xpanse Architecture](../static/img/xpanse_architecture.svg 'xpanse Architecture')
 
-The Xpanse service descriptor is a yaml fully describing the service. This descriptor is handled by the orchestrator.
+The xpanse service descriptor is a yaml fully describing the service. This descriptor is handled by the orchestrator.
 
 The orchestrator reads the deployment scripts provided as part of the service descriptor and executes it when the service is ordered.
 
@@ -33,6 +33,6 @@ The orchestrator defines the following lifecycle for each service:
 2. Once registered, the service is available for the end user for deployments.
 3. the orchestrator can delete the service and with this will remove the service from the catalog.
 
-You can interact with the Xpanse API using the <Link name={'REST API.'} url={'https://app.swaggerhub.com/apis/eclipse-xpanse-bot/XpanseRuntimeApi'}/>
-The orchestrator, plugins and API are all managed in the Xpanse runtime Spring Boot application.
+You can interact with the xpanse API using the <Link name={'REST API.'} url={'https://app.swaggerhub.com/apis/eclipse-xpanse-bot/XpanseRuntimeApi'}/>
+The orchestrator, plugins and API are all managed in the xpanse runtime Spring Boot application.
 The runtime is the glue between all components.

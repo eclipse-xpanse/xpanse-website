@@ -4,19 +4,19 @@ import Link from '../../src/components/link/Link';
 
 ## Overview
 
-Xpanse is aiming to build a secure system from the foundation,
+xpanse is aiming to build a secure system from the foundation,
 applying the best industry practices in terms of development quality. However,
 as in every software projects, bugs do happen. This process explains how we
 handle bugs.
 
 ## How to Report a Bug?
 
-If you think you have found a bug in Xpanse, please open an issue in GitHub and in the project that you think is the
+If you think you have found a bug in xpanse, please open an issue in GitHub and in the project that you think is the
 source of the issue. Use the provided template:
 
--   What is the action to reproduce the bug? (Steps to reproduce)
--   What is the result you see? (Actual result)
--   What is the result you expect? (Expected behaviour)
+-   What's the action to reproduce the bug? (Steps to reproduce)
+-   What's the result you see? (Actual result)
+-   What's the result you expect? (Expected behaviour)
 -   Frequency? (always, sometimes, one-time issue)
 -   Tested version (Release or commit version, platform)
 -   Do you know any workaround of this issue? (link to workaround/mitigation steps etc)
@@ -31,7 +31,7 @@ The bug triage is a process where developers asses the bug and set its
 severity and domain. At the end of this process the bug will:
 
 -   Be classified as a security issue, normal bug, feature request, or be rejected
-    if the feature is working as planned or could not be reproduced.
+    if the feature is working as planned or couldn't be reproduced.
 -   Have its severity set. Please refer to the documentation of severity levels
     below.
 
@@ -120,13 +120,12 @@ branch. Fixes for related bugs are possible in the same branch.
 ### Releasing
 
 When a bug fix is available in a branch, the developer creates a merge request.
-When the change is accepted, it is merged in the main branch. The developer in
+When the change is accepted, it's merged in the main branch. The developer in
 charge of the bug verifies with the release manager to which branches the change
 should be backported.
 
 If the bug comes from a dependent library, developers upstream the bug fix. If
-the upstream is delayed, the Project might ship a local fix. However, we aim at
-upstreaming all fixes.
+the upstream is delayed, the Project might ship a local fix. However, we aim to upstream all fixes.
 
 During the time of development of the patch and eventual upstream, the developer
 updates the documentation (if appropriate), and adds a notification to the release
@@ -135,5 +134,5 @@ fixed in the release (publicly known) and a list of CVEs fixed that are still un
 embargo.
 
 If the bug is classified as critical, it might be decided to perform a separate
-bugfix release to fix the issue. Otherwise, the bug fix lands in the next bugfix
+bug-fix release to fix the issue. Otherwise, the bug fix lands in the next bug-fix
 release.

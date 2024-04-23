@@ -6,18 +6,18 @@ import Link from '../src/components/link/Link';
 
 # Request Audit
 
-All API calls to Xpanse can be audited and tracked. The implementation of audit functionality is CSP plugin specific.
+All API calls to xpanse can be audited and tracked. The implementation of audit functionality is CSP plugin specific.
 The plugins can decide what they want to do with the audit data. For example, the data can be forwarded to any cloud tracking services or to any logging services or can even be simply ignored.
 
 ## Extracting CSP Data
 
-If Xpanse is running with just one CSP plugin activated, then all services are by default audited by the logic implemented by that specific CSP plugin.
+If xpanse is running with just one CSP plugin activated, then all services are by default audited by the logic implemented by that specific CSP plugin.
 
-if more than one CSP is activated in the Xpanse runtime, then we extract the CSP name from the request URI or the request body and then forward the audit request to the corresponding CSP plugin.
+if more than one CSP is activated in the xpanse runtime, then we extract the CSP name from the request URI or the request body and then forward the audit request to the corresponding CSP plugin.
 
 ### Configure Audit for API Methods
 
-Developers who write API (controller) methods must annotate these API methods with the <Link name={'AuditApiRequest'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/api/src/main/java/org/eclipse/xpanse/api/config/AuditApiRequest.java'}/> annotation.
+Developers who write API (controller) methods must annotate these API methods with the <Link name={`AuditApiRequest`} url={`https://github.com/eclipse-xpanse/xpanse/blob/main/modules/api/src/main/java/org/eclipse/xpanse/api/config/AuditApiRequest.java`}/> annotation.
 The annotation must also be provided with the information on how the CSP value can be extracted from the method's input data.
 
-All logic to extract CSP information from request data can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/api/src/main/java/org/eclipse/xpanse/api/config/GetCspInfoFromRequest.java'}/>. This must be extended if there are any new request data models.
+All logic to extract CSP information from request data can be found <Link name={'here'} url={`https://github.com/eclipse-xpanse/xpanse/blob/main/modules/api/src/main/java/org/eclipse/xpanse/api/config/GetCspInfoFromRequest.java`}/>. This must be extended if there are any new request data models.

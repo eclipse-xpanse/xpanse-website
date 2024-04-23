@@ -13,7 +13,7 @@ export const DEPLOYER_INTERFACE =
 export const DEPLOY_RESULT_MODEL =
     'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/models/src/main/java/org/eclipse/xpanse/modules/models/service/deploy/DeployResult.java';
 
-Xpanse aims to unify the service deployment on any cloud by re-using already available cloud infrastructure management tools such
+xpanse aims to unify the service deployment on any cloud by re-using already available cloud infrastructure management tools such
 as Terraform, OpenTofu, Pulumi, etc., in the market.
 
 Service Deployment involves the following tasks
@@ -22,7 +22,7 @@ Service Deployment involves the following tasks
    required for running the service. The script must be provided as part of the service template.
 2. Install the software and configurations needed for running the service.
 
-> Note: At the moment, only Terraform is supported by Xpanse for service deployment. We plan to add support for other
+> Note: At the moment, only Terraform is supported by xpanse for service deployment. We plan to add support for other
 > deployment tools in the upcoming releases.
 
 ## Deployer Implementation
@@ -86,7 +86,7 @@ the <Link name={'samples'} url={'https://github.com/eclipse-xpanse/xpanse/tree/m
 
 ### Terraform Boot
 
-To offload the service deployment tasks from the Xpanse's main runtime engine, we created a project called <Link name={'terraform-boot'} url={'https://github.com/eclipse-xpanse/terraform-boot'}/>.
+To offload the service deployment tasks from the xpanse's main runtime engine, we created a project called <Link name={'terraform-boot'} url={'https://github.com/eclipse-xpanse/terraform-boot'}/>.
 We used this application for all our Terraform related tasks.
 
 ## OpenTofu
@@ -100,12 +100,12 @@ the <Link name={'samples'} url={'https://github.com/eclipse-xpanse/xpanse/tree/m
 
 ### Tofu Maker
 
-To offload the service deployment tasks from the Xpanse's main runtime engine, we created a project called <Link name={'tofu-maker'} url={'https://github.com/eclipse-xpanse/tofu-maker'}/>.
+To offload the service deployment tasks from the xpanse's main runtime engine, we created a project called <Link name={'tofu-maker'} url={'https://github.com/eclipse-xpanse/tofu-maker'}/>.
 We used this application for all our OpenTofu related tasks.
 
 ### Script Validation
 
-As part of the service registration process, Xpanse validates the syntax of the Terraform script provided. The service
+As part of the service registration process, xpanse validates the syntax of the Terraform script provided. The service
 is registered only when the script validation is successful.
 
 We use the Terraform <Link name={'validate'} url={'https://developer.hashicorp.com/terraform/cli/commands/validate'}/> feature to achieve
@@ -132,10 +132,10 @@ the job to gather all output generated from the script.
 
 ### Capturing Service Details
 
-For any service ordered by the customer, it is important to return the details of the ordered service. Such as the IPs,
+For any service ordered by the customer, it's important to return the details of the ordered service. Such as the IP addresses,
 credentials, etc. which the customer must use to start consuming the service.
 
 We use the
 Terraform `output` <Link name={'feature'} url={'https://developer.hashicorp.com/terraform/tutorials/configuration-language/outputs'}/> to get
-such information from the service deployment. So it is important to add the `output` section to the scripts. The same
-is also used by the Xpanse UI for displaying the service details.
+such information from the service deployment. So it's important to add the `output` section to the scripts. The same
+is also used by the xpanse UI for displaying the service details.

@@ -6,20 +6,20 @@ import Link from '../src/components/link/Link';
 
 # Authentication and Authorization
 
-With security being at the heart of Xpanse project, all entry points to the application are completely protected.
+With security being at the heart of xpanse project, all entry points to the application are completely protected.
 
 ## OIDC
 
 Authentication and Authorization are implemented using OIDC (OpenID Connect). This helps us to outsource the security
-layer to an external `Identity Provider` and thereby not storing any user data within Xpanse.
+layer to an external `Identity Provider` and thereby not storing any user data within xpanse.
 
 ### OIDC Providers and its Configuration
 
-Similar to other integrations provided in Xpanse, the runtime can be extended to be integrated with any Identity
-Provider that supports OIDC standards. It is not limited to any specific product.
+Similar to other integrations provided in xpanse, the runtime can be extended to be integrated with any Identity
+Provider that supports OIDC standards. It's not limited to any specific product.
 
-Any OIDC provider cannot be used directly out of the box. It needs a variety of configurations on the provider. From
-Xpanse project, we aim to provide 'Infrastructure as Code' which will automate all required configuration on the
+Any OIDC provider can't be used directly out of the box. It needs a variety of configurations on the provider. From
+xpanse project, we aim to provide 'Infrastructure as Code' which will automate all required configuration on the
 Identity provider.
 
 All Identity provider related configuration on consumers can only be obtained only after the OIDC provider is fully
@@ -27,7 +27,7 @@ configured with the consumer detail
 
 ## Zitadel
 
-As a default implementation, Xpanse runtime is integrated with <Link name={'Zitadel'} url={'https://zitadel.com/'}/> Identity Provider.
+As a default implementation, xpanse runtime is integrated with <Link name={'Zitadel'} url={'https://zitadel.com/'}/> Identity Provider.
 
 To enable Zitadel authentication layer, the runtime must be started with `zitadel` profile.
 
@@ -55,10 +55,12 @@ documented <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ia
 
 Runtime application needs the following properties to be set for the authentication and authorization to work.
 
+```shell
 -   authorization.server.endpoint
 -   authorization.api.client.id
 -   authorization.api.client.secret
 -   authorization.swagger.ui.client.id
+```
 
 #### UI
 
@@ -67,7 +69,7 @@ documented <Link name={'here'} url={'./ui#starting-local-development-server'}/>.
 
 #### End Users Configuration
 
-At the moment, it is only feasible to create user only via the Zitadel UI as we do not have SMTP available which is
+At the moment, it's only feasible to create user only via the Zitadel UI as we don't have SMTP available which is
 needed for self-registration of users.
 
 #### Admin Users
@@ -77,7 +79,7 @@ these users can add other end-users on Zitadel.
 
 ## Role Based Access Control - RBAC
 
-We use OIDC providers to also implement RBAC on Xpanse runtime API and also in UI.
+We use OIDC providers to also implement RBAC on xpanse runtime API and also in UI.
 
 ### Roles
 
@@ -89,7 +91,7 @@ To keep our initial role configuration simple, the following roles are considere
 >
 > `csp` - this is the role allocated to CSP (Cloud Service Provider) users.
 >
-> `admin` - this is the role allocated to administrators running Xpanse.
+> `admin` - this is the role allocated to administrators running xpanse.
 >
 > **Default Role** - When no roles are assigned to a user, then every registered is by default assumed to have
 > the `user` role.
@@ -104,8 +106,8 @@ This option can be found on the UI under - users -> click on user -> Authorizati
 
 1. Each API method is configured to be allowed only for specific roles. `Spring Security` fetches the user information
    from `Identity Provider` and based on the roles allocated to the user, we decide if the user is allowed to access an
-   API or not. If the user is not authorized to access, then API returns HTTP code `403`.
-2. Xpanse UI fetches the user information from `Identity Provider` and based on the roles allocated to the user, menu
+   API or not. If the user isn't authorized to access, then API returns HTTP code `403`.
+2. xpanse UI fetches the user information from `Identity Provider` and based on the roles allocated to the user, menu
    options are displayed in the UI.
 
 ## Attribute Based Access Control - ABAC
@@ -114,12 +116,12 @@ This option can be found on the UI under - users -> click on user -> Authorizati
 
 #### Metadata for ISVs
 
-In order to allow service vendors to manage only their own services, we use ABAC. This is achieved by using OIDC's `metadata` feature to assign `isv` users to a specific namespace.
+In order to allow service vendors to manage only their own services, we use ABAC. This is achieved by using `metadata` feature of OIDC to assign `isv` users to a specific namespace.
 
 ![img.png](../static/img/metadata-isv.png)
 
 While registering a service, the service vendor must specify the same namespace value in the `namespace` field.
-With this, users of another namespace will not be allowed to view, update or delete these service templates.
+With this, users of another namespace won't be allowed to view, update or delete these service templates.
 
 #### Metadata for CSPs
 
@@ -129,13 +131,13 @@ Also for CSP users, the metadata must be used to define the CSP to which the use
 
 ## Execute authenticated APIs
 
-When the application has activated authorization with 'oauth' profile, all protected APIs must have an
-`Authorization` header in the `Bearer ${access token}` format in the http request.
+When the application has activated authorization with `oauth` profile, all protected APIs must have an
+`Authorization` header in the `Bearer ${access token}` format in the HTTP request.
 Here are two ways to get access_token for executing authenticated APIs:
 
-The first way is to open the Swagger-UI page of the Xpanse server.
+The first way is to open the Swagger-UI page of the xpanse server.
 In case of local development server, the Swagger-UI is reachable on `http://localhost:8080/swagger-ui/index.html`.
-![Browser open openAPI page](../static/img/browser-open-openapi-page.png)
+![Browser open OpenAPI page](../static/img/browser-open-openapi-page.png)
 
 Click on the 'Authorize' button on the SwaggerUI page to open the authentication window.
 Click on the 'select all' option to select all 'Scopes' and click on 'Authorize'
@@ -148,7 +150,7 @@ Close the authentication window and select the API which you want to execute and
 then click on 'Try it out' and 'Execute' to execute the API method.
 In the Curl command, you can see the request header named `Authorization` with the value of
 `${access_token}` after prefix `Bearer `.
-![Execute APIs using openAPI page](../static/img/execute-api-in-openapi-page.png)
+![Execute APIs using OpenAPI page](../static/img/execute-api-in-openapi-page.png)
 
 The other way is to use the `Authorize` REST API.
 Call the method using browser.
@@ -156,9 +158,9 @@ In case of local development server, the URL is `http://localhost:8080/auth/auth
 The browser will redirect to the login page of the IAM service.
 Fill username and password to complete user login.
 After successful login in the IAM, the browser will back to the token API
-url with response model 'TokenResponse' with field 'access_token.'
-Then you can use the value of 'access_token' to fill header 'Authorization' in the http request when executing
-authenticated APIs with CLI or the other http client tools.
+URL with response model 'TokenResponse' with field 'access_token.'
+Then you can use the value of 'access_token' to fill header 'Authorization' in the HTTP request when executing
+authenticated APIs with CLI or the other HTTP client tools.
 ![Authorized access token response](../static/img/authorized-access-token-response.png)
 
 ## Disable Authentication and Authorization

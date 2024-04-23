@@ -18,7 +18,7 @@ found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/blob/ma
 
 ### Cleanup
 
-Since it is a file-based database, the entries are not lost with reboot of the server.
+Since it's a file-based database, the entries aren't lost with reboot of the server.
 
 To clean up the database, the database files must be simply deleted and the server must be restarted for new fresh DB
 files to be recreated. Execute the below command on the root of the folder xpanse project.
@@ -29,7 +29,7 @@ rm *.db
 
 > Note:
 > The H2 database is purely for development and test purposes only and must be avoided for production installation of
-> Xpanse.
+> xpanse.
 
 ## Production Environments
 
@@ -38,8 +38,8 @@ functionalities tested.
 
 ### MySQL DB
 
-At the moment, this is the only DB that is fully supported.
-To use `MySQL` as the database for Xpanse, it must be activated by starting the application with profile `mysql` and
+At the moment, this is the only DB that's fully supported.
+To use `MySQL` as the database for xpanse, it must be activated by starting the application with profile `mysql` and
 by replacing the placeholders for database`username` and `password` as below.
 
 ```shell
@@ -55,11 +55,11 @@ Current supported version of MySQL is `8.1.0`. This is the latest LTS release of
 
 #### Default Configuration
 
-The above command will start the Xpanse runtime with the following default configurations:
+The above command will start the xpanse runtime with the following default configurations:
 
-1. MySQL running on the same machine where Xpanse is running. (Same localhost)
+1. MySQL running on the same machine where xpanse is running. (Same localhost)
 2. Database is listening on port `3306`.
-3. Name of the database is `xpanse`. This must be created on the DB server. It will **not** be automatically created.
+3. Name of the database is `xpanse`. This must be created on the DB server. It **won't** be automatically created.
 
 The Default configuration file can be
 found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-mysql.properties#L6'}/>.
@@ -78,12 +78,12 @@ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
 
 ```
 
-> **Note:** It is safe to provide the database-related properties as environment variables rather than passing them
+> **Note:** It's safe to provide the database-related properties as environment variables rather than passing them
 > directly in the command line.
 > In case of this,
 > the same property name must be set in UPPERCASE and underscore separated instead of dot for all variables.
 
-> **Note:** Using this startup command, the database can run on any machine that is reachable from the Xpanse runtime
+> **Note:** Using this startup command, the database can run on any machine that's reachable from the xpanse runtime
 > application.
 
 #### MySQL as a Docker Container
@@ -96,7 +96,7 @@ DockerHub <Link name={'here'} url={'https://hub.docker.com/_/mysql/'}/>.
 ##### Starting new container
 
 While starting the MySQL docker container for the first time, we can configure `database-host`, `database-port` and
-`database-name` as below and the same can be used in starting the Xpanse runtime using the command described
+`database-name` as below and the same can be used in starting the xpanse runtime using the command described
 
 <Link name={'above'} url={'./database#overriding-default-configuration'} isOpenInNewTab={false} />.
 
@@ -105,7 +105,7 @@ docker pull mysql:8.1.0
 ```
 
 By starting the container with the below command, the database is started by automatically configuring the database with
-Xpanse database name, database user and password. In addition to that, password for the DB `root` user can also be
+xpanse database name, database user and password. In addition to that, password for the DB `root` user can also be
 updated to the value of our choice.
 
 ```shell

@@ -6,9 +6,9 @@ import Link from '../src/components/link/Link';
 
 # Policies
 
-Policies in Xpanse are ways to validate the infrastructure changes that a managed service deployment would do, before
+Policies in xpanse are ways to validate the infrastructure changes that a managed service deployment would do, before
 the service is actually deployed.
-Xpanse uses <Link name={'OPA - Open Policy Agent'} url={'https://www.openpolicyagent.org/'}/> for this purpose.
+xpanse uses <Link name={'OPA - Open Policy Agent'} url={'https://www.openpolicyagent.org/'}/> for this purpose.
 
 ## OPA - Open Policy Agent
 
@@ -23,7 +23,7 @@ found <Link name={'here'} url={'https://www.openpolicyagent.org/docs/latest/poli
 -   As an End user, we can use policies to validate if the managed service creates any resources or configuration in the
     end user's cloud infrastructure which may be not allowed by his/her organization.
 -   As a cloud service provider, we can use policies to validate if the service is being correctly deployed.
--   As an integration test to validate if the service is deploying exactly what it is supposed to do.
+-   As an integration test to validate if the service is deploying exactly what it's supposed to do.
 -   and many more.
 
 ## End User Policies
@@ -37,14 +37,14 @@ deployed.
 
 ## Policy Management APIs
 
-Xpanse provides two sets of APIs for managing life-cycle of policies.
+xpanse provides two sets of APIs for managing life-cycle of policies.
 
 1. Services Policies Management - To add, update and delete service level policies by CSP.
 2. User Policies Management - To add, update and delete user level policies by end user.
 
 ## Policy-Man
 
-Xpanse uses an application called <Link name={'policy-man'} url={'https://github.com/eclipse-xpanse/policy-man'}/> for the below purposes
+xpanse uses an application called <Link name={'policy-man'} url={'https://github.com/eclipse-xpanse/policy-man'}/> for the below purposes
 
 -   Rego syntax validation when policies are uploaded.
 -   OPA policy validation when services are deployed.

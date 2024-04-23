@@ -5,7 +5,7 @@ sidebar_position: 7
 # Package Structure
 
 The package structure of the xpanse application are as follows and must be strictly followed in all implementations.
-Xpanse uses `maven` as its build tool and the application is split into multiple smaller maven modules.
+xpanse uses `maven` as its build tool and the application is split into multiple smaller maven modules.
 
 ```mermaid
 graph TB
@@ -48,78 +48,78 @@ graph TB
 
 This maven module is a parent module for most of the other maven modules within xpanse.
 
-#### api
+#### `api`
 
 Contains all the REST API controller classes and the exception handlers.
 
-#### async
+#### `async`
 
-Contains all classes related to async processing configuration for different use cases within Xpanse.
+Contains all classes related to asynchronous processing configuration for different use cases within xpanse.
 
-#### common
+#### `common`
 
 Contains generic and utility classes which are used by multiple different modules.
 
-#### credential
+#### `credential`
 
 contains all logic and caching for cloud provider credentials.
 
-#### database
+#### `database`
 
 contains all entities, DB queries and JPA related code.
 
-#### deployment
+#### `deployment`
 
-contains all code related to service deployment. All service deployers such terraform, opentofu, etc are also implemented in this module.
+contains all code related to service deployment. All service deployers such Terraform, OpenTofu, etc are also implemented in this module.
 
-#### logging
+#### `logging`
 
-contains all code and config related to logging.
+contains all code and configuration related to logging.
 
-#### models
+#### `models`
 
-contains all data models and exceptions that are exposed externally in our APIs. All data models here are automatically exported in the openapi doc.
+contains all data models and exceptions that are exposed externally in our APIs. All data models here are automatically exported in the OpenAPI doc.
 
 > **_Note:_**
-> Ensure that this module does not have dependency to any other xpanse modules else it will result in cycle dependencies errors.
+> Ensure that this module doesn't have dependency to any other xpanse modules else it will result in cycle dependencies errors.
 >
 > This package must not contain any internal data classes.
 
-#### monitor
+#### `monitor`
 
 contains all code related to fetching and caching service metrics for deployed services.
 
-#### observability
+#### `observability`
 
 contains all code related to observability and traceability of the xpanse stack.
 
 > **_Note:_** > `monitor` module is for monitoring the customer's deployed clouds services whereas `observability` module is for monitoring the xpanse stack itself.
 
-#### orchestrator
+#### `orchestrator`
 
 This package is the central package for orchestrating service deployment, monitoring, cloud provider credentials, service state management.
-It also has all the internal data models used by Xpanse for all use-cases.
+It also has all the internal data models used by xpanse for all use-cases.
 
-#### Policy
+#### `Policy`
 
 This package contains all code related to OPA policy validation. Also, the policy-man REST client is part of this package.
 
-#### security
+#### `security`
 
-This package contains all code and config related to security within Xpanse.
-It contains the Oauth2 security of Xpanse APIs and also the encryption of sensitive order data.
+This package contains all code and configuration related to security within xpanse.
+It contains the Oauth2 security of xpanse APIs and also the encryption of sensitive order data.
 
-#### servicetemplate
+#### `servicetemplate`
 
 contains all code for managing service templates.
 
-#### workflow
+#### `workflow`
 
-contains all code and config related to managing activiti workflow engine.
+contains all code and configuration related to managing Activiti workflow engine.
 
 ## plugins
 
-contains all cloud provider specific integrations. Under plugins maven module, there is one submodule for each cloud provider supported by Xpanse.
+contains all cloud provider specific integrations. Under plugins maven module, there is one submodule for each cloud provider supported by xpanse.
 
 ## runtime
 

@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Planning
 
-We use options/features within GitHub for development planning and governance activities in Xpanse.
+We use options/features within GitHub for development planning and governance activities in xpanse.
 
 ### Agile Development Process
 
