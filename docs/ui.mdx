@@ -6,7 +6,7 @@ import Link from '../src/components/link/Link';
 
 # UI
 
-This is the frontend for the Xpanse project which allows cloud service providers to register managed services to the
+This is the frontend for the xpanse project which allows cloud service providers to register managed services to the
 service catalog and also for end users to deploy services from the service catalog and manage them.
 
 ## Development Setup
@@ -27,16 +27,16 @@ has all the required configuration. Details can be found <Link name={'here'} url
 
 All required configuration parameters must be added to .env
 file <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env'}/>.
-Even if we do not have a valid default value, we must just add empty value.
+Even if we don't have a valid default value, we must just add empty value.
 This file serves as a reference to all required properties.
 
 > **Very Important**: Since React is compiled to a static app, all configuration values can be seen directly in the
 > browser too.
 > Therefore, no secure configurations such as passwords, keys, etc. must be added here.
 
-## Oauth Configuration
+## OAuth Configuration
 
-For local environments, the `access_tokens` are stored with in the browser storage. This is not safe, but it is enough for non-production environments and for debugging purposes.
+For local environments, the `access_tokens` are stored with in the browser storage. This isn't safe, but it's enough for non-production environments and for debugging purposes.
 
 For production environments, we must use `Service Workers` which will block anyone to access the token. This can be enabled by making the following configurations.
 
@@ -45,7 +45,7 @@ REACT_APP_AUTH_USE_SERVICE_WORKER_ONLY=true
 ```
 
 and the file <Link name={'OidcTrustedDomains.js'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/public/OidcTrustedDomains.js'}/> must be updated with correct information.
-`oidcDomains` must have the identity provider URL and `accessTokenDomains` must have the Xpanse backend server URL.
+`oidcDomains` must have the identity provider URL and `accessTokenDomains` must have the xpanse API server URL.
 
 > **_Note:_** if the same must be used with our official docker images, then this file need not be touched. It will be automatically set from the environment variables.
 
@@ -61,7 +61,7 @@ and the file <Link name={'OidcTrustedDomains.js'} url={'https://github.com/eclip
    Example can be
    found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/package.json#L25'}/>
 
-> **Important**: .env files must be used only for default configurations or for dev configurations values.
+> **Important**: .env files must be used only for default configurations or for development environment configurations values.
 
 #### Environment Variables
 
@@ -70,7 +70,7 @@ with `docker run` for production.
 
 ### Getting Configuration Values
 
-We have a custom implementation which reads the configuration from all sources and provides a unified configuration map.
+We've a custom implementation which reads the configuration from all sources and provides a unified configuration map.
 Only this must be used for reading configuration from the React app.
 
 Implementation can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/config/config.ts#L16'}/>.
@@ -80,7 +80,7 @@ Implementation can be found <Link name={'here'} url={'https://github.com/eclipse
 In the project directory, you can run the below command to start the local development server. This also additionally
 needs `nodejs` to be installed on the development machine.
 
-If there is a local development Zitadel instance and backend API instance, then we must
+If there is a local development Zitadel instance and xpanse API instance, then we must
 set `REACT_APP_ZITADEL_CLIENT_ID` and `REACT_APP_XPANSE_API_URL` environment variables with respective values
 and then run the below command for the application to start.
 
@@ -116,14 +116,14 @@ We use `prettier` to format our UI code. To auto format the code, you can run th
 npx prettier --config .prettierrc --write .
 ```
 
-### Generate Rest Client for Xpanse API
+### Generate Rest Client for xpanse API
 
-We use the openapi generator to generate data models and rest client from the openapi json file.
+We use the OpenAPI generator to generate data models and rest client from the OpenAPI JSON file.
 The following steps must be followed to generate a new client and data models whenever there is a new version if the
-swagger json.
+swagger JSON.
 
-1. Copy the openapi file
-   to <Link name={'OpenApi JSON File'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json'}/>
+1. Copy the OpenAPI file
+   to <Link name={'OpenAPI JSON File'} url={`https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json`}/>
 2. Run the code generator as below
     ```shell
         cd src/xpanse-api
@@ -139,7 +139,7 @@ The only recommended way to run UI in production is to use the docker image
 
 ## Docker Image
 
-Docker image for the UI project is based on nginx base image. This is because the project only serves static content.
+Docker image for the UI project is based on NGINX base image. This is because the project only serves static content.
 
 As part of our UI release process, we deliver our official images to GitHub packages.
 All available images can be found <Link name={'here'} url={'https://github.com/orgs/eclipse-xpanse/packages?tab=packages&q=xpanse-ui'}/>.
@@ -154,7 +154,7 @@ Production configuration values must be passed as environment variables to docke
 ```dotenv
 REACT_APP_ZITADEL_AUTHORITY_NAME # URL for the Oauth provider
 REACT_APP_ZITADEL_CLIENT_ID # Client ID provided by the Oauth provider for UI
-REACT_APP_XPANSE_API_URL # Backend API URL
+REACT_APP_XPANSE_API_URL # xpanse API URL
 REACT_APP_AUTH_USE_SERVICE_WORKER_ONLY=true # for production. Otherwise, this step config can be ignored.
 ```
 
@@ -165,7 +165,7 @@ docker run -d --name ui xpanse-ui
 
 ### Application Logs
 
-All logs from nginx are routed to stdout by default. Using the below command, all application logs can be viewed.
+All logs from NGINX are routed to stdout by default. Using the below command, all application logs can be viewed.
 
 ```shell
 docker logs ui

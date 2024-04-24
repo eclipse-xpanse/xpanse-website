@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Getting Started
 
-Xpanse is composed by:
+xpanse is composed by:
 
 -   an orchestrator responsible for the managed services (deployment, start, stop, ...) and loading
     plugins specific for each supported cloud provider

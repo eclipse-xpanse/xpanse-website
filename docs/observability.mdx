@@ -6,15 +6,15 @@ import Link from '../src/components/link/Link';
 
 # Observability
 
-Xpanse stack is built with observability in mind. It provides traces, metrics and logging at different levels
-which helps to monitor all systems involved in the Xpanse stack.
+xpanse stack is built with observability in mind. It provides traces, metrics and logging at different levels
+which helps to monitor all systems involved in the xpanse stack.
 
 ### OpenTelemetry
 
 ![OpenTelemetry](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyN7sCv7Y3XWDuSl3Pz0KSEBpO8mryvl_l5c7qbQv3cw&s)
 
 As a default implementation, we use <Link url={'https://opentelemetry.io/'} name={'OpenTelemetry'} /> to generate and collect telemetry data. The OpenTelemetry
-provided SDKs and auto-instrumentation features helps to generate all necessary data with no additional implementation. Using
+provided SDKs and auto instrumentation features helps to generate all necessary data with no additional implementation. Using
 OpenTelemetry provides an advantage that, we generate data based on standards specified by OpenTelemetry and thereby gives
 us the flexibility to feed this data to any OpenTelemetry protocol supported backends.
 
@@ -22,16 +22,16 @@ us the flexibility to feed this data to any OpenTelemetry protocol supported bac
 
 #### Logs
 
-All application runtimes involved in the Xpanse stack, generates logs with useful information to trace a request
+All applications involved in the xpanse stack, generates logs with useful information to trace a request
 end-to-end.
 Logs have metadata which provides very high level of traceability.
 
-The OpenTelemetry auto-instrumentation SDK is then used to export all generated logs from existing logging frameworks to
+The OpenTelemetry auto instrumentation SDK is then used to export all generated logs from existing logging frameworks to
 OTEL collector.
 
 #### Metrics and Traces
 
-All application runtimes are provided with an option to enable OpenTelemetry's auto-instrumentation features which then
+All applications are provided with an option to enable OpenTelemetry's auto instrumentation features which then
 generates metrics and traces.
 
 ### Telemetry Data collector
@@ -48,7 +48,7 @@ must then be configured in the data producing systems for forwarding the generat
 
 ### Sample Full Stack Observability
 
-An example on how to enable auto-instrumentation for all Xpanse components and then export data to OTEL collector which
+An example on how to enable auto instrumentation for all xpanse components and then export data to OTEL collector which
 can
 be later feed into Grafana monitoring stack can be
 found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-relops/blob/main/testbed/full-stack/docker-compose.yml'}/>.

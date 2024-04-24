@@ -6,33 +6,33 @@ import Link from '../src/components/link/Link';
 
 # Runtime
 
-Xpanse runtime is the running module built on SpringBoot.
+xpanse runtime is the running module built on SpringBoot.
 
-`Xpanse Runtime` supports two kinds of deployers: terraform and open tofu.
+`xpanse Runtime` supports two kinds of deployers: terraform and open tofu.
 
-`Xpanse Runtime` has two ways to start the `terraform`, one is to use the local terraform module, the other is use
+`xpanse Runtime` has two ways to start the `terraform`, one is to use the local terraform module, the other is use
 the remote terraform-boot service. The remote terraform-boot service is used by default.
 
-Also, `Xpanse Runtime` has two ways to start the `open tofu`, one is to use the local open tofu module,
+Also, `xpanse Runtime` has two ways to start the `open tofu`, one is to use the local open tofu module,
 the other is use the remote terraform-boot service. The remote terraform-boot service is used by default.
 
 ## Pre-Requisites
 
-1. If using local terraform module, the `Xpanse Runtime` host must have `Terraform CLI` installed.
+1. If using local terraform module, the `xpanse Runtime` host must have `Terraform CLI` installed.
 
 2. If using remote terraform-boot service, a remote `terraform-boot` service must be
-   deployed/started.More details about the Terraform-boot project can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/terraform-boot/blob/main/README.md'} />.
+   deployed/started. More details about the Terraform-boot project can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/terraform-boot/blob/main/README.md'} />.
 
-3. If using local open tofu module, the `Xpanse Runtime` host must have `Open Tofu CLI` installed.
+3. If using local open tofu module, the `xpanse Runtime` host must have `Open Tofu CLI` installed.
 
 4. If using remote terraform-boot service, a remote `tofu-maker` service must be
-   deployed/started.More details about the Terraform-boot project can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/tofu-maker/blob/main/README.md'} />.
+   deployed/started. More details about the Terraform-boot project can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/tofu-maker/blob/main/README.md'} />.
 
 5. Fully configured Zitadel instance.
 
 ## Properties and Environment Variables
 
-Xpanse has integration to multiple systems, and the aim is also to keep the system as flexible as
+xpanse has integration to multiple systems, and the aim is also to keep the system as flexible as
 possible and to cover all use-cases possible. Therefore, there are some configuration properties
 that the developer and the production administrators must take care of before starting/deploying
 xpanse.
@@ -59,7 +59,7 @@ Then compile the entire project using the below command:
 $ ./mvnw clean install -DskipTests
 ```
 
-By default, the compile process will enable all plugins supported by Xpanse. If you want to enable a specific plugin,
+By default, the compile process will enable all plugins supported by xpanse. If you want to enable a specific plugin,
 add the flag `-Pplugin-xxx` in the command line to enable the specific plugin.
 
 ```shell
@@ -68,10 +68,10 @@ $ ./mvnw clean install -DskipTests -Pplugin-huawei
 
 The specific plugin profile in the flag `-Pplugin-xxx` can enable the plugin for the cloud service provider as below:
 
-`-Pplugin-huawei` to enable the plugin for Huawei Cloud.
+`-Pplugin-huawei` to enable the plugin for HUAWEI CLOUD.
 `-Pplugin-flexibleengine` to enable the plugin for Flexible Engine Cloud.
 `-Pplugin-openstack` to enable the plugin for Openstack Cloud.
-`-Pplugin-scs` to enable the plugin for Scs Cloud.
+`-Pplugin-scs` to enable the plugin for SCS Cloud.
 
 #### Run
 
@@ -98,7 +98,7 @@ $ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar
 spring.profiles.active=oauth,zitadel,zitadel-testbed,terraform-boot,tofu-maker
 ```
 
-By default, `Xpanse Runtime` starts with our `zitadel-testbed`. If you would not like to use our `zitadel-testbed`,
+By default, `xpanse Runtime` starts with our `zitadel-testbed`. If you would not like to use our `zitadel-testbed`,
 you can start the server using the below command by update the `spring.profiles.active` property and with all the required variables.
 
 ```shell
@@ -110,7 +110,7 @@ $ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar \
 --authorization-swagger-ui-client-id=${swagger-ui-cleint-id}
 ```
 
-By default, `Xpanse Runtime` starts with terraform-boot and tofu-maker. If you want to use local terraform and
+By default, `xpanse Runtime` starts with terraform-boot and tofu-maker. If you want to use local terraform and
 local open tofu, just don't activate the terraform-boot and tofu-maker scenario in the application.properties
 configuration file. Use the below start command line with the value of the property `spring.profiles.active`
 removed the profile flag `terraform-boot` and `tofu-maker`.
@@ -173,9 +173,9 @@ $ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=oauth,zita
 $ docker logs xpanse
 ```
 
-> **Note:** It is safe to provide all properties as environment variables rather than passing them
+> **Note:** It's safe to provide all properties as environment variables rather than passing them
 > directly in the command line.
-> In case of this, the same property name must be set in UPPERCASE for all 4 variables.For running, using docker image, we can use the ` --env-file` option of the `
+> In case of this, the same property name must be set in UPPERCASE for all 4 variables. For running, using docker image, we can use the ` --env-file` option of the `
 docker run` command to store all sensitive data.
 > Again here the property names must be in UPPERCASE.
 
@@ -183,10 +183,10 @@ docker run` command to store all sensitive data.
 
 For running the runtime application behind a proxy, we must ensure that the proxy forwards the
 correct `X-Forwarded-*`headers to the API. This is necessary as the API has some features where the
-links to html pages are returned and this link will have the correct protocol and host only when
+links to HTML pages are returned and this link will have the correct protocol and host only when
 these headers are set.
 
-In the case of Nginx, the configuration will look like this
+In the case of NGINX, the configuration will look like this
 
 ```nginx configuration
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

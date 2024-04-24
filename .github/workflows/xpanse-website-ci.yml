@@ -11,6 +11,9 @@ on:
 
 jobs:
     build:
+        permissions:
+            checks: write
+            pull-requests: write
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -18,6 +21,11 @@ jobs:
             - name: Install Dependencies
               working-directory: ./
               run: npm install
+            - name: Run vale linter
+              uses: errata-ai/vale-action@reviewdog
+              with:
+                  filter_mode: nofilter
+                  fail_on_error: true
             - name: Run EsLint
               working-directory: ./
               run: npx eslint . --ext .js,.jsx,.ts,.tsx --config package.json --max-warnings=0

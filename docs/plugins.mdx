@@ -6,8 +6,8 @@ import Link from '../src/components/link/Link';
 
 # Plugins
 
-Plugins in Xpanse represent integration with cloud providers.
-We have one plugin each for every cloud provider where the managed services can be deployed.
+Plugins in xpanse represent integration with cloud providers.
+We've one plugin each for every cloud provider where the managed services can be deployed.
 The orchestrator decides which plugin to be invoked based on the cloud provider the end customer chooses to host his
 service.
 
@@ -25,7 +25,7 @@ reading monitoring data, handling infrastructure resources data provisioned via 
 
 A plugin for a cloud provider is activated by default. But a plugin might need one or more mandatory configurations
 available for it to work. These mandatory configuration properties must be declared when the plugins are implemented. If
-any of the required configuration properties are not available, then such plugin is simply not considered for processing
+any of the required configuration properties aren't available, then such plugin is simply not considered for processing
 any requests.
 
 > **Note**: These mandatory variables will also be injected into the deployment environment as environment variables.
@@ -36,16 +36,16 @@ Mandatory configuration properties are the following
 
 -   `OS_AUTH_URL` - Keystone URL of the Openstack installation.
 
-Other optional config properties
+Other optional configuration properties
 
 -   `OS_SERVICE_PROJECT` - Openstack project to be used to get monitoring information. All metrics data is stored in a
-    different central project. If this is not provided, then the project where the resource is hosted is used to get the
+    different central project. If this isn't provided, then the project where the resource is hosted is used to get the
     metrics data.
 -   `OS_PROXY_HOST` and `OS_PROXY_PORT` - Proxy server information to reach the Openstack installation.
 -   `OS_SSL_DISABLED` - If set to `true`, the certificate validation on the REST API calls to Openstack installation will
     be disabled.
 
-### HuaweiCloud
+### HUAWEI CLOUD
 
 No mandatory configuration properties required.
 
