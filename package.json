@@ -28,7 +28,7 @@
     },
     "devDependencies": {
         "@docusaurus/module-type-aliases": "^3.2.1",
-        "@docusaurus/tsconfig": "^3.2.1",
+        "@docusaurus/tsconfig": "^3.3.2",
         "@docusaurus/types": "3.2.1",
         "@tsconfig/docusaurus": "^2.0.3",
         "@types/react": "^18.3.1",
