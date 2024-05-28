@@ -41,7 +41,7 @@ For local environments, the `access_tokens` are stored with in the browser stora
 For production environments, we must use `Service Workers` which will block anyone to access the token. This can be enabled by making the following configurations.
 
 ```dotenv
-REACT_APP_AUTH_USE_SERVICE_WORKER_ONLY=true
+VITE_APP_AUTH_USE_SERVICE_WORKER_ONLY=true
 ```
 
 and the file <Link name={'OidcTrustedDomains.js'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/public/OidcTrustedDomains.js'}/> must be updated with correct information.
@@ -81,7 +81,7 @@ In the project directory, you can run the below command to start the local devel
 needs `nodejs` to be installed on the development machine.
 
 If there is a local development Zitadel instance and xpanse API instance, then we must
-set `REACT_APP_ZITADEL_CLIENT_ID` and `REACT_APP_XPANSE_API_URL` environment variables with respective values
+set `VITE_APP_ZITADEL_CLIENT_ID` and `VITE_APP_XPANSE_API_URL` environment variables with respective values
 and then run the below command for the application to start.
 
 ```shell
@@ -152,10 +152,10 @@ We must use another SSL load balancer to expose the UI for end users.
 Production configuration values must be passed as environment variables to docker run for the below vars using `-e` option.
 
 ```dotenv
-REACT_APP_ZITADEL_AUTHORITY_NAME # URL for the Oauth provider
-REACT_APP_ZITADEL_CLIENT_ID # Client ID provided by the Oauth provider for UI
-REACT_APP_XPANSE_API_URL # xpanse API URL
-REACT_APP_AUTH_USE_SERVICE_WORKER_ONLY=true # for production. Otherwise, this step config can be ignored.
+VITE_APP_ZITADEL_AUTHORITY_NAME # URL for the Oauth provider
+VITE_APP_ZITADEL_CLIENT_ID # Client ID provided by the Oauth provider for UI
+VITE_APP_XPANSE_API_URL # xpanse API URL
+VITE_APP_AUTH_USE_SERVICE_WORKER_ONLY=true # for production. Otherwise, this step config can be ignored.
 ```
 
 ```shell
