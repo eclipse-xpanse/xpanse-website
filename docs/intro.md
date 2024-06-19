@@ -14,3 +14,9 @@ xpanse is composed by:
 -   a REST API to interact with the orchestrator
 -   runtime (including cloud provider plugins) assembling all components together in a
     running service
+
+![high-level-architecture](../static/img/high-level-xpanse-architecture.excalidraw.png)
+
+## Current Features Set
+
+![current-features-set](../static/img/xpanse-current-features.excalidraw.png)
