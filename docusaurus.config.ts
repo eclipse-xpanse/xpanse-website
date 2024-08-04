@@ -1,10 +1,6 @@
 import type { Config } from '@docusaurus/types';
-import { PrismTheme } from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-var-requires
-const lightCodeTheme: PrismTheme = require('prism-react-renderer').themes.github as PrismTheme;
-// eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-member-access
-const darkCodeTheme: PrismTheme = require('prism-react-renderer').themes.dracula as PrismTheme;
 const swaggerHubApiUrl: string = 'https://app.swaggerhub.com/apis/eclipse-xpanse-bot/XpanseRuntimeApi';
 
 const config: Config = {
@@ -200,8 +196,8 @@ const config: Config = {
             copyright: `Copyright © ${new Date().getFullYear()} Eclipse Foundation.`,
         },
         prism: {
-            theme: lightCodeTheme,
-            darkTheme: darkCodeTheme,
+            theme: prismThemes.github,
+            darkTheme: prismThemes.dracula,
         },
     },
 };
