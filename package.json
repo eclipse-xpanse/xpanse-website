@@ -14,9 +14,9 @@
         "write-heading-ids": "docusaurus write-heading-ids"
     },
     "dependencies": {
-        "@docusaurus/core": "^3.4.0",
-        "@docusaurus/preset-classic": "^3.4.0",
-        "@docusaurus/theme-mermaid": "^3.4.0",
+        "@docusaurus/core": "^3.5.2",
+        "@docusaurus/preset-classic": "^3.5.2",
+        "@docusaurus/theme-mermaid": "^3.5.2",
         "@mdx-js/react": "^3.0.1",
         "@ocular-d/vale-bin": "^2.29.6",
         "clsx": "^2.1.1",
@@ -27,14 +27,16 @@
         "react-dom": "^18.3.1"
     },
     "devDependencies": {
-        "@docusaurus/module-type-aliases": "^3.4.0",
-        "@docusaurus/tsconfig": "^3.4.0",
+        "@docusaurus/module-type-aliases": "^3.5.2",
+        "@docusaurus/tsconfig": "^3.5.2",
         "@docusaurus/types": "3.5.2",
+        "@eslint/eslintrc": "^3.1.0",
+        "@eslint/js": "^9.9.0",
         "@tsconfig/docusaurus": "^2.0.3",
         "@types/react": "^18.3.3",
         "@typescript-eslint/eslint-plugin": "^8.0.1",
         "@typescript-eslint/parser": "^8.0.1",
-        "eslint": "^8.57.0",
+        "eslint": "^9.9.0",
         "eslint-plugin-react": "^7.35.0",
         "eslint-plugin-require-explicit-generics": "^1.0.0",
         "fork-ts-checker-webpack-plugin": "^9.0.2",
@@ -59,32 +61,5 @@
     "overrides": {
         "trim": "^0.0.3",
         "got": "^11.8.5"
-    },
-    "eslintConfig": {
-        "extends": [
-            "eslint:recommended",
-            "plugin:@typescript-eslint/recommended",
-            "plugin:@typescript-eslint/recommended-requiring-type-checking",
-            "plugin:@typescript-eslint/strict"
-        ],
-        "plugins": [
-            "react",
-            "@typescript-eslint"
-        ],
-        "rules": {
-            "react/jsx-uses-react": "error",
-            "react/jsx-uses-vars": "error",
-            "no-undef": "off",
-            "@typescript-eslint/no-inferrable-types": "off"
-        },
-        "ignorePatterns": [
-            "build/**",
-            "docusaurus.config.js"
-        ],
-        "root": true,
-        "parser": "@typescript-eslint/parser",
-        "parserOptions": {
-            "project": "tsconfig.json"
-        }
     }
 }
