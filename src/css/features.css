@@ -12,6 +12,7 @@
     border-radius: 16px;
     border: 1px solid #a8b3cf33;
     margin-bottom: 20px;
+    height: calc(100% - 20px);
 }
 
 .featureTitle {
