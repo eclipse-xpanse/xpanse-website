@@ -1,21 +1,19 @@
 import React from 'react';
-import { Braces, Code, LucideIcon, Rocket, ShoppingCart, Unlock, Unplug } from 'lucide-react';
+import { Braces, Code, Handshake, LucideIcon, Rocket, ShoppingCart, Unlock } from 'lucide-react';
 
-export const FeatureList: { title: string; Icon: LucideIcon; description: JSX.Element }[] = [
+export const FeatureList: { title: string; Icon: LucideIcon; description: React.JSX.Element }[] = [
     {
-        title: 'Portable Services',
-        Icon: Unplug,
-        description: (
-            <>An Xpanse Cloud service is portable. It can be deployed on any cloud provider hosting Xpanse runtime.</>
-        ),
+        title: 'Unified APIs',
+        Icon: Handshake,
+        description: <>xpanse provides unified APIs to offer and consume managed services on any cloud provider.</>,
     },
     {
         title: 'Managed Services as Code',
         Icon: Code,
         description: (
             <>
-                Creating a service with Xpanse is very easy. You describe a service and its deployment details using the
-                Xpanse service descriptor.
+                Offering a service with xpanse is very easy. You describe a service and its deployment details using the
+                xpanse service descriptor.
             </>
         ),
     },
@@ -24,7 +22,7 @@ export const FeatureList: { title: string; Icon: LucideIcon; description: JSX.El
         Icon: ShoppingCart,
         description: (
             <>
-                As a service is described using Xpanse service descriptor, it's pretty easy to provide a catalog of
+                As a service is described using xpanse service descriptor, it's pretty easy to provide a catalog of
                 services.
             </>
         ),
@@ -32,21 +30,13 @@ export const FeatureList: { title: string; Icon: LucideIcon; description: JSX.El
     {
         title: 'API First',
         Icon: Braces,
-        description: (
-            <>
-                Xpanse provides REST API for registering new services to the catalog and also for ordering services from
-                the catalog.
-            </>
-        ),
+        description: <>xpanse provides REST API for managing full life-cycle of services in the service catalog.</>,
     },
     {
         title: 'Deployment Tools',
         Icon: Rocket,
         description: (
-            <>
-                Xpanse uses standard deployment tools such as Terraform for deploying services. Scripts are provided as
-                part of the Xpanse service descriptor.
-            </>
+            <>xpanse uses standard deployment tools such as Terraform, OpenTofu and Ansible for deploying services.</>
         ),
     },
     {
@@ -54,7 +44,7 @@ export const FeatureList: { title: string; Icon: LucideIcon; description: JSX.El
         Icon: Unlock,
         description: (
             <>
-                Xpanse allows services and data interoperability within cloud providers and service portability across
+                xpanse allows services and data interoperability within cloud providers and service portability across
                 multiple cloud vendors.
             </>
         ),

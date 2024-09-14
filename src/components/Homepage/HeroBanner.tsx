@@ -8,7 +8,7 @@ function HeroBanner(): React.JSX.Element {
     const tagLine = () => {
         return (
             <>
-                Xpanse enables the development of native cloud managed services designed to be fully portable across
+                xpanse enables the development of native cloud managed services designed to be fully portable across
                 cloud implementations, for an &nbsp;
                 <a
                     className={'report-link'}
