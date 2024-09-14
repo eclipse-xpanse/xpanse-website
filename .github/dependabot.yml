@@ -11,3 +11,9 @@ updates:
       directory: /
       schedule:
           interval: daily
+      groups:
+          dev-dependencies:
+              applies-to: version-updates
+              patterns:
+                  - '@docusaurus/*'
+                  - '@typescript-eslint/*'
