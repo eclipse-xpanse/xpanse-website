@@ -17,3 +17,4 @@ updates:
               patterns:
                   - '@docusaurus/*'
                   - '@typescript-eslint/*'
+      open-pull-requests-limit: 20
