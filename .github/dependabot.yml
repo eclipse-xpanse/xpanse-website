@@ -10,10 +10,11 @@ updates:
       versioning-strategy: increase
       directory: /
       schedule:
-          interval: daily
+          interval: weekly
       groups:
           dev-dependencies:
               applies-to: version-updates
               patterns:
                   - '@docusaurus/*'
                   - '@typescript-eslint/*'
+      open-pull-requests-limit: 20
