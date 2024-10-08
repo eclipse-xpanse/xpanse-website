@@ -32,7 +32,7 @@
         "@docusaurus/types": "3.5.2",
         "@eslint/eslintrc": "^3.1.0",
         "@tsconfig/docusaurus": "^2.0.3",
-        "@types/react": "^18.3.10",
+        "@types/react": "^18.3.11",
         "@typescript-eslint/eslint-plugin": "^8.7.0",
         "@typescript-eslint/parser": "^8.7.0",
         "eslint": "^9.12.0",
