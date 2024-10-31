@@ -1,0 +1,41 @@
+---
+sidebar_position: 2
+---
+
+# End User
+
+The end user in the xpanse ecosystem are the customers who consume the native managed services
+on the cloud.
+
+## Cloud provider integrated mode
+
+When xpanse is deployed in the **cloud provider integrated** mode,
+then the user has no impact. xpanse becomes completely transparent to end user.
+
+### Access
+
+End users use the cloud provider's console and API using his/her IAM credentials of the specific cloud provider
+to consume xpanse based services.
+
+## App store mode
+
+When xpanse is deployed in the **app store** mode, then the end user can perform the following actions
+via xpanse APIs.
+
+1. Get access to the app store.
+2. Add cloud credentials to the key store.
+3. Browse through services catalog
+4. Choose the service they wish to order.
+5. Provide all necessary parameters to deploy service.
+6. Deploy service.
+
+After the service is deployed, the end user can use and manage the full lifecycle of the service.
+
+### Access
+
+Accessing the app store depends on the auth provider used by the app store.
+End user needs an account based on the app store setup.
+
+Additionally, if end user wishes to have the service hosted on their own cloud tenants,
+then the cloud provider specific tenant credentials must be added in the app store.
+This also depends on the kind of credentials supported by the respective cloud provider in it's xpanse plugin.

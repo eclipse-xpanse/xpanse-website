@@ -28,3 +28,4 @@ backported
 OpenTofu
 SDKs
 CVEs
+sequenceDiagram

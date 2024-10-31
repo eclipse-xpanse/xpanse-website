@@ -1,0 +1,23 @@
+---
+sidebar_position: 3
+---
+
+import Link from '../../src/components/link/Link';
+
+# Cloud Service Provider
+
+Cloud service providers (CSPs) in the xpanse ecosystem provide all necessary infrastructure and integrations for ISVs
+to host their native managed services on their platform.
+
+## Cloud provider integrated mode
+
+In this mode, the role of CSP will be to install xpanse stack on their management layer and make it available for
+ISVs to register their services. Once registered, CSPs must validate and approve services that can be allowed to be
+hosted in their managed services catalog.
+
+## App store mode
+
+In this mode, the role of CSP is to validate and approve services the ISV can sell on their infrastructure.
+
+> Note: If a CSP wish to simply auto approve service templates, it can be configured in the plugin accordingly by
+> implementing this <Link name={'method'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/orchestrator/src/main/java/org/eclipse/xpanse/modules/orchestrator/OrchestratorPlugin.java#L49'}/>.
