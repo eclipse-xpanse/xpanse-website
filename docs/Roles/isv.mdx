@@ -1,0 +1,35 @@
+---
+sidebar_position: 1
+---
+
+# Independent Service Vendor
+
+Independent Service Vendor (ISV) is the role used by software vendors. ISVs sell their managed software services
+using xpanse.
+
+The supported use cases for ISV is the same irrespective of the mode in which xpanse is used.
+The only expected difference for ISV between the xpanse modes is how the xpanse APIs are accessed.
+
+## Cloud provider integrated mode
+
+In case of **cloud provider integrated** mode,
+ISVs will use the cloud provider specific console and API end points to access the xpanse APIs to register their services.
+
+### Access
+
+ISVs use the cloud provider's console and API using his/her IAM credentials to register their native managed services
+using xpanse.
+
+## App store mode
+
+In case of **app store** mode, the xpanse uses the APIs hosted on the app store's management area
+to sell services on any cloud provider they wish and is supported by the app store
+
+### Access
+
+Accessing the app store depends on the auth provider used by the app store.
+ISV needs an account based on the app store setup and must have the `isv` role associated with it.
+
+Additionally, if ISV wishes sell `service-vendor` hosted service,
+then the specific tenant credentials must be configured in the app store.
+This depends on the kind of credentials supported by the respective cloud provider in it's xpanse plugin.

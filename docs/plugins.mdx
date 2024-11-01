@@ -11,6 +11,10 @@ We've one plugin each for every cloud provider where the managed services can be
 The orchestrator decides which plugin to be invoked based on the cloud provider the end customer chooses to host his
 service.
 
+> **Very Important**: Since plugin may contain integrations to the cloud provider's private applications, plugins
+> can be implemented as closed source/proprietary software and then build the application using other components
+> xpanse from Maven central.
+
 ## Plugin Implementation
 
 A plugin is a class that implements

@@ -29,7 +29,7 @@ function HeroBanner(): React.JSX.Element {
                 <img className={'heroBannerLogo'} src={XpanseLogo as string} alt={'logo'} />
                 <div className={'buttons'} style={{ display: 'flex', flexDirection: 'column' }}>
                     <p className='hero__subtitle'>{tagLine()}</p>
-                    <Link className='button button--secondary button--lg' to='/docs/intro'>
+                    <Link className='button button--secondary button--lg' to='/docs/introduction'>
                         Get Started
                     </Link>
                 </div>

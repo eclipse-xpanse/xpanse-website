@@ -170,3 +170,13 @@ All logs from NGINX are routed to stdout by default. Using the below command, al
 ```shell
 docker logs ui
 ```
+
+## Non production environments without HTTPS
+
+The OAuth client libraries used by the UI are highly secure and don't allow using plain HTTP except for `localhost`.
+For all other test purposes when there is a necessity to use HTTP together with an IP or host name that's not `localhost`,
+then the browser configuration must be changed as below to consider that IP or host name as a secure origin.
+
+1. Go to <!-- vale off --> chrome://flags/#unsafely-treat-insecure-origin-as-secure.<!-- vale on -->
+2. Add the origin which you want to treat as secure that is, http://example.com:8080.
+3. Restart chrome.
