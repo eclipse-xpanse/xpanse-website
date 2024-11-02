@@ -29,3 +29,4 @@ OpenTofu
 SDKs
 CVEs
 sequenceDiagram
+YAML

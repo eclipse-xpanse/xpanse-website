@@ -6,12 +6,18 @@ import Link from '../src/components/link/Link';
 
 # Configuration Language
 
-A managed service is described using xpanse Service Description Language
+A native fully managed service is described using xpanse Service Description Language
 (XSDL).
 
-XSDL is a yaml descriptor of a managed service which fully describes the service and the way to deploy the service.
+XSDL is a YAML based description language which fully describes the service
+with the details necessary to configure cloud management systems to offer the service as a native fully managed service
+and the way to deploy and manage full life-cycle of the service.
 
-Examples of managed services described using XSDL for multiple clouds can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/tree/main/samples'}/>.
+![components described in a service template](../static/img/service-template-components.excalidraw.png)
+
+> Note: Examples of managed services described using XSDL for multiple clouds can be found in the
+>
+> <Link name={'samples repository'} url={'https://github.com/eclipse-xpanse/xpanse-samples/tree/main'} />.
 
 ### Deployment Scripts
 
@@ -45,9 +51,49 @@ Or even if the service needs the end user to select multiple availability zones,
 
 Each ISV can provide their support contacts as part of OCL. This can then be used by end user or the CSP in case of issues with the service deployment or managing the service after deployment.
 
-## XSDL loading
+## Register Service templates
 
 xpanse provides different options to register service templates defined using XSDL:
 
 -   REST API on the xpanse runtime
 -   xpanse UI
+
+### Service Template Registration Sequence
+
+```mermaid
+sequenceDiagram
+    actor ISV
+    box Service Template Registration
+    participant Register Service API
+    participant Orchestrator
+    participant Database
+    end
+    box Service Review
+    participant Review Service API
+    participant CSP
+    end
+    box Service Template Configuration
+    participant Plugin
+    participant cloud management systems
+    end
+    ISV -->> Register Service API: Register service template
+    Register Service API -->> Orchestrator: Validate request.
+    Orchestrator -->> Orchestrator: Check if service auto-approve is enabled
+     alt auto-approve enabled
+        Orchestrator -->> Database: service approved and stored.
+    else auto-approve disabled
+        Orchestrator -->> Database: service queued for approval and stored.
+        Orchestrator -->> CSP: Review service request
+        alt service rejected by CSP
+            CSP -->> Review Service API: Reject service
+            Review Service API -->> Orchestrator: Update service status to rejected.
+        else service approved by CSP
+            CSP -->> Review Service API: Review and approve service.
+            Review Service API -->> Orchestrator: Approve service
+            critical create service in CSP's catalog
+                Orchestrator -->> Plugin: configure service template
+                Plugin -->> cloud management systems: configure service in all necessary systems
+            end
+        end
+    end
+```
