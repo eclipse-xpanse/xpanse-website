@@ -2,23 +2,38 @@
 sidebar_position: 1
 ---
 
+import Link from '../src/components/link/Link';
+
 # Introduction
 
-xpanse project aims to provide independent software vendors (ISVs) a framework to offer native fully managed services on
-cloud providers.
+xpanse project creates a framework for software vendors to offer native managed services on cloud service providers.
 
-The project aims to build a solution that can be work with public, private and hybrid clouds.
+**Native services** here refers to the services that are fully integrated into cloud provider's service catalog,
+infrastructure, user interfaces and many other cloud management systems.
+This means, xpanse will enable ISVs also to sell their services the same way CSPs do on their own cloud infrastructure.
+
+**Fully Managed** means the entire life-cycle of the service is managed by the ISV.
+
+The framework can work with public, private, hybrid clouds and host cloud services based on
+virtual machines, bare metals or k8s cluster based services.
+
+## Goals of the project
+
+xpanse is a project aimed reshaping the cloud services ecosystem:
+
+-   Everybody should be able to sell native fully managed services.
+-   End users will have just one channel to buy services.
+-   Standardize service definition process by creating a cloud-agnostic
+    <Link name={'service configuration language'} url={'./configuration-language'} />.
+-   Make service portability a default feature.
 
 ## Getting Started
 
-xpanse is composed of multiple components in the stack. The most important ones are
+To understand the project and its implementation better, refer to the
 
--   a Cloud-agnostic REST API layer.
--   an orchestrator responsible for the managed services (deployment, start, stop, ...) and loading
-    plugins specific for each supported cloud provider
--   a Service Configuration Language for describing managed services and for deploying these managed services.
--   runtime (including cloud provider plugins) assembling all components together in a
-    running service
+<Link name={'architecture'} url={'./architecture'} />,
+<Link name={'modes'} url={'./modes'} /> and
+<Link name={'service configuration language'} url={'./configuration-language'} />.
 
 ## Current Features
 
