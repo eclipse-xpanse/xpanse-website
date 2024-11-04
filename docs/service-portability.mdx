@@ -1,0 +1,61 @@
+---
+sidebar_position: 8
+---
+
+# Service Portability
+
+Service portability is the process of migrating a running service and its data from one cloud service provider to another
+service provider.
+
+xpanse implements the service portability using a workflow engine, which supports two different use cases
+
+1. Port service between two different regions with the same cloud service provider.
+2. Port service between two different cloud service providers.
+
+```mermaid
+sequenceDiagram
+    customer -->> MigrateAPI: Migrate Service Request
+    MigrateAPI -->> SERVICE_ORDER: Create MIGRATE order.
+    MigrateAPI -->> ACTIVITI: create workflow instance and store ORDER_ID in process variable.
+    MigrateAPI -->> SERVICE_ORDER: Update WORKFLOW_ID to MIGRATE order.
+    MigrateAPI -->> customer: Return OrderID and OldServiceId
+    critical start data export
+        ACTIVITI -->> ACTIVITI: Skip data transfer.
+    end
+    critical start new deployment
+        ACTIVITI -->> DeployServiceApi: start deployment. Set hidden field workflow ID
+        DeployServiceApi -->> DEPLOY_SERVICE: create new SERIVCE_ID
+        DeployServiceApi -->> SERVICE_ORDER: Create DEPLOY order and store WORKFLOW_ID.
+        DeployServiceApi -->> DEPLOYER: Use ORDER_ID in request to deployer.
+        DeployServiceApi -->> ACTIVITI: Return new ORDER_ID and SERVICE_ID
+        ACTIVITI -->> SERVICE_ORDER: update NEW_SERVICE_ID to MIGRATE order.
+    end
+    critical process deployment result
+        DEPLOYER -->> CallbackHook: Update result for ORDER_ID
+        Callbackhook -->> SERVICE_ORDER: Get SERVICE_ID from table and update result.
+        critical SERVICE_ORDER contains WORKFLOW_ID
+            Callbackhook -->> ACTIVITI: update workflow with deployment status.
+            ACTIVITI --> SERVICE_ORDER: If it's a final state, then update MIGRATE order with details.
+        end
+    end
+    critical start data import
+        ACTIVITI -->> ACTIVITI: Skip data transfer.
+    end
+    critical destroy old deployment
+        ACTIVITI -->> DestroyServiceApi: start destroy. Set hidden field workflow ID
+        DestroyServiceApi -->> SERVICE_ORDER: Create DESTROY order and store WORKFLOW_ID.
+        DestroyServiceApi -->> DEPLOYER: Use ORDER_ID in request to deployer.
+        DestroyServiceApi -->> ACTIVITI: Return new ORDER_ID and SERVICE_ID
+    end
+    critical process deployment result
+        DEPLOYER -->> CallbackHook: Update result for ORDER_ID
+        Callbackhook -->> SERVICE_ORDER: Get SERVICE_ID from table and update result.
+        critical SERVICE_ORDER contains WORKFLOW_ID
+            Callbackhook -->> ACTIVITI: update workflow with deployment status.
+            ACTIVITI --> SERVICE_ORDER: If it's error, then update MIGRATE order with new state and error details.
+        end
+    end
+    critical update final state of MIGRATE order
+        ACTIVITI --> SERVICE_ORDER: If last step is successful, update MIGRATE order state.
+    end
+```

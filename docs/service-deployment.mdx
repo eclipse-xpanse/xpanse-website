@@ -22,8 +22,12 @@ Service Deployment involves the following tasks
    required for running the service. The script must be provided as part of the service template.
 2. Install the software and configurations needed for running the service.
 
-> Note: At the moment, Terraform and OpenTofu is supported by xpanse for service deployment. We plan to add support for other
-> deployment tools in the upcoming releases.
+:::info Supported deployers
+At the moment, Terraform and OpenTofu is supported by xpanse for service deployment. We plan to add support for other
+deployment tools in the upcoming releases.
+:::
+
+![xpanse deployment architecture](../static/img/xpanse-deployer-architecture.excalidraw.png)
 
 ## Deployer Implementation
 
@@ -81,8 +85,10 @@ Terraform script that must be executed must be passed as is, in the service defi
 You can find examples of how the script can look like in
 the <Link name={'samples'} url={'https://github.com/eclipse-xpanse/xpanse/tree/main/samples'}/> folder.
 
-> **Terraform** binaries must be installed on the system where the runtime is running. Or use our docker image, which
-> contains all required software pre-installed.
+:::important Terraform binaries required
+**Terraform** binaries must be installed on the system where the runtime is running. Or use our docker image, which
+contains all required software pre-installed.
+:::
 
 ### Terraform Boot
 
@@ -95,8 +101,10 @@ OpenTofu script that must be executed must be passed as is, in the service defin
 You can find examples of how the script can look like in
 the <Link name={'samples'} url={'https://github.com/eclipse-xpanse/xpanse/tree/main/samples/develop'}/> folder.
 
-> **OpenTofu** binaries must be installed on the system where the runtime is running. Or use our docker image, which
-> contains all required software pre-installed.
+:::important OpenTofu binaries required
+**OpenTofu** binaries must be installed on the system where the runtime is running. Or use our docker image, which
+contains all required software pre-installed.
+:::
 
 ### Tofu Maker
 
@@ -122,8 +130,10 @@ When the customer orders the service, the following happens
 -   Inside the folder, the runtime will then create a Terraform workspace.
 -   Execute the Terraform scripts
 
-> Note: To avoid dependency on the filesystem, the state `terraform.tfstate` file contents are copied to the database at
-> the end of the service deployment. We reuse this later when the customer requests to destroy the service.
+:::danger Storing deployment states in database
+To avoid dependency on the filesystem, the state `terraform.tfstate` file contents are copied to the database at
+the end of the service deployment. We reuse this later when the customer requests to destroy the service.
+:::
 
 ### Reading Script Output
 
