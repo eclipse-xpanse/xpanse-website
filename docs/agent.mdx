@@ -13,14 +13,16 @@ be deployed on the service's compute resources to communicate with the xpanse co
 xpanse Agent is implemented with a pull mechanism since the xpanse controller in both
 
 <Link name={'modes'} url={'./modes'} /> can't reach the compute nodes which is running on a completely different private
-network :::
+network.
+
+:::
 
 The agent is planned to take over all activities that needs to be performed on the service application after the
 service is created. Some examples include
 
 1. Update application configuration
 2. Perform actions on the application - for example, create users on a database service.
-3. Perform backup of service data.
+3. Perform backup of service data and configuration.
 4. and many more.
 
 ![xpanse high level architecture with agent](../static/img/xpanse-architecture-with-agent.excalidraw.png)
