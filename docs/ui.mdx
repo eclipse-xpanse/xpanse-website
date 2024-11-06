@@ -30,15 +30,18 @@ file <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/
 Even if we don't have a valid default value, we must just add empty value.
 This file serves as a reference to all required properties.
 
-> **Very Important**: Since React is compiled to a static app, all configuration values can be seen directly in the
-> browser too.
-> Therefore, no secure configurations such as passwords, keys, etc. must be added here.
+:::danger No secrets in configuration file
+Since React is compiled to a static app, all configuration values can be seen directly in the browser too.
+Therefore, no secure configurations such as passwords, keys, etc. must be added here.
+:::
 
 ## OAuth Configuration
 
-For local environments, the `access_tokens` are stored with in the browser storage. This isn't safe, but it's enough for non-production environments and for debugging purposes.
+For local environments, the `access_tokens` are stored with in the browser storage.
+This isn't safe, but it's enough for non-production environments and for debugging purposes.
 
-For production environments, we must use `Service Workers` which will block anyone to access the token. This can be enabled by making the following configurations.
+For production environments, we must use `Service Workers` which will block anyone from accessing the token.
+This can be enabled by making the following configurations.
 
 ```dotenv
 VITE_APP_AUTH_USE_SERVICE_WORKER_ONLY=true
@@ -47,7 +50,9 @@ VITE_APP_AUTH_USE_SERVICE_WORKER_ONLY=true
 and the file <Link name={'OidcTrustedDomains.js'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/public/OidcTrustedDomains.js'}/> must be updated with correct information.
 `oidcDomains` must have the identity provider URL and `accessTokenDomains` must have the xpanse API server URL.
 
-> **_Note:_** if the same must be used with our official docker images, then this file need not be touched. It will be automatically set from the environment variables.
+:::info OidcTrustedDomains.js changes not necessary
+If the same must be used with our official docker images, then this file need not be touched. It will be automatically set from the environment variables.
+:::
 
 ### Setting Configuration Values
 
@@ -61,7 +66,9 @@ and the file <Link name={'OidcTrustedDomains.js'} url={'https://github.com/eclip
    Example can be
    found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/package.json#L25'}/>
 
-> **Important**: .env files must be used only for default configurations or for development environment configurations values.
+:::tip Default configuration location
+.env files must be used only for default configurations or for development environment configurations values.
+:::
 
 #### Environment Variables
 

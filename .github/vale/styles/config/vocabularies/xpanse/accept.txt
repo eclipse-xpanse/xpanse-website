@@ -30,3 +30,5 @@ SDKs
 CVEs
 sequenceDiagram
 YAML
+Ansible
+extra_vars

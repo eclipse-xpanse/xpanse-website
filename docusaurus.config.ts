@@ -33,7 +33,7 @@ const config: Config = {
                     showReadingTime: true,
                 },
                 theme: {
-                    customCss: require.resolve('./src/css/custom.css'),
+                    customCss: ['./src/css/custom.css', './src/css/admonitions.css'],
                 },
             },
         ],

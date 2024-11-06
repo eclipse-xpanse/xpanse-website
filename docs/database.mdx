@@ -27,9 +27,9 @@ files to be recreated. Execute the below command on the root of the folder xpans
 rm *.db
 ```
 
-> Note:
-> The H2 database is purely for development and test purposes only and must be avoided for production installation of
-> xpanse.
+:::danger H2 is only for development environments
+The H2 database is purely for development and test purposes only and must be avoided for production installation of xpanse.
+:::
 
 ## Production Environments
 
@@ -78,13 +78,16 @@ java -jar xpanse-runtime-1.0.0-SNAPSHOT.jar \
 
 ```
 
-> **Note:** It's safe to provide the database-related properties as environment variables rather than passing them
-> directly in the command line.
-> In case of this,
-> the same property name must be set in UPPERCASE and underscore separated instead of dot for all variables.
+:::danger secrets better as environment variables
+It's safe to provide the database-related properties as environment variables rather than passing them
+directly in the command line.
+In case of this,
+the same property name must be set in UPPERCASE and underscore separated instead of dot for all variables.
+:::
 
-> **Note:** Using this startup command, the database can run on any machine that's reachable from the xpanse runtime
-> application.
+:::info network between xpanse and its database
+Using this startup command, the database can run on any machine that's reachable from the xpanse runtime application.
+:::
 
 #### MySQL as a Docker Container
 
@@ -117,8 +120,10 @@ docker run --name ${container-name} \
             -p 3306:<replace-with-db-port> -d mysql:8.1.0
 ```
 
-> **Note:** To avoid passing database related properties in command line, we can use the ` --env-file` option of the `
+:::tip Avoid secrets in command line
+To avoid passing database related properties in command line, we can use the ` --env-file` option of the `
 docker run` command to store all sensitive data.
+:::
 
 #### Database Objects Creation
 

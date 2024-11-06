@@ -80,10 +80,11 @@ contains all code and configuration related to logging.
 
 contains all data models and exceptions that are exposed externally in our APIs. All data models here are automatically exported in the OpenAPI doc.
 
-> **_Note:_**
-> Ensure that this module doesn't have dependency to any other xpanse modules else it will result in cycle dependencies errors.
->
-> This package must not contain any internal data classes.
+:::important Avoid cyclic dependencies with **models** package
+Ensure that this module doesn't have dependency to any other xpanse modules else it will result in cycle dependencies errors.
+
+This package must not contain any internal data classes.
+:::
 
 #### `monitor`
 
@@ -93,7 +94,9 @@ contains all code related to fetching and caching service metrics for deployed s
 
 contains all code related to observability and traceability of the xpanse stack.
 
-> **_Note:_** > `monitor` module is for monitoring the customer's deployed clouds services whereas `observability` module is for monitoring the xpanse stack itself.
+:::tip monitoring vs observability packages
+`monitor` module is for monitoring the customer's deployed clouds services whereas `observability` module is for monitoring the xpanse stack itself.
+:::
 
 #### `orchestrator`
 

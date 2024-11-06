@@ -90,9 +90,10 @@ project.
 $ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar
 ```
 
-> **_Note:_**
-> If the executable jar packaged with the specific plugin profile, the running service only supports the specific
-> cloud service provider.
+:::danger Plugins in runtime
+If the executable jar packaged with the specific plugin profile, the running service only supports the specific
+cloud service provider.
+:::
 
 ```properties
 spring.profiles.active=oauth,zitadel,zitadel-testbed,terraform-boot,tofu-maker
@@ -173,11 +174,12 @@ $ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=oauth,zita
 $ docker logs xpanse
 ```
 
-> **Note:** It's safe to provide all properties as environment variables rather than passing them
-> directly in the command line.
-> In case of this, the same property name must be set in UPPERCASE for all 4 variables. For running, using docker image, we can use the ` --env-file` option of the `
-docker run` command to store all sensitive data.
-> Again here the property names must be in UPPERCASE.
+:::danger Avoid properties in command line
+It's safe to provide all properties as environment variables rather than passing them directly in the command line.
+In case of this, the same property name must be set in UPPERCASE for all 4 variables.
+For running, using docker image, we can use the ` --env-file` option of the `docker run` command to store all sensitive data.
+Again here the property names must be in UPPERCASE.
+:::
 
 #### Running API behind a proxy
 

@@ -11,9 +11,11 @@ We've one plugin each for every cloud provider where the managed services can be
 The orchestrator decides which plugin to be invoked based on the cloud provider the end customer chooses to host his
 service.
 
-> **Very Important**: Since plugin may contain integrations to the cloud provider's private applications, plugins
-> can be implemented as closed source/proprietary software and then build the application using other components
-> xpanse from Maven central.
+:::important Plugins as open source or closed source
+Since plugin may contain integrations to the cloud provider's private applications, plugins
+can be implemented as closed source/proprietary software and then build the application using other components
+xpanse from Maven central.
+:::
 
 ## Plugin Implementation
 
@@ -32,7 +34,9 @@ available for it to work. These mandatory configuration properties must be decla
 any of the required configuration properties aren't available, then such plugin is simply not considered for processing
 any requests.
 
-> **Note**: These mandatory variables will also be injected into the deployment environment as environment variables.
+:::tip Variables from environment
+These mandatory variables will also be injected into the deployment environment as environment variables.
+:::
 
 ### Openstack
 
