@@ -15,7 +15,7 @@ CSP
 OAuth
 Docusaurus
 Lucide
-API
+(?i)API
 access_token
 (?i)Deployer
 Grafana

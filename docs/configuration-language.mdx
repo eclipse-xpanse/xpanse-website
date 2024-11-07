@@ -9,6 +9,14 @@ import Link from '../src/components/link/Link';
 A native fully managed service is described using xpanse Service Description Language
 (XSDL).
 
+:::important XSDL and OCL
+In the documentation and discussions, XSDL is sometimes also synonymously referred as OCL.
+OCL is Open Services Cloud Configuration Language.
+
+Since XSDL was implemented based on the initial implementation of OCL,
+these two terms are still interchanged.
+
+:::
 XSDL is a YAML based description language which fully describes the service
 with the details necessary to configure cloud management systems to offer the service as a native fully managed service
 and the way to deploy and manage full life-cycle of the service.
@@ -44,13 +52,13 @@ The variables can then be used in the deployment scripts.
 
 ### Availability Zones
 
-OCL provides a way to define if the service supports deploying on availability zones which the end user wishes.
+XSDL provides a way to define if the service supports deploying on availability zones which the end user wishes.
 
 Or even if the service needs the end user to select multiple availability zones, even that's possible. The availability zone information can be directly injected into deployment scripts.
 
 ### ISV Contact Details
 
-Each ISV can provide their support contacts as part of OCL. This can then be used by end user or the CSP in case of issues with the service deployment or managing the service after deployment.
+Each ISV can provide their support contacts as part of XSDL. This can then be used by end user or the CSP in case of issues with the service deployment or managing the service after deployment.
 
 ## Register Service templates
 
