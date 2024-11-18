@@ -18,11 +18,14 @@ GUI components are built using `antd` library.
 
 ## Authentication and Authorization
 
+Auth can be controlled by` VITE_APP_AUTH_DISABLED` configuration property.
+This property is also already configured with appropriate values in different configuration files.
+
 ### Disable
 
-Auth is enabled by default.
-For development and testing purposes, we can simply disable all authentication and authorization features by setting the
-`VITE_APP_AUTH_DISABLED` configuration to `false`.
+When we start the UI with the default run command `npm run start`,
+then the UI will start with no authentication and authorization.
+This must be used only for testing and development purposes.
 
 :::important Default Roles
 When authentication and authorization is disabled,
@@ -33,7 +36,7 @@ by default.
 ### OAuth
 
 Authentication and authorization are protected by an OAuth provider.
-The default implementation uses `Zitadel` as the OAuth provider
+The default implementation uses `Zitadel` as the OAuth provider.
 
 #### Zitadel Configuration
 
@@ -102,15 +105,28 @@ Implementation can be found <Link name={'here'} url={'https://github.com/eclipse
 In the project directory, you can run the below command to start the local development server. This also additionally
 needs `nodejs` to be installed on the development machine.
 
-If there is a local development Zitadel instance and xpanse API instance, then we must
-set `VITE_APP_ZITADEL_CLIENT_ID` and `VITE_APP_XPANSE_API_URL` environment variables with respective values
-and then run the below command for the application to start.
+### No Auth
+
+To start local development server without any auth, use the below command.
 
 ```shell
 $ npm run start
 ```
 
+### Local OAuth
+
+To start local development server with local OAuth server,
+then update the `VITE_APP_ZITADEL_CLIENT_ID` value in the `.env.zitadel-local` fie and
+then start the server with below command.
+
+```shell
+$ npm run start-with-zitadel-local
+```
+
+### Testbed OAuth
+
 If you wish to use our central Zitadel testbed instance, then simply start the application with the below command.
+For this you would need an account on our testbed instance.
 
 ```shell
 $ npm run start-with-zitadel-testbed
