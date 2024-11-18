@@ -9,33 +9,36 @@ import Link from '../src/components/link/Link';
 This is the frontend for the xpanse project which allows cloud service providers to register managed services to the
 service catalog and also for end users to deploy services from the service catalog and manage them.
 
-## Development Setup
+## Application Stack
 
 Project is built using `ReactJS` library. As we use `TypeScript` here, we must ensure all objects have its type explicit
 defined.
 
 GUI components are built using `antd` library.
 
-Authentication and authorization are built using `Zitadel` which is an oauth2 provider.
+## Authentication and Authorization
 
-## Zitadel Configuration
+### Disable
+
+Auth is enabled by default.
+For development and testing purposes, we can simply disable all authentication and authorization features by setting the
+`VITE_APP_AUTH_DISABLED` configuration to `false`.
+
+:::important Default Roles
+When authentication and authorization is disabled,
+the **test user** will then have all <Link name={'roles'} url={'authentication-authorization#roles'}/>
+by default.
+:::
+
+### OAuth
+
+Authentication and authorization are protected by an OAuth provider.
+The default implementation uses `Zitadel` as the OAuth provider
+
+#### Zitadel Configuration
 
 Before we can start using the UI, we must ensure `Zitadel` instance that we consider using,
 has all the required configuration. Details can be found <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/terraform/README.md'}/>.
-
-## Configuration Properties
-
-All required configuration parameters must be added to .env
-file <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env'}/>.
-Even if we don't have a valid default value, we must just add empty value.
-This file serves as a reference to all required properties.
-
-:::danger No secrets in configuration file
-Since React is compiled to a static app, all configuration values can be seen directly in the browser too.
-Therefore, no secure configurations such as passwords, keys, etc. must be added here.
-:::
-
-## OAuth Configuration
 
 For local environments, the `access_tokens` are stored with in the browser storage.
 This isn't safe, but it's enough for non-production environments and for debugging purposes.
@@ -52,6 +55,18 @@ and the file <Link name={'OidcTrustedDomains.js'} url={'https://github.com/eclip
 
 :::info OidcTrustedDomains.js changes not necessary
 If the same must be used with our official docker images, then this file need not be touched. It will be automatically set from the environment variables.
+:::
+
+## Configuration Properties
+
+All required configuration parameters must be added to .env
+file <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env'}/>.
+Even if we don't have a valid default value, we must just add empty value.
+This file serves as a reference to all required properties.
+
+:::danger No secrets in configuration file
+Since React is compiled to a static app, all configuration values can be seen directly in the browser too.
+Therefore, no secure configurations such as passwords, keys, etc. must be added here.
 :::
 
 ### Setting Configuration Values
@@ -133,12 +148,9 @@ swagger JSON.
    to <Link name={'OpenAPI JSON File'} url={`https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json`}/>
 2. Run the code generator as below
     ```shell
-        cd src/xpanse-api
-        npx openapi-typescript-codegen --input api.json --output ./generated --exportSchemas false
+        ./scripts/generate_api_client.sh
     ```
-    This step will generate all required models and client
-3. Add license headers.
-4. Format newly generated files.
+    This script will generate all required models and client, add license headers and format newly generated files.
 
 ## Build for production
 
