@@ -215,3 +215,44 @@ then the browser configuration must be changed as below to consider that IP or h
 1. Go to <!-- vale off --> chrome://flags/#unsafely-treat-insecure-origin-as-secure.<!-- vale on -->
 2. Add the origin which you want to treat as secure that is, http://example.com:8080.
 3. Restart chrome.
+
+## Unit and Integration Tests
+
+We use playwright to write unit and integration tests for the UI components.
+Please consider the following points in writing tests
+
+1. Use Page Object Models (POM) for each component.
+2. Consider stable locators for elements.
+3. Use the default **codegen** and **mock recorder** from playwright to ensure faster development.
+
+#### Running tests
+
+```shell
+npx playwright test
+```
+
+#### Run Tests with inbuilt UI - Necessary for debugging
+
+```shell
+npx playwright test --ui
+```
+
+#### Generating locators and actions for tests
+
+Use playwright's inbuilt codegen to generate locators for DOM elements.
+Start UI app locally first and then run
+
+```shell
+npx playwright codegen http://localhost:3000
+```
+
+#### Mocking API responses
+
+It's easier to capture API responses to mock them after that in the unit tests rather than manually creating mock.
+
+This command will start the browser, and then we must perform actions on the UI that are necessary to be mocked.
+It will then record the API responses into test.har which can be then used in the tests.
+
+```shell
+npx playwright open --save-har=test.har --save-har-glob="**/xpanse/**" http://localhost:3000
+```
