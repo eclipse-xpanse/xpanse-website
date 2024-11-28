@@ -32,3 +32,4 @@ sequenceDiagram
 YAML
 Ansible
 extra_vars
+codegen
