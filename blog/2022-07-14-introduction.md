@@ -21,13 +21,13 @@ the accompanying cloud service.
 
 Open Services Cloud solves:
 
--   **federated**: the goal is to create an open services ecosystem that works across different clouds. Open Services
-    Cloud solves ecosystem lockout & lack of service portability.
--   **open**: the purpose is to enable customers to choose the services and providers of their choice. Thanks to that, we
-    avoid customer lock-in.
--   **data infrastructure based on European values**: Open Services Cloud enables European cloud providers and ecosystems
-    to meet the needs of Europeans. Open Services Cloud open up the market, avoiding the hyperscalers to control and set
-    the market for cloud and data services in Europe.
+- **federated**: the goal is to create an open services ecosystem that works across different clouds. Open Services
+  Cloud solves ecosystem lockout & lack of service portability.
+- **open**: the purpose is to enable customers to choose the services and providers of their choice. Thanks to that, we
+  avoid customer lock-in.
+- **data infrastructure based on European values**: Open Services Cloud enables European cloud providers and ecosystems
+  to meet the needs of Europeans. Open Services Cloud open up the market, avoiding the hyperscalers to control and set
+  the market for cloud and data services in Europe.
 
 Open Services Cloud is an Open Source initiative reshaping the cloud market.
 

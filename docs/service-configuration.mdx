@@ -49,11 +49,11 @@ details such as name, description, default, value, configuration manager name (s
 For the below use cases, there would be just one single configuration manager.
 All configuration parameters in the service template will refer to this single configuration manager.
 
--   When the service contains only one component. Example a simple database that runs inside a single VM.
--   When the service contains multiple components but the configuration update script is implemented in such a way
-    that it just executes on component, and it automatically connects to other components to update changes.
--   When the service contains multiple components but only central component such as `etcd` manages configuration
-    for all components.
+- When the service contains only one component. Example a simple database that runs inside a single VM.
+- When the service contains multiple components but the configuration update script is implemented in such a way
+  that it just executes on component, and it automatically connects to other components to update changes.
+- When the service contains multiple components but only central component such as `etcd` manages configuration
+  for all components.
 
 ## Configuration Manager in Deployment Script
 
