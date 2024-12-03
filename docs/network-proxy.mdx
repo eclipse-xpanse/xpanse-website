@@ -1,0 +1,44 @@
+---
+sidebar_position: 7
+---
+
+import Link from '../src/components/link/Link';
+
+# Network Proxy
+
+Given the fact that xpanse will have integrations to many APIs,
+it's necessary to allow xpanse to be usable behind corporate proxies.
+
+:::important standardizing configuration parameters
+Different programming languages, libraries and systems gets proxy information from different sources and
+in different formats.
+
+To unify this within xpanse, we support the 'Linux' based proxy configuration.
+:::
+
+## Inject Proxy Parameters
+
+Three parameters - **http_proxy**, **https_proxy** and **no_proxy** control the proxy configuration,
+and they must be available as environment variables to the runtime.
+
+Variable names can be **lowercase** or **uppercase**.
+If both are available, then the first priority will be given to lower case.
+
+```shell sample variables
+export http_proxy=http://username:password@proxy.example.com:1234
+export https_proxy=http://username:password@proxy.example.com:5678
+export no_proxy="localhost"
+```
+
+## Use Proxy Parameters
+
+Since different HTTP clients use different sources and formats for network proxy,
+the integrations in xpanse can use the following ways to get proxy information.
+
+1. The environment variables passed to the runtime can be directly used if necessary.
+2. xpanse parses the proxy details from environment variables and
+   injects necessary java specific proxy parameters as Java system properties.
+   More information can be found <Link name={'Java network proxies'} url={'https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html'}/>.
+   Libraries which depend on these default Java proxy system properties will work out of the box.
+3. Additionally,the complete proxy configuration is exposed as a Spring bean.
+   It can be accessed from anywhere using <Link name={'ProxyConfigurationManager'} url={'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/common/src/main/java/org/eclipse/xpanse/common/proxy/ProxyConfigurationManager.java'} /> bean.

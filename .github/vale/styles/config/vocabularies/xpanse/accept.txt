@@ -32,4 +32,7 @@ sequenceDiagram
 YAML
 Ansible
 extra_vars
+http_proxy
+https_proxy
+no_proxy
 codegen
