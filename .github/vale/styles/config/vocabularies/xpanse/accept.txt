@@ -4,7 +4,7 @@ HUAWEI CLOUD
 Openstack
 hyperscalers
 (?i)Zitadel
-ISV
+(?i)ISV
 NGINX
 yaml
 Activiti

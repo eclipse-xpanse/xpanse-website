@@ -116,12 +116,12 @@ This option can be found on the UI under - users -> click on user -> Authorizati
 
 #### Metadata for ISVs
 
-In order to allow service vendors to manage only their own services, we use ABAC. This is achieved by using `metadata` feature of OIDC to assign `isv` users to a specific namespace.
+In order to allow service vendors to manage only their own services, we use ABAC. This is achieved by using `metadata` feature of OIDC to assign `isv` users to a specific ISV value.
 
 ![img.png](../static/img/metadata-isv.png)
 
-While registering a service, the service vendor must specify the same namespace value in the `namespace` field.
-With this, users of another namespace won't be allowed to view, update or delete these service templates.
+While registering a service, the service vendor must specify the same ISV value in the `isv` field.
+With this, users of another ISV won't be allowed to view, update or delete these service templates.
 
 #### Metadata for CSPs
 
