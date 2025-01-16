@@ -10,10 +10,10 @@ xpanse runtime is the running module built on SpringBoot.
 
 `xpanse Runtime` supports two kinds of deployers: terraform and open tofu.
 
-`xpanse Runtime` has two ways to start the `terraform`, one is to use the local terraform module, the other is use
+`xpanse Runtime` has two ways to invoke `terraform`, one is to use the local terraform module, the other is use
 the remote terraform-boot service. The remote terraform-boot service is used by default.
 
-Also, `xpanse Runtime` has two ways to start the `open tofu`, one is to use the local open tofu module,
+Similarly, `xpanse Runtime` has two ways to invoke `open tofu`, one is to use the local open tofu module,
 the other is use the remote terraform-boot service. The remote terraform-boot service is used by default.
 
 ## Pre-Requisites
@@ -117,7 +117,7 @@ configuration file. Use the below start command line with the value of the prope
 removed the profile flag `terraform-boot` and `tofu-maker`.
 
 ```shell
-$ java -jar runtime/target/xpanse-runtime-1.0.8-SNAPSHOT.jar \
+$ java -jar runtime/target/xpanse-runtime-*-SNAPSHOT.jar \
 --spring.profiles.active=oauth,zitadel,zitadel-testbed
 ```
 

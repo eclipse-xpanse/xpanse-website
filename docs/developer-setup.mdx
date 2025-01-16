@@ -8,32 +8,204 @@ import Link from '../src/components/link/Link';
 
 This page explains the steps necessary to be setup on the developer machines to start development of xpanse.
 
-## Java Installation
+## Prerequisite tools
 
-We need Java Developer Kit (JDK) version 21 installed. You can
-use <Link name={'openjdk'} url={'https://openjdk.org/'}/>
-or <Link name={'temurin'} url={'https://adoptium.net/'}/> for this.
+- Java 21 - OpenJDK or Eclipse Adoptium
+- GIT client
+- Maven for Java applications
+- Docker
+- Docker compose
+- NodeJS for UI module
+- NPM for UI module.
 
-## Deployer Installation
+## Setup xpanse Project
 
-Depending on the type of deployers you intend to use, the below steps can be used to install necessary deployers for local development.
+The main xpanse project can be built and executed locally using the detailed documentation available in <Link url={'./runtime'} name={'runtime'}/> page.
 
-### Terraform CLI Installation
+## Dependent Components
+
+For regular development activities, xpanse needs some predefined applications from it's stack based on the use case.
+But for most cases, the dependencies are kept as minimal as possible.
+
+| Component      | Mandatory | Default                             |
+| -------------- | --------- | ----------------------------------- |
+| Database       | No        | H2 Database                         |
+| terraform-boot | No        | terraform-local                     |
+| tofu-maker     | No        | opentofu-local                      |
+| policy-man     | No        | Necessary only for testing policies |
+| zitadel        | No        | We can also use 'noauth' mode       |
+| UI             | No        | We can test APIs directly           |
+| Redis Cache    | No        | Caffeine Cache                      |
+
+To set up the above-mentioned components, we can either use a master docker-compose configuration
+which will start all components with default configuration.
+
+Or we can also make start individual components based on the use case.
+
+### Master Docker Compose
+
+By executing the below commands, we can start all components in one click.
+
+```shell
+# Download docker compose configuration file.
+wget https://raw.githubusercontent.com/eclipse-xpanse/xpanse-relops/refs/heads/main/local/docker-compose.yml
+
+# Run the database and application containers.
+docker compose up --d
+```
+
+:::tip disable containers if necessary
+If you feel that any of the containers in the docker compose file isn't necessary for your use case,
+you can simply comment them out.
+:::
+
+### Individual Component Configuration
+
+### Database
+
+By default, the development environment uses h2 database.
+Other than this, xpanse supports MySql as well at the moment.
+
+If you wish to test with MySql, the MySql container can be started using the below command.
+
+```shell
+docker run --name mysql-db -p 3306:3306 -e MYSQL_PASSWORD=xpanse -e MYSQL_ROOT_PASSWORD=xpanse -e MYSQL_DATABASE=xpanse -e MYSQL_USER=xpanse -d mysql:latest
+```
+
+Then you also need to pass one additional environment variable to xpanse application and then start it..
+
+```shell
+SPRING_DATASOURCE_PASSWORD=xpanse
+```
+
+### Deployer Tools Installation
+
+Depending on the type of deployers you intend to use,
+the below steps can be used to install necessary deployers for local development.
+
+:::info Deployer Development
+These steps are necessary for development activities in the main xpanse application as well as
+deployer applications such as `terraform-boot` and `tofu-maker`.
+:::
+
+#### Auto Installation
+
+During the deployment job, the deployer automatically downloads the necessary deployer binaries.
+If you have an active and stable connection, then there is nothing for be done in this case.
+
+#### Using Docker Images
+
+If you wish to use remote deployers such as 'terraform-boot' or 'tofu-maker',
+then you can simply pull the latest docker containers and configure the xpanse runtime to use it.
+
+In this case, the images already contains the default supported Terraform and OpenTofu versions respectively and
+additionally can install new versions on demand.
+
+```shell
+docker run -p 9090:9090 -d --name terraform-boot ghcr.io/eclipse-xpanse/terraform-boot:latest
+docker run -p 9092:9092 -d --name tofu-maker ghcr.io/eclipse-xpanse/tofu-maker:latest
+```
+
+#### Manual Installation
+
+If you wish you manually install the deployers for whatever reason, then the below steps are necessary.
+
+:::important Necessary for local or remote deployment
+This method is necessary for local and remote deployment if the auto installation isn't possible.
+:::
+
+##### Terraform CLI Installation
 
 Terraform CLI can be installed using the steps from
 the <Link name={'official guide'} url={'https://developer.hashicorp.com/terraform/install'}/>.
 
-### OpenTofu CLI Installation
+##### OpenTofu CLI Installation
 
 Terraform CLI can be installed using the steps from
-the
+the <Link name={'official guide'} url={`https://opentofu.org/docs/intro/install/`} />.
 
-<Link name={'official guide'} url={`https://opentofu.org/docs/intro/install/`} />.
+### Auth Layer Installation
 
-## Zitadel Installation
+#### No Auth Mode
 
-Install and configure Zitadel using steps mentioned the <Link name={'here'} url={'authentication-authorization#zitadel'} isOpenInNewTab={false}/>.
+If feature under development doesn't need any authentication or authorization features,
+then it can be turned off completely by simply activating the `noauth` spring profile.
 
-## NodeJS Installation
+#### OAuth Mode
 
-NodeJS is necessary for UI development. It can be installed using the steps mentioned in the <Link name={'official guide'} url={'https://nodejs.org/en/download/package-manager'}/>.
+This is the default mode and by default we use Zitadel as the identity provider.
+We build a fully configured development Zitadel application and DB images which contains
+all necessary configuration as well as test users.
+
+Run the below command to start the OAuth stack.
+
+```shell
+# Download the docker compose configuration.
+wget https://raw.githubusercontent.com/eclipse-xpanse/xpanse-iam/refs/heads/main/zitadel/local/run/docker-compose.yml
+
+# Run the database and application containers.
+docker compose up --d
+```
+
+:::important Admin User
+Also, in case you wish to connect and check and change the configuration of the Zitadel instance,
+the admin user can be used
+
+URL - http://localhost:8088
+
+username - zitadel-admin@zitadel.localhost
+
+password - Zitadel@123
+
+:::
+
+The necessary end users with multiple combinations of roles and metadata can be found <Link url={'https://raw.githubusercontent.com/eclipse-xpanse/xpanse-iam/refs/heads/main/zitadel/terraform/environments/local.tfvars'} name='here'/>
+. Here, we must use the provided **email address** as the username for OAuth application.
+
+:::tip client configuration
+The `zitadel-local` spring profile already contains the configuration details necessary to connect to this local
+Zitadel instance. The developer has no other extra task to be done.
+:::
+
+More information about Zitadel can be found <Link url={'https://github.com/eclipse-xpanse/xpanse-iam/blob/main/zitadel/README.md'} name='here' />.
+
+### policy-man
+
+policy-man is a Golang based application.
+
+#### Manual start
+
+We will need Golang SDK to be installed and the steps mentioned <Link url={'https://github.com/eclipse-xpanse/policy-man/blob/main/README.md#how-to-use'} name='here' />
+can be used to start the application.
+
+#### Docker Image
+
+Easiest way to simply start the `policy-man` application using the released docker images.
+
+```shell
+docker run -p 8090:8090 -d --name policy-man ghcr.io/eclipse-xpanse/policy-man:latest --host=0.0.0.0
+```
+
+:::info No changes necessary on xpanse
+Irrespective of the above methods used to start policy-man,
+no changes are necessary on the xpanse side.
+Default configuration already points to correct local instances of the application.
+:::
+
+### UI Module
+
+UI module requires node and NPM binaries installed on the developer machine.
+
+#### Auth modes
+
+Depending on the necessity, the UI can be started <Link url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/package.json#L28'} name={'with'} /> or <Link url={'https://github.com/eclipse-xpanse/xpanse-ui/blob/main/package.json#L24'} name={'without'} /> auth mode.
+
+```shell
+# Start with noauth mode
+npm run start
+
+# start with auth mode
+npm run start-with-zitadel-local
+```
+
+More documentation on UI can be found <Link url={'./ui'} name={'here'} />.
