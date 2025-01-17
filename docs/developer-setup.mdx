@@ -17,6 +17,7 @@ This page explains the steps necessary to be setup on the developer machines to 
 - Docker compose
 - NodeJS for UI module
 - NPM for UI module.
+- Go SDK
 
 ## Setup xpanse Project
 
@@ -72,7 +73,7 @@ If you wish to test with MySql, the MySql container can be started using the bel
 docker run --name mysql-db -p 3306:3306 -e MYSQL_PASSWORD=xpanse -e MYSQL_ROOT_PASSWORD=xpanse -e MYSQL_DATABASE=xpanse -e MYSQL_USER=xpanse -d mysql:latest
 ```
 
-Then you also need to pass one additional environment variable to xpanse application and then start it..
+Then use the Spring Boot `mysql` and also to pass one additional environment variable to xpanse application as below.
 
 ```shell
 SPRING_DATASOURCE_PASSWORD=xpanse
