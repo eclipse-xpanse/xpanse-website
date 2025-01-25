@@ -4,18 +4,18 @@ HUAWEI CLOUD
 Openstack
 hyperscalers
 (?i)Zitadel
-(?i)ISV
+(?i)ISV(.*)
 NGINX
 yaml
 Activiti
 OpenAPI
 deployers
 namespace
-CSP
+(?i)CSP(.*)
 OAuth
 Docusaurus
 Lucide
-(?i)API
+(?i)API(.*)
 access_token
 (?i)Deployer
 Grafana
@@ -39,3 +39,4 @@ codegen
 Golang
 Adoptium
 NPM
+noauth
