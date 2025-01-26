@@ -55,6 +55,11 @@ wget https://raw.githubusercontent.com/eclipse-xpanse/xpanse-relops/refs/heads/m
 docker compose up --d
 ```
 
+:::danger local-docker-stack profile to be enabled
+Then ensure to enable the spring profile `local-docker-stack` in xpanse application to ensure communication between docker containers
+and the xpanse running on host.
+:::
+
 :::tip disable containers if necessary
 If you feel that any of the containers in the docker compose file isn't necessary for your use case,
 you can simply comment them out.
@@ -70,13 +75,7 @@ Other than this, xpanse supports MySql as well at the moment.
 If you wish to test with MySql, the MySql container can be started using the below command.
 
 ```shell
-docker run --name mysql-db -p 3306:3306 -e MYSQL_PASSWORD=xpanse -e MYSQL_ROOT_PASSWORD=xpanse -e MYSQL_DATABASE=xpanse -e MYSQL_USER=xpanse -d mysql:latest
-```
-
-Then use the Spring Boot `mysql` and also to pass one additional environment variable to xpanse application as below.
-
-```shell
-SPRING_DATASOURCE_PASSWORD=xpanse
+docker run --name mysql-db -p 3306:3306 -e MYSQL_PASSWORD=Xpanse@2023 -e MYSQL_ROOT_PASSWORD=xpanse -e MYSQL_DATABASE=xpanse -e MYSQL_USER=xpanse -d mysql:latest
 ```
 
 ### Deployer Tools Installation
@@ -103,9 +102,14 @@ In this case, the images already contains the default supported Terraform and Op
 additionally can install new versions on demand.
 
 ```shell
-docker run -p 9090:9090 -d --name terraform-boot ghcr.io/eclipse-xpanse/terraform-boot:latest
-docker run -p 9092:9092 -d --name tofu-maker ghcr.io/eclipse-xpanse/tofu-maker:latest
+docker run -p 9090:9090 -d --name terraform-boot --add-host=host.docker.internal:host-gateway ghcr.io/eclipse-xpanse/terraform-boot:latest
+docker run -p 9092:9092 -d --name tofu-maker --add-host=host.docker.internal:host-gateway ghcr.io/eclipse-xpanse/tofu-maker:latest
 ```
+
+:::danger local-docker-stack profile to be enabled
+Then ensure to enable the spring profile `local-docker-stack` in xpanse application to ensure communication between docker containers
+and the xpanse running on host.
+:::
 
 #### Manual Installation
 
