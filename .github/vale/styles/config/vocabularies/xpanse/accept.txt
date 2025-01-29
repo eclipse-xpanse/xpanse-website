@@ -40,3 +40,5 @@ Golang
 Adoptium
 NPM
 noauth
+classpath
+Liquibase
