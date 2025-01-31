@@ -56,3 +56,49 @@ and creating PRs can be done via IDE, CLI, API, etc.
 - Don't change too much in a PR. The smaller the PR the easier it's to review, apply and the faster it will be done
 - Even if we're monitoring closely the PR, if you think your PR doesn't move forward fast enough, don't hesitate to
   ping in a PR comment to get some update.
+
+## Running Linters
+
+To ensure best code practices and uniformity within the community,
+we've different static code checkers, linters and code formatters used.
+The PR GitHub actions will fail if any of these checks fail.
+Hence, the developer must run these checks locally once and fix the errors highlights before pushing changes to origin.
+
+### Java Applications
+
+1. Checkstyle.
+2. Spotless.
+
+```shell
+mvn spotless:check &&  mvn checkstyle:check
+
+# If spotless reports any errors, they can be auto corrected with the below command.
+mvn spotless:apply
+
+# If checkstyle reports any errors, they must be manually fixed by the developer.
+```
+
+### UI
+
+1. Prettier
+2. ES Lint
+
+```shell
+# Prettier to automatically format all files.
+npx prettier --config .prettierrc --write .
+
+# ES Lint static checks will report errors if any and must be fixed manually.
+npx eslint . --max-warnings=0
+
+# Typescript compiler will report any TypeScript errors and must be fixed manually.
+tsc
+```
+
+### Website
+
+In addition to the above linters mentioned in the UI, website uses **vale** linter for grammar and spell checks.
+
+```shell
+# Errors reported by vale linter must be fixed manually.
+ docker run --rm -v $(pwd)/.github/vale/styles:/styles --pull=always --rm -v $(pwd):/docs -w /docs jdkato/vale .
+```

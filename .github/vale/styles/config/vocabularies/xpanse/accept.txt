@@ -42,3 +42,5 @@ NPM
 noauth
 classpath
 Liquibase
+formatters
+Checkstyle
