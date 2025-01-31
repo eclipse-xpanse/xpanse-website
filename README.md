@@ -55,6 +55,5 @@ copy files from https://github.com/errata-ai/packages/tree/master/pkg/Microsoft/
 Execute the linter by running the following commands
 
 ```shell
-docker pull jdkato/vale
-docker run --rm -v $(pwd)/.github/vale/styles:/styles --rm -v $(pwd):/docs -w /docs jdkato/vale .
+docker run --rm -v $(pwd)/.github/vale/styles:/styles --pull=always --rm -v $(pwd):/docs -w /docs jdkato/vale .
 ```
