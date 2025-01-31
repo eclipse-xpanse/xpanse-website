@@ -28,3 +28,32 @@
     --ifm-color-primary-lightest: #4fddbf;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+/* Custom styles for the announcement bar */
+.announcementBar {
+    padding: 20px; /* Increase padding for more height */
+    font-size: 1.5rem; /* Adjust font size */
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+}
+
+/* Optional: Make it more prominent on smaller screens */
+@media screen and (max-width: 996px) {
+    .announcementBar {
+        font-size: 1.2rem; /* Smaller font size for mobile */
+        padding: 15px; /* Adjust padding for mobile */
+    }
+}
+div[class^='announcementBar_'] {
+    font-size: 20px;
+    --site-announcement-bar-stripe-color1: #d7f2ff;
+    --site-announcement-bar-stripe-color2: #d1fff1;
+
+    background: repeating-linear-gradient(
+        35deg,
+        var(--site-announcement-bar-stripe-color1),
+        var(--site-announcement-bar-stripe-color1) 20px,
+        var(--site-announcement-bar-stripe-color2) 10px,
+        var(--site-announcement-bar-stripe-color2) 40px
+    );
+    font-weight: bold;
+}
