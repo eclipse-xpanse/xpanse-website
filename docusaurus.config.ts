@@ -16,7 +16,6 @@ const config: Config = {
         defaultLocale: 'en',
         locales: ['en'],
     },
-
     markdown: {
         mermaid: true,
     },
@@ -40,6 +39,11 @@ const config: Config = {
     ],
 
     themeConfig: {
+        announcementBar: {
+            content:
+                '🗓️ Our open office hour sessions happens 2nd Wednesday of every month. <a target="https://meet.jit.si/bb8f9c1a-c151-4cdf-9855-290eb9042d91" rel="noopener noreferrer" href="#">Join us</a> to learn about our roadmap and how to contribute 🤝.',
+            isCloseable: false,
+        },
         docs: {
             sidebar: {
                 hideable: true,
