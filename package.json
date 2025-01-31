@@ -20,11 +20,11 @@
         "@mdx-js/react": "^3.1.0",
         "@ocular-d/vale-bin": "^2.29.6",
         "clsx": "^2.1.1",
-        "docusaurus-lunr-search": "^3.6.0",
+        "docusaurus-lunr-search": "^3.6.1",
         "lucide-react": "^0.474.0",
         "prism-react-renderer": "^2.4.1",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
     },
     "devDependencies": {
         "@docusaurus/module-type-aliases": "^3.5.2",
@@ -32,7 +32,7 @@
         "@docusaurus/types": "3.7.0",
         "@eslint/eslintrc": "^3.2.0",
         "@tsconfig/docusaurus": "^2.0.3",
-        "@types/react": "^18.3.12",
+        "@types/react": "^19.0.8",
         "@typescript-eslint/eslint-plugin": "^8.22.0",
         "@typescript-eslint/parser": "^8.22.0",
         "eslint": "^9.19.0",
