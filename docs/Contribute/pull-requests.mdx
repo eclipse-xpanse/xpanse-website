@@ -1,0 +1,58 @@
+import Link from '../../src/components/link/Link';
+
+# Pull Requests
+
+All changes to source code is possible only via `Pull Requests` on GitHub.
+
+- Every pull request should be "linked" to an issue.
+- Create your own fork of the repository that you wish you work on that. <Link name={'How to fork?'} url={'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository'}/>
+- Clone the fork - <Link name={'How to clone?'} url={'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#cloning-your-forked-repository'}/>
+- Create a feature branch using **git checkout** command.
+- Push changes to your feature branch.
+- Open Pull Request on the upstream repository for review and merge. <Link name={'How to create a PR?.'} url={'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request'}/>
+
+```shell
+# replace the URL with your correct clone URL.
+$ git clone https://github.com/${github_user}/xpanse
+git fetch --all
+git checkout -b feature/my-branch
+
+# Make your code changes.
+
+# State your changes.
+git add .
+# Commit your changes.
+git commit -m 'give a valid commit message'
+# Push changes.
+git push -u origin feature/my-branch
+```
+
+:::info Multiple entry points to create PR
+Once the fork is created, rest of the steps such as cloning the repository, creating feature branch, pushing to feature branch
+and creating PRs can be done via IDE, CLI, API, etc.
+:::
+
+## Things to remember
+
+- Don't forget to periodically sync your fork with the upstream repository. <Link name={'How to sync a fork?'} url={'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork'}/>
+- Don't forget to periodically rebase your branch `git rebase -i origin/main`
+- If you have a group of commits related to the same change, please squash your commits into one and force push to your branch.
+- Test that your change works by adapting or adding tests.
+- Follow the boy scout rule to "Always leave the campground cleaner than you found it."
+- Build your changes,
+  In case of all Java applications, make sure you do a build before doing a PR. and the build has to be successful
+
+```shell
+  $ mvn clean verify
+```
+
+- In case of xpanse UI and website, make sure the application starts without any errors and warnings:
+
+```shell
+  $ npm run start
+```
+
+- If your PR has conflicts with the main then rebase the branch. PRs with conflicts are unlikely to be applied
+- Don't change too much in a PR. The smaller the PR the easier it's to review, apply and the faster it will be done
+- Even if we're monitoring closely the PR, if you think your PR doesn't move forward fast enough, don't hesitate to
+  ping in a PR comment to get some update.
