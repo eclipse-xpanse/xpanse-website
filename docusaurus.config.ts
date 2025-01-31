@@ -41,7 +41,7 @@ const config: Config = {
     themeConfig: {
         announcementBar: {
             content:
-                '🗓️ Our open office hour sessions happens 2nd Wednesday of every month. <a target="https://meet.jit.si/bb8f9c1a-c151-4cdf-9855-290eb9042d91" rel="noopener noreferrer" href="#">Join us</a> to learn about our roadmap and how to contribute 🤝.',
+                '🗓️ Our open office hour sessions happens 2nd Wednesday of every month. <a target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NGM3cG43cnAxMWoxdmNzNGgwb2twMTE0dTRfMjAyNTAzMTJUMDkwMDAwWiA1NzcyZTg5MTNlNGI0YTllNTIzMWRmMDQ5ZDY1MzViNzY0MTEyNGE3ODY4N2VkODY3NGM2YjI5MzYwNTAzNGUyQGc&tmsrc=5772e8913e4b4a9e5231df049d6535b7641124a78687ed8674c6b293605034e2%40group.calendar.google.com&scp=ALL">Join us</a> to learn about our roadmap and how to contribute 🤝.',
             isCloseable: false,
         },
         docs: {
