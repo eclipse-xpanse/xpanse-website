@@ -6,7 +6,7 @@ import Link from '../src/components/link/Link';
 
 # Developer Setup
 
-This page explains the steps necessary to be setup on the developer machines to start development of xpanse.
+This page explains the steps necessary to be set up on the developer machines to start development of xpanse.
 
 ## Prerequisite tools
 
@@ -19,14 +19,37 @@ This page explains the steps necessary to be setup on the developer machines to 
 - NPM for UI module.
 - Go SDK
 
-## Setup xpanse Project
+## Setup and run xpanse project
 
-The main xpanse project can be built and executed locally using the detailed documentation available in <Link url={'./runtime'} name={'runtime'}/> page.
+To run the main xpanse application, the following steps must be executed.
+
+1. Fork the <Link name='xpanse project' url='https://github.com/eclipse-xpanse/xpanse'/>.
+2. Clone the fork.
+3. We can then either compile the project using maven and start the application from CLI or
+   just execute the main class <Link name='XpanseApplication.java' url='https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/java/org/eclipse/xpanse/runtime/XpanseApplication.java'/> from your preferred IDE.
+
+```shell
+./mvnw clean install -DskipTests
+java -jar runtime/target/xpanse-runtime-*-SNAPSHOT.jar
+```
+
+To confirm the server is started, you can try to access the swagger UI from your browser.
+
+```shell
+http://localhost:8080/swagger-ui/index.html
+```
+
+The runtime can be controlled by activating different spring profiles and configuration parameters.
+More information about this can be found <Link name='here' url='./spring-profiles'/>.
+
+:::info minimum required profiles
+For developers, the minimum required profiles to be activated are noauth and dev.
+:::
 
 ## Dependent Components
 
-For regular development activities, xpanse needs some predefined applications from it's stack based on the use case.
-But for most cases, the dependencies are kept as minimal as possible.
+For regular development activities, xpanse needs some predefined applications from its stack based on the use case.
+But in most cases, the dependencies are kept as minimal as possible.
 
 | Component      | Mandatory | Default                             |
 | -------------- | --------- | ----------------------------------- |
@@ -61,7 +84,7 @@ and the xpanse running on host.
 :::
 
 :::tip disable containers if necessary
-If you feel that any of the containers in the docker compose file isn't necessary for your use case,
+If you think that any of the containers in the docker compose file isn't necessary for your use case,
 you can simply comment them out.
 :::
 
@@ -81,24 +104,24 @@ docker run --name mysql-db -p 3306:3306 -e MYSQL_PASSWORD=Xpanse@2023 -e MYSQL_R
 ### Deployer Tools Installation
 
 Depending on the type of deployers you intend to use,
-the below steps can be used to install necessary deployers for local development.
+the below steps can be used to install the necessary deployers for local development.
 
 :::info Deployer Development
 These steps are necessary for development activities in the main xpanse application as well as
-deployer applications such as `terraform-boot` and `tofu-maker`.
+deployer applications such as **terraform-boot** or **tofu-maker**.
 :::
 
 #### Auto Installation
 
 During the deployment job, the deployer automatically downloads the necessary deployer binaries.
-If you have an active and stable connection, then there is nothing for be done in this case.
+If you have an active and stable connection, then there is nothing to be done in this case.
 
 #### Using Docker Images
 
-If you wish to use remote deployers such as 'terraform-boot' or 'tofu-maker',
-then you can simply pull the latest docker containers and configure the xpanse runtime to use it.
+If you wish to use remote deployers such as **terraform-boot** or **tofu-maker**
+then you can pull the latest docker containers and configure the xpanse runtime to use it.
 
-In this case, the images already contains the default supported Terraform and OpenTofu versions respectively and
+In this case, the images already contain the default supported Terraform and OpenTofu versions respectively and
 additionally can install new versions on demand.
 
 ```shell
@@ -138,9 +161,9 @@ then it can be turned off completely by simply activating the `noauth` spring pr
 
 #### OAuth Mode
 
-This is the default mode and by default we use Zitadel as the identity provider.
+This is the default mode, and by default we use Zitadel as the identity provider.
 We build a fully configured development Zitadel application and DB images which contains
-all necessary configuration as well as test users.
+all necessary configurations as well as test users.
 
 Run the below command to start the OAuth stack.
 
@@ -156,9 +179,9 @@ docker compose up --d
 Also, in case you wish to connect and check and change the configuration of the Zitadel instance,
 the admin user can be used
 
-URL - http://localhost:8088
+URL—http://localhost:8088
 
-username - zitadel-admin@zitadel.localhost
+username—zitadel-admin@zitadel.localhost
 
 password - Zitadel@123
 
@@ -176,7 +199,7 @@ More information about Zitadel can be found <Link url={'https://github.com/eclip
 
 ### policy-man
 
-policy-man is a Golang based application.
+policy-man is a Golang-based application.
 
 #### Manual start
 
@@ -194,7 +217,7 @@ docker run -p 8090:8090 -d --name policy-man ghcr.io/eclipse-xpanse/policy-man:l
 :::info No changes necessary on xpanse
 Irrespective of the above methods used to start policy-man,
 no changes are necessary on the xpanse side.
-Default configuration already points to correct local instances of the application.
+The default configuration already points to correct local instances of the application.
 :::
 
 ### UI Module

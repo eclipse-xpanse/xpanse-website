@@ -13,7 +13,7 @@ used in different contexts and also be used in different possible <Link name={'m
 
 - **API** - <Link name={'REST APIs'} url={'./api'} /> which exposes all functionalities of xpanse.
 - **UI** - An optional <Link name={'GUI'} url={'./ui'} /> for xpanse which is just wrapper for the API.
-- **Orchestrator** - Main component which manages the full life cycle of service templates and the deployed service instances.
+- **Orchestrator** - Main component, which manages the full life cycle of service templates and the deployed service instances.
 - **Deployer** - Manages <Link name={'service deployments'} url={'./service-deployment'} />.
 - **Plugin** - Implements integrations to cloud provider's management systems necessary to offer a native fully managed service.
 - **Database** - Stores <Link name={'service templates'} url={'./configuration-language'} />, service instances, <Link name={'service policies'} url={'./policies'} /> and service orders. See <Link name={'databases'} url={'./databases'} /> page for more details.
@@ -22,6 +22,21 @@ used in different contexts and also be used in different possible <Link name={'m
 
 ## Runtime
 
-The <Link name={'runtime'} url={'./runtime'} /> is the glue between all components.
-It brings all necessary components such as the API layer, orchestrator, deployer and one or more plugins into a
-deployable application.
+The xpanse runtime is the glue between all components.
+It's a spring-boot application that bundles all the modules mentioned above into an executable jar.
+
+## xpanse Stack
+
+The xpanse runtime also needs other systems for it to fully function in a production setup.
+
+| Component      | Description                          |
+| -------------- | ------------------------------------ |
+| Database       | RDBMS based persistence layer        |
+| terraform-boot | Asynchronous Terraform deployer      |
+| tofu-maker     | Asynchronous OpenTofu deployer       |
+| policy-man     | OPA based policy validation engine   |
+| zitadel        | Authentication and authorization     |
+| UI             | ReactJS based user interface         |
+| Redis Cache    | Used for all caching functionalities |
+
+![xpanse-stack](../static/img/xpanse-stack-components.excalidraw.png)

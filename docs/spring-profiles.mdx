@@ -1,0 +1,54 @@
+---
+sidebar_position: 8
+---
+
+import Link from '../src/components/link/Link';
+
+# Spring Profiles
+
+To provide better flexibility and modularity, xpanse extensively uses spring profiles for different parts of the application.
+Each profile either enables a certain functionality or provides some default configuration.
+
+<!-- vale off -->
+
+| profile name         | forbidden for prod | Description                                                                                                                               |
+| -------------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| nouth                | Yes                | to disable any auth for APIs.                                                                                                             |
+| oauth                | No                 | to enable oauth based auth for APIs.                                                                                                      |
+| zitadel              | No                 | to use Zitadel as oauth provider.                                                                                                         |
+| zitadel-testbed      | Yes                | to use test instance of Zitadel.                                                                                                          |
+| zitadel-local        | Yes                | to use local instance of Zitadel.                                                                                                         |
+| tofu-maker           | No                 | to use remote instance of OpenTofu for deployment.                                                                                        |
+| terraform-boot       | No                 | to use remote instance of Terraform for deployment.                                                                                       |
+| local-docker-stack   | Yes                | to be used when local docker containers of all xpanse components.                                                                         |
+| dev                  | Yes                | to be used in all local development environments.                                                                                         |
+| opentelemetry        | No                 | to enable OTEL instrumentation and forwarding.                                                                                            |
+| mysql                | No                 | to enable MySQL database as persistence layer.                                                                                            |
+| test                 | Yes                | Used in tests for having dummy configuration values.                                                                                      |
+| agent-api            | No                 | Used when we want to deploy only the agent APIs. This is used for generating agent API schema and also to scale agent APIs independently. |
+| generate-openapi-doc | Yes                | Used only to generate API documentation for swagger-hub.                                                                                  |
+
+<!-- vale on -->
+
+## Configuration Properties
+
+All profiles and the configuration properties that are part of it can be found at <Link name='this place' url='https://github.com/eclipse-xpanse/xpanse/tree/main/runtime/src/main/resources'/>.
+Configuration values can be overridden with methods supported by Spring framework as described <Link name='here' url='https://docs.spring.io/spring-boot/reference/features/external-config.html'/>.
+
+## Activating Profiles
+
+Spring provides multiple ways to activate profiles.
+The list of profile names which we intend to activate can be passed as
+
+1. VM argument.
+2. Program argument.
+3. Environment variable.
+
+```shell
+# VM argument
+java -Dspring.profiles.active=profile1,profile2 -jar xpanse-runtime-*-SNAPSHOT.jar
+# Program argument
+java -jar xpanse-runtime-*-SNAPSHOT.jar --spring.profiles.active=profile1,profile2
+# Environment variable
+export SPRING_PROFILE_ACTIVE=profile1,profile2
+```

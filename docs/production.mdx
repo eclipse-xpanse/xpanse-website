@@ -1,0 +1,56 @@
+---
+sidebar_position: 8
+---
+
+import Link from '../src/components/link/Link';
+
+# Running in Production
+
+To run xpanse in production, we must ensure that all necessary <Link name='dependent systems in the stack' url='architecture#xpanse-stack' isOpenInNewTab={false} />
+are also deployed together as a stack.
+
+All required <Link name='profiles and configurations' url='./spring-profiles' isOpenInNewTab={false} /> must be known beforehand.
+
+## Run using jar
+
+Download the released runtime jar from GitHub releases. You can get the latest from <Link name={'here'} url={'https://github.com/eclipse-xpanse/xpanse/releases/latest'}/>.
+
+After downloading, we can start the jar file using the Java command.
+
+```shell
+java -jar xpanse-runtime-*.jar
+```
+
+## Run using Docker image
+
+You can start the runtime using our released docker image, and this is the preferred way. This image
+contains all necessary tools preinstalled. Below is an example of running a single instance of xpanse.
+
+```shell
+$ docker pull ghcr.io/eclipse-xpanse/xpanse:${release-version}
+$ docker run -d -p 8080:8080 --name xpanse -e "SPRING_PROFILES_ACTIVE=oauth,zitadel,mysql" ghcr.io/eclipse-xpanse/xpanse:${release-version}
+$ docker logs xpanse
+```
+
+:::danger Avoid properties in command line
+It's safe to provide all properties as environment variables rather than passing them directly in the command line.
+In case of this, the same property name must be set in UPPERCASE for all four variables.
+For running, using docker image, we can use the ` --env-file` option of the `docker run` command to store all sensitive data.
+Again, here the property names must be in UPPERCASE.
+:::
+
+#### Running API behind a proxy
+
+For running the runtime application behind a proxy, we must ensure that the proxy forwards the
+correct `X-Forwarded-*`headers to the API.
+This is necessary since the API has some features where the
+links to HTML pages are returned and this link will have the correct protocol and host only when
+these headers are set.
+
+In the case of NGINX, the configuration will look like this
+
+```nginx configuration
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto https;
+proxy_set_header Host $host;
+```
