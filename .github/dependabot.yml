@@ -20,4 +20,9 @@ updates:
               applies-to: version-updates
               patterns:
                   - '@typescript-eslint/*'
+          react:
+              applies-to: version-updates
+              patterns:
+                  - 'react*'
+                  - '@types/react*'
       open-pull-requests-limit: 20
