@@ -1,0 +1,66 @@
+---
+sidebar_position: 8
+---
+
+import Link from '../src/components/link/Link';
+
+# Sensitive Data
+
+Sensitive data which is stored internally within our runtime memory or database is always encrypted with a secret key
+and with the strongest possible encryption algorithm.
+
+## Types of sensitive data handled
+
+1. Sensitive data in the cloud provider credentials data.
+2. Sensitive data in the service deployment requests.
+3. Sensitive data in the service access parameters.
+
+## Algorithm for encryption
+
+We can use any algorithm supported by Java as mentioned <Link name='here' url='https://docs.oracle.com/en/java/javase/21/docs/specs/security/standard-names.html'/>.
+By default, the supported algorithm is **AES** with **CBC** mode.
+The default configuration can be overridden by updating the below three parameters.
+
+```shell
+xpanse.secrets.encryption.algorithm.name=AES
+xpanse.secrets.encryption.algorithm.mode=CBC
+xpanse.secrets.encryption.algorithm.padding=ISO10126Padding
+```
+
+## Secret Key
+
+This is the most critical piece of the solution since this key is used to encrypt all secrets stored
+and hence can't be compromised.
+
+The below two properties must be used to provide the values of the secret key and initial vector
+
+```shell
+xpanse.secrets.encryption.secrete.key.value=""
+
+# If the selected algorithm supports/needs initial vector, then provide this value as well.
+xpanse.secrets.encryption.initial.vector=""
+```
+
+:::info generating random secure keys
+There are many ways do it and one of the easy and straightforward ways is to use the online tool - https://acte.ltd/utils/randomkeygen.
+
+Here the 'Encryption key 256', must be used as the secret key and 'Basic 16' as the initial vector.
+:::
+
+## Secret Key in file
+
+The secret key can be provided either as a file or directly injected as a property.
+If a secret key file is provided, then the key in the file gets the **priority**.
+Application checks if the file is available in the provided path and if the file isn't empty.
+If both aren't true, then it tries to get the secret key from the configuration parameter directly.
+
+Location of the secret key can be provided by the below configuration parameter.
+This must be a fully qualified path that's accessible to xpanse runtime.
+
+```shell
+xpanse.secrets.encryption.secrete.key.file=""
+```
+
+:::danger a valid secret key is mandatory
+If a valid secret key isn't found from both sources, then the application startup will fail.
+:::
