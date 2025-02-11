@@ -28,9 +28,13 @@ To run the main xpanse application, the following steps must be executed.
 3. We can then either compile the project using maven and start the application from CLI or
    just execute the main class <Link name='XpanseApplication.java' url='https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/java/org/eclipse/xpanse/runtime/XpanseApplication.java'/> from your preferred IDE.
 
+:::info minimum required profiles
+For developers, the minimum required profiles to be activated are **noauth** and **dev**.
+:::
+
 ```shell
 ./mvnw clean install -DskipTests
-java -jar runtime/target/xpanse-runtime-*-SNAPSHOT.jar
+java -Dspring.profiles.active=noauth,dev -jar runtime/target/xpanse-runtime-*-SNAPSHOT.jar
 ```
 
 To confirm the server is started, you can try to access the swagger UI from your browser.
@@ -41,10 +45,6 @@ http://localhost:8080/swagger-ui/index.html
 
 The runtime can be controlled by activating different spring profiles and configuration parameters.
 More information about this can be found <Link name='here' url='./spring-profiles'/>.
-
-:::info minimum required profiles
-For developers, the minimum required profiles to be activated are noauth and dev.
-:::
 
 ## Dependent Components
 
