@@ -1,0 +1,49 @@
+---
+sidebar_position: 11
+---
+
+# Webhooks
+
+xpanse exposes webhooks for other systems to update the status of tasks.
+Currently, this is used for getting updates from deployment systems such as terraform-boot and tofu-maker.
+
+## Security
+
+All webhooks are protected with HMAC by default.
+The clients of the webhook must know the secret key from xpanse and use this secret key to generate signature.
+
+### Structure of HMAC signature
+
+```
+x-signature: algorithm=HmacSHA256;headers=x-nonce-signature x-timestamp-signature;signature=d4fb456bc7621ed1c8099e8a1136997d6ad9b8613fc79a49b39833d4cb36080a
+```
+
+The name of the header - **x-signature**
+It must contain algorithm name, headers used in the signature and then the actual signature.
+Each key and its value must be **equals =** separated, and each key-value pair must be separated with **semicolon ;**
+
+- Algorithm name must be a valid HMAC algorithm name.
+- headers here refer to other headers sent with the request that are part of the signature payload.
+
+### Format of signature data
+
+Clients must first prepare the data in plain text and then sign it with the secret key to generate the signature.
+The format of the data is
+
+- value of headers in the signature. Each header must be in a newline.
+- Full URL to which the webhook request will be sent in a new line.
+- Payload a string in a new line (request body).
+
+:::info multi-line string
+The text to be signed must be a multi-line string with each line containing only one piece of information.
+:::
+
+### How validation works
+
+The client generates the signature based on the data such as headers, webhook URL and payload (request body).
+The format of the signature's plain text data and the secret key is agreed between xpanse and
+other applications which will send data to xpanse via webhook APIs.
+
+On receiving the request, xpanse again tries to generate signature data from received data and
+generate the signature again. If this signature value matches to the signature value sent in the request header,
+then the request is accepted. Otherwise, rejected with HTTP 401.
