@@ -51,15 +51,15 @@ More information about this can be found <Link name='here' url='./spring-profile
 For regular development activities, xpanse needs some predefined applications from its stack based on the use case.
 But in most cases, the dependencies are kept as minimal as possible.
 
-| Component      | Mandatory | Default                             |
-| -------------- | --------- | ----------------------------------- |
-| Database       | No        | H2 Database                         |
-| terraform-boot | No        | terraform-local                     |
-| tofu-maker     | No        | opentofu-local                      |
-| policy-man     | No        | Necessary only for testing policies |
-| zitadel        | No        | We can also use 'noauth' mode       |
-| UI             | No        | We can test APIs directly           |
-| Redis Cache    | No        | Caffeine Cache                      |
+| Component   | Mandatory | Default                             |
+| ----------- | --------- | ----------------------------------- |
+| Database    | No        | H2 Database                         |
+| terra-boot  | No        | terraform-local                     |
+| tofu-maker  | No        | opentofu-local                      |
+| policy-man  | No        | Necessary only for testing policies |
+| zitadel     | No        | We can also use 'noauth' mode       |
+| UI          | No        | We can test APIs directly           |
+| Redis Cache | No        | Caffeine Cache                      |
 
 To set up the above-mentioned components, we can either use a master docker-compose configuration
 which will start all components with default configuration.
@@ -108,7 +108,7 @@ the below steps can be used to install the necessary deployers for local develop
 
 :::info Deployer Development
 These steps are necessary for development activities in the main xpanse application as well as
-deployer applications such as **terraform-boot** or **tofu-maker**.
+deployer applications such as **terra-boot** or **tofu-maker**.
 :::
 
 #### Auto Installation
@@ -118,14 +118,14 @@ If you have an active and stable connection, then there is nothing to be done in
 
 #### Using Docker Images
 
-If you wish to use remote deployers such as **terraform-boot** or **tofu-maker**
+If you wish to use remote deployers such as **terra-boot** or **tofu-maker**
 then you can pull the latest docker containers and configure the xpanse runtime to use it.
 
 In this case, the images already contain the default supported Terraform and OpenTofu versions respectively and
 additionally can install new versions on demand.
 
 ```shell
-docker run -p 9090:9090 -d --name terraform-boot --add-host=host.docker.internal:host-gateway ghcr.io/eclipse-xpanse/terraform-boot:latest
+docker run -p 9090:9090 -d --name terra-boot --add-host=host.docker.internal:host-gateway ghcr.io/eclipse-xpanse/terra-boot:latest
 docker run -p 9092:9092 -d --name tofu-maker --add-host=host.docker.internal:host-gateway ghcr.io/eclipse-xpanse/tofu-maker:latest
 ```
 
