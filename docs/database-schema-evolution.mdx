@@ -71,7 +71,7 @@ docker run --name mysql-db -p 3306:3306 -e MYSQL_PASSWORD=Xpanse@2023 -e MYSQL_R
 
 # Run Liquibase maven plugin
 cd modules/database
-mvn liquibase:generateChangelog -Dliquibase.properties.file=src/main/resources/liquibase/liquibase.mysql.properties
+mvn liquibase:generateChangeLog -Dliquibase.properties.file=src/main/resources/liquibase/liquibase.mysql.properties
 
 # Rename the generated src/main/resources/liquibase/full/mysql/xpanse-REPLACE_NEW_RELEASE-full.mysql.sql file name.
 # Replace REPLACE_NEW_RELEASE value in the file name with the next planned release value.
@@ -92,7 +92,7 @@ mvn liquibase:generateChangelog -Dliquibase.properties.file=src/main/resources/l
 
 # Run Liquibase maven plugin
 cd modules/database
-mvn liquibase:generateChangelog -Dliquibase.properties.file=src/main/resources/liquibase/liquibase.h2.properties
+mvn liquibase:generateChangeLog -Dliquibase.properties.file=src/main/resources/liquibase/liquibase.h2.properties
 
 # Rename the generated src/main/resources/liquibase/full/h2/xpanse-REPLACE_NEW_RELEASE-full.h2.sql file name.
 # Replace REPLACE_NEW_RELEASE value in the file name with the next planned release value.
