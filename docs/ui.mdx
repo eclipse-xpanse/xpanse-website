@@ -160,9 +160,12 @@ We use the OpenAPI generator to generate data models and rest client from the Op
 The following steps must be followed to generate a new client and data models whenever there is a new version if the
 swagger JSON.
 
-1. Copy the OpenAPI file
-   to <Link name={'OpenAPI JSON File'} url={`https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json`}/>
-2. Run the code generator as below
+1. Start xpanse application with the profiles - `oauth,zitadel,dev,zitadel-local`
+2. Open the OpenAPI doc in browser - http://localhost:8080/v3/api-docs
+3. Get the JSON format of the OpenAPI from **raw data** tab.
+4. Copy the OpenAPI file
+   to the <Link name={'OpenAPI JSON File'} url={`https://github.com/eclipse-xpanse/xpanse-ui/blob/main/src/xpanse-api/api.json`}/> location.
+5. Run the code generator as below
     ```shell
         ./scripts/generate_api_client.sh
     ```
