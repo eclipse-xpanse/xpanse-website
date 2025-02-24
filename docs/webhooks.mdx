@@ -47,3 +47,20 @@ other applications which will send data to xpanse via webhook APIs.
 On receiving the request, xpanse again tries to generate signature data from received data and
 generate the signature again. If this signature value matches to the signature value sent in the request header,
 then the request is accepted. Otherwise, rejected with HTTP 401.
+
+## Configuration for HMAC Key
+
+xpanse must configure the secret key for HMAC signature signing using the property **xpanse.webhook.hmac.request.signing.key**.
+
+A random value can be generated using the below command on command line.
+This will give a 32 byte (256 bit) secret key.
+
+```shell
+openssl rand -hex 32
+```
+
+Once the key is generated and finalized, it must be used on the client applications as described in their documentation.
+
+:::tip Sample key for non-production environments
+To provide better developer experience, the **dev** spring profile provides a sample key which can be used in non-production environments.
+:::
