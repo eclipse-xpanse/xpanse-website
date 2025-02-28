@@ -1,0 +1,137 @@
+---
+sidebar_position: 6
+---
+
+import Link from '../src/components/link/Link';
+
+# Caching
+
+## Development Environments
+
+For all development purposes, we use a local memory-based cache `Caffeine Cache` which is automatically created during the server startup.
+And when the service stops, all data in the local cache will be automatically cleared.
+
+:::danger Caffeine Cache is only for development environments
+The Caffeine Cache is purely for development and test purposes only and must be avoided for production installation of xpanse.
+:::
+
+## Production Environments
+
+For production environments, we use a distributed cache. The below distributed caches are at the moment fully supported.
+By **support**, we mean configurations for the cache added and also all functionalities tested.
+
+### Redis Cache
+
+At the moment, this is the only distributed cache that's fully supported.
+To use `Redis` as the cache manager for xpanse, it must be activated by starting the application with profile `redis` and
+by replacing the placeholders for redis `host`, `port` and `password` as below.
+
+```shell
+java -jar xpanse-runtime-*-SNAPSHOT.jar \
+          -Dspring.profiles.active=redis \
+          -Dspring.data.redis.host=${redis-host} \
+          -Dspring.data.redis.port=${redis-port} \
+          -Dspring.data.redis.password=${redis-password}
+```
+
+#### Versions Supported
+
+Current supported version of Redis is `7.4.2`. This is the latest LTS release of Redis.
+
+#### Default Configuration
+
+The default configuration parameters for redis profile can be found
+
+<Link
+    name={'here'}
+    url={
+        'https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-redis.properties#L6~L9'
+    }
+/>
+.
+
+#### Overriding Default Configuration
+
+We can override the above three default configurations by starting the application as below by replacing the placeholders
+with actual values.
+
+```shell
+java -jar xpanse-runtime-*-SNAPSHOT.jar \
+          -Dspring.profiles.active=redis \
+          -Dspring.data.redis.host=${replace-with-redis-host} \
+          -Dspring.data.redis.port=${replace-with-redis-port} \
+          -Dspring.data.redis.password=${replace-with-redis-password}
+
+```
+
+:::danger secrets better as environment variables
+It's safe to provide the redis-related properties as environment variables rather than passing them
+directly in the command line.
+In case of this,
+the same property name must be set in UPPERCASE and underscore separated instead of dot for all variables.
+:::
+
+:::info network between xpanse and its redis
+Using this startup command, the redis can run on any machine that's reachable from the xpanse runtime application.
+:::
+
+#### Redis as a Docker Container
+
+Redis offers official Docker images for running a database as a container.
+More details can be found here on the official page of Redis
+website <Link name={'here'} url={'https://redis.io/docs/latest/operate/rs/installing-upgrading/quickstarts/docker-quickstart'}/> and on
+DockerHub <Link name={'here'} url={'https://hub.docker.com/_/redis/'}/>.
+
+##### Starting new container
+
+While starting the Redis docker container for the first time, we can configure `redis-port`, and
+`redis-password` as below and the same can be used in starting the xpanse runtime using the command described
+
+<Link name={'above'} url={'./redis-cache#overriding-default-configuration'} isOpenInNewTab={false} />.
+
+```shell
+docker pull redis:7.4.2
+```
+
+By starting the container with the below command, the redis is started by automatically configuring the redis with
+xpanse redis port and password.
+
+```shell
+docker run --name ${container-name} \
+            -e REDIS_PASSWORD=${replace-with-redis-password}
+            -p <replace-with-redis-port>:6379 -d redis:7.4.2
+```
+
+:::tip Avoid secrets in command line
+To avoid passing database related properties in command line, we can use the ` --env-file` option of the `
+docker run` command to store all sensitive data.
+:::
+
+## Cached Data
+
+The application will cache multiple types of data. Each type of data cache will be registered into a cache manager with a specific name and configuration.
+There are two types of cache managers, one is for `Caffeine Cache` and the other is for `Redis Cache`.
+
+Cache manager for Caffeine defined in the class `CaffeineCacheConfig`
+
+<Link
+    name={'here'}
+    url={
+        'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/cache/src/main/java/org/eclipse/xpanse/modules/cache/CaffeineCacheConfig.java#L50~L60'
+    }
+/>
+Cache manager for Redis defined in the class `RedisCacheConfig`
+<Link
+    name={'here'}
+    url={
+        'https://github.com/eclipse-xpanse/xpanse/blob/main/modules/cache/src/main/java/org/eclipse/xpanse/modules/cache/RedisCacheConfig.java#L72~L86'
+    }
+/>
+
+In both cache managers, the following caches are created with the following names:
+
+REGION_AZS_CACHE_NAME -- to cache different available zones of the regions in the service cloud providers.
+SERVICE_FLAVOR_PRICE_CACHE_NAME -- to cache different prices of the flavors of the service with different billing models in the service cloud providers.
+CREDENTIAL_CACHE_NAME -- to cache different credentials the service cloud providers provided by the users.
+MONITOR_METRICS_CACHE_NAME --to cache different monitor metrics of the deployed services.
+DEPLOYER_VERSIONS_CACHE_NAME --to cache available versions of the deployer tools, such as terraform, opentofu etc.
