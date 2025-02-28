@@ -101,6 +101,21 @@ If you wish to test with MySql, the MySql container can be started using the bel
 docker run --name mysql-db -p 3306:3306 -e MYSQL_PASSWORD=Xpanse@2023 -e MYSQL_ROOT_PASSWORD=xpanse -e MYSQL_DATABASE=xpanse -e MYSQL_USER=xpanse -d mysql:latest
 ```
 
+After the container is running, update the value of configuration `spring.profiles.active` in the xpanse application to append the profile value `mysql`.
+
+### Redis Cache
+
+By default, the development environment uses Caffeine Cache.
+Other than this, xpanse supports Redis Cache as well at the moment.
+
+If you wish to test with Redis Cache, the Redis container can be started using the below command.
+
+```shell
+docker run --name redis-cache -p 6379:6379 -e REDIS_PASSWORD=Xpanse@2023 -d redis:latest
+```
+
+After the container is running, update the value of configuration `spring.profiles.active` in the xpanse application to append the profile value `redis`.
+
 ### Deployer Tools Installation
 
 Depending on the type of deployers you intend to use,
