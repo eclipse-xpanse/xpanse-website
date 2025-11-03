@@ -21,7 +21,7 @@
         "@ocular-d/vale-bin": "^2.29.6",
         "clsx": "^2.1.1",
         "docusaurus-lunr-search": "^3.6.1",
-        "lucide-react": "^0.548.0",
+        "lucide-react": "^0.552.0",
         "prism-react-renderer": "^2.4.1",
         "react": "^19.2.0",
         "react-dom": "^19.2.0"
